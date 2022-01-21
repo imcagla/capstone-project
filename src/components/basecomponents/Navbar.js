@@ -19,14 +19,14 @@ function Navbar() {
         document.getElementById("movies-dropdown").classList.remove("d-block")
     }
 
-    return <nav className={`bg-danger border-2 border-bottom ${state.theme ? "border-light text-light" : "border-dark text-dark"}`}>
+    return <nav className={`bg-danger border-2 border-bottom ${state.theme ? "border-light" : "border-danger bg-black"}`}>
         <div className="container">
             <div className="row d-flex align-items-center">
                 <div className="col-6 flex-row d-flex">
-                    <h4><Link to="/" className={`text-decoration-none ${state.theme ? "text-light" : "text-dark"}`}>Home</Link></h4>
+                    <h4><Link to="/" className={`text-decoration-none ${state.theme ? "text-light" : "text-danger"}`}>Home</Link></h4>
                     <div className='btn-group px-3' onMouseEnter={openDropdown}
                         onMouseLeave={closeDropdown}>
-                        <Link to="/sort-filter" className={`${state.theme ? "btn-danger": "text-dark" } btn dropdown-toggle`}
+                        <Link to="/sort-filter" className={`${state.theme ? "btn-danger": "text-danger" } btn dropdown-toggle`}
                         >
                             Movies
                         </Link>
@@ -39,9 +39,9 @@ function Navbar() {
                 <div className='col-6'>
                     <ul className='list-unstyled d-flex justify-content-end'>
                         {
-                            routes.filter(item => item.isNav).map((item, index) => <li className='pt-3 px-3' key={index}><Link to={item.pathname} className={`text-decoration-none ${state.theme ? "text-light" : "text-dark"}`} >{item.name}</Link></li>)
+                            routes.filter(item => item.isNav).map((item, index) => <li className='pt-3 px-3' key={index}><Link to={item.pathname} className={`text-decoration-none ${state.theme ? "text-light" : "text-danger"}`} >{item.name}</Link></li>)
                         }
-                        <button className={`btn rounded-circle ${state.theme ? "text-light border-light" : "text-dark border-dark"} mt-2`}
+                        <button className={`btn rounded-circle ${state.theme ? "text-light border-light" : "text-danger border-danger"} mt-2`}
                             onClick={() => dispatch(changeTheme(state.theme))}
                         >
                             {
