@@ -1,12 +1,14 @@
-import {combineReducers, createStore, applyMiddleware} from "redux"
+import {combineReducers, createStore} from "redux"
 import themeReducer from "./themeChanger";
 import trendReducer from "./trendingPeriod";
+import { searchReducer } from "./searchHandle";
 // import { persistStore, persistReducer } from 'redux-persist'
 
 
 const rootReducer = combineReducers({
     theme: themeReducer,
     trend: trendReducer,
+    search: searchReducer,
 })
 
 // const persistConfig = {

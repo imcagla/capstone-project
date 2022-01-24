@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 const Container = styled.div`
-    margin: 20px 50px;
+    margin: 20px 0px;
     overflow: auto;
     white-space:nowrap;
     width: auto;
@@ -46,5 +46,13 @@ const Card = styled.div`
       }
 `
 
+const Button = styled.button`
+    background: ${props => props.theme === "light" ? "white" : "#131414"};
+    color: #dc3545;
+    font-size: 1em;
+    padding: 0.25em 1em;
+    border: 2px solid #dc3545;
+    border-radius: 3px;
+`
 
-export {Card, Container, CardDescription}
+export { Card, Container, CardDescription, Button }
