@@ -25,11 +25,16 @@ function SearchPagination() {
         <h4 className='text-start'>Search Results: </h4>
         {
             searchData?.data?.data?.results.slice(selectedPage, selectedPage + perPage).map(item => <Card theme={themeName} className='position-relative'>
-                <img width={"200"} src={`https://image.tmdb.org/t/p/w200${item?.poster_path}`} className='rounded-3' alt="" />
+                <img height={"300"} width={"200"} style={{objectFit: "cover"}}
+                src={item.poster_path === null ? `https://tigres.com.tr/wp-content/uploads/2016/11/orionthemes-placeholder-image-1.png` : `https://image.tmdb.org/t/p/w200${item?.poster_path}`} 
+                className='rounded-3' alt="" />
                 <CardDescription>
                     <p>{item.title}</p>
                 </CardDescription>
             </Card>)
+        }
+        {
+            searchData?.data?.data?.results.length === 0 && <div className='alert alert-secondary fw-bold fs-3 col-6 mx-auto text-center py-5 mt-5' role="alert">No results found!</div>
         }
         <ReactPaginate
             breakLabel="..."
@@ -45,7 +50,6 @@ function SearchPagination() {
             pageLinkClassName={"text-decoration-none mx-1 btn btn-outline-secondary"}
             activeLinkClassName={"fw-bold btn-outline-danger"}
             initialPage={0}
-            // forcePage={selectedPage, perPage}
         />
     </div>;
 }
