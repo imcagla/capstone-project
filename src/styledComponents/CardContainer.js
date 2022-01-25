@@ -1,5 +1,6 @@
 import styled from "styled-components"
 
+
 const Container = styled.div`
     margin: 20px 0px;
     overflow: auto;
@@ -24,10 +25,9 @@ const CardDescription = styled.div`
     display:none;
     position: absolute;
     top:0;
+    start:0;
+    padding: 4px;
     border-radius: 5px;
-    text-align:center;
-    justify-content: center;
-    align-items: center;
     color: white;
     background-color: rgba(0, 0, 0, 0.4);
     cursor: pointer;
@@ -43,6 +43,7 @@ const Card = styled.div`
     white-space:normal;
     &:hover ${CardDescription} {
         display: flex;
+        text-align: start;
       }
 `
 
@@ -54,5 +55,6 @@ const Button = styled.button`
     border: 2px solid #dc3545;
     border-radius: 3px;
 `
+
 
 export { Card, Container, CardDescription, Button }
