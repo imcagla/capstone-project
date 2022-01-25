@@ -27,7 +27,8 @@ function Home() {
             {
               discoverData?.data?.data?.results?.map(item => <Card theme={themeName} className='position-relative'>
                 <img width={"150"} 
-                src={`https://image.tmdb.org/t/p/w200${item?.poster_path}`}className='rounded-3' alt="" />
+                src={`https://image.tmdb.org/t/p/w200${item?.poster_path}`} 
+                className='rounded-3' alt="" />
                 <CardDescription>
                   <p>{item.title}</p>
                 </CardDescription>
@@ -55,7 +56,9 @@ function Home() {
           <Container theme={themeName}>
             {
               trendingData?.data?.data?.results?.map(item => <Card theme={themeName} className='position-relative'>
-                <img width={"150"} src={`https://image.tmdb.org/t/p/w200${item?.poster_path}`} className='rounded-3' alt="" />
+                <img width={"150"} 
+                src={`https://image.tmdb.org/t/p/w200${item?.poster_path}`} 
+                className='rounded-3' alt="" />
                 <CardDescription>
                   <p>{item.title}</p>
                 </CardDescription>
