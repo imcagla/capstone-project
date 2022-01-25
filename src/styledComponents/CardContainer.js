@@ -29,7 +29,7 @@ const CardDescription = styled.div`
     padding: 4px;
     border-radius: 5px;
     color: white;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.8);
     cursor: pointer;
     width: 100%;
     height: 100%;
@@ -38,7 +38,7 @@ const CardDescription = styled.div`
 const Card = styled.div`
     display:inline-block;
     white-space:normal;
-    margin: 5px 6px;
+    margin: 5px 10px;
     vertical-align:middle;
     white-space:normal;
     &:hover ${CardDescription} {
