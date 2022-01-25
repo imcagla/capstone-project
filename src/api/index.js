@@ -10,3 +10,5 @@ export const fetchDiscoverMovies = () => BASE_AXIOS.get(`/discover/movie?api_key
 export const fetchTrendingMovies = (trendValue) => BASE_AXIOS.get(`/trending/movie/${trendValue}?api_key=${apiKey}&page=1`);
 
 export const fetchGenres = () => BASE_AXIOS.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`)
+
+export const fetchSingleMovie = (movieId) => BASE_AXIOS.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`) 

@@ -10,5 +10,5 @@ export const routes = [
     {name: "Movies", pathname: "/sort-filter/:type", element: SortFilter, isNav:false},
     {name: "Profile", pathname: "/profile", element: Profile, isNav:true},
     {name: "Login", pathname: "/login", element: Login, isNav:true},
-    {name: "Detail", pathname: "/detail", element: Detail, isNav:false},
+    {name: "Detail", pathname: "/movies/:movieId", element: Detail, isNav:false},
 ]
