@@ -17,6 +17,7 @@ function SearchPagination() {
     const searchData = useQuery(["search movies", search], () => fetchMovies(search), { retry: false })
     console.log("DATA:::", searchData)
 
+    // when data is fetched update pageCount
     if(searchData.isFetched) {
         pageCount = Math.ceil(searchData.data.data.results.length/perPage)
     }
@@ -47,8 +48,8 @@ function SearchPagination() {
             previousLinkClassName={"text-danger fw-bold text-decoration-none mx-2 fs-5"}
             nextLinkClassName={"text-danger fw-bold text-decoration-none mx-2 fs-5"}
             disabledLinkClassName={"text-muted"}
-            pageLinkClassName={"text-decoration-none mx-1 btn btn-outline-secondary"}
-            activeLinkClassName={"fw-bold btn-outline-danger"}
+            pageLinkClassName={"text-decoration-none mx-1 text-secondary p-2 align-middle"}
+            activeLinkClassName={"fw-bold fs-4 text-danger p-2 align-middle"}
             initialPage={0}
         />
     </div>;
