@@ -8,7 +8,7 @@ const Container = styled.div`
     height: auto;
     color: ${props => props.theme === "dark" ? "white" : "black"};
     &::-webkit-scrollbar {
-        width: 5px;
+        height: 11px;
     }
     &::-webkit-scrollbar-thumb {
         background: #dc3545; 
