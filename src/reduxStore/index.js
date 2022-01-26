@@ -3,10 +3,12 @@ import themeReducer from "./themeChanger";
 import trendReducer from "./trendingPeriod";
 import { searchReducer } from "./searchHandle";
 import { paginationReducer } from "./paginationContext";
+import { userReducer } from "./user";
 // import { persistStore, persistReducer } from 'redux-persist'
 
 
 const rootReducer = combineReducers({
+    users: userReducer,
     theme: themeReducer,
     trend: trendReducer,
     search: searchReducer,
