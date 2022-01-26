@@ -4,6 +4,7 @@ import trendReducer from "./trendingPeriod";
 import { searchReducer } from "./searchHandle";
 import { paginationReducer } from "./paginationContext";
 import { userReducer } from "./user";
+import { loadMoreReducer } from "./loadMoreMovies";
 // import { persistStore, persistReducer } from 'redux-persist'
 
 
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
     trend: trendReducer,
     search: searchReducer,
     pagination: paginationReducer,
+    load: loadMoreReducer,
 })
 
 // const persistConfig = {

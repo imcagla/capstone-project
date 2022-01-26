@@ -31,7 +31,7 @@ function Navbar() {
                         </Link>
                         <ul id="movies-dropdown" className="dropdown-menu position-absolute top-100">
                             <li><Link className="dropdown-item" to="sort-filter/popular">Popular</Link></li>
-                            <li><Link className="dropdown-item" to="sort-filter/top-rated">Top Rated</Link></li>
+                            <li><Link className="dropdown-item" to="sort-filter/top_rated">Top Rated</Link></li>
                         </ul>
                     </div>
                 </div>
