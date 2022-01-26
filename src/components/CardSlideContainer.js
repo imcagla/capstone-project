@@ -10,7 +10,7 @@ import { StyledLink } from "../styledComponents/Link"
 
 function CardSlideContainer(props) {
     const dispatch = useDispatch()
-    const { theme, search, users } = useSelector((state) => state)
+    const { theme, users } = useSelector((state) => state)
     const themeName = theme ? "light" : "dark";
     const [genresList, setGenresList] = useState([])
     console.log(users[0])
