@@ -13,13 +13,17 @@ function CardSlideContainer(props) {
     const { theme, users } = useSelector((state) => state)
     const themeName = theme ? "light" : "dark";
     const [genresList, setGenresList] = useState([])
-    console.log(users[0])
+    // console.log(users[0].favoritesList.favoritesFilms)
     const genresQuery = useQuery("genres", () => fetchGenres, { reply: false })
     // console.log("query:::", genresQuery)
-    
+
+
+    const favoritesList = users[0]?.favoritesList.favoritesFilms
+    const seenList = users[0]?.seenList.seenFilms
+
 
     // let genresList = []
-    genresQuery?.data?.then((val) => 
+    genresQuery?.data?.then((val) =>
         // val?.data?.genres?.map((item, index) => genresList[index] = item)
         setGenresList(val?.data?.genres)
     )
@@ -28,24 +32,26 @@ function CardSlideContainer(props) {
     return <>
         {
             props.data?.map(item => <Card theme={themeName} className='position-relative'>
-                <img height={"230"} width={"150"} style={{objectFit: "cover"}}
+                <img height={"230"} width={"150"} style={{ objectFit: "cover" }}
                     src={item.poster_path === null ? `https://tigres.com.tr/wp-content/uploads/2016/11/orionthemes-placeholder-image-1.png` : `https://image.tmdb.org/t/p/w200${item?.poster_path}`}
                     className='rounded-3' alt="" />
                 <CardDescription>
                     <div className="row">
                         <ul className='list-unstyled fw-bold'>
-                            <StyledLink to={`movies/${item.id}`}><li className='fs-6'>{item.title} - {item.release_date.substring(0,4)}</li></StyledLink>
+                            <StyledLink to={`movies/${item.id}`}><li className='fs-6'>{item.title} - {item.release_date.substring(0, 4)}</li></StyledLink>
                             <li className='text-muted small'>
                                 {
-                                    item.genre_ids.map(item => 
+                                    item.genre_ids.map(item =>
                                         genresList
-                                        ?.filter(genre => item === (genre.id)).map(item => <span>{item.name} </span>)).slice(0, 2) 
+                                            ?.filter(genre => item === (genre.id)).map(item => <span>{item.name} </span>)).slice(0, 2)
                                 }...
                             </li>
                         </ul>
                         <div>
-                            <FavoriteIcon onClick={() => dispatch(addFavList(users[0].username, item.id))} />
-                            <WatchedIcon onClick={() => dispatch(addSeenList(users[0].username, item.id))} />
+                            <FavoriteIcon isFav={favoritesList?.includes(item.id)}
+                                onClick={() => dispatch(addFavList(users[0].username, item.id))} />
+                            <WatchedIcon isSeen={seenList?.includes(item.id)}
+                                onClick={() => dispatch(addSeenList(users[0].username, item.id))} />
                         </div>
                     </div>
                 </CardDescription>

@@ -7,6 +7,7 @@ const FavoriteIcon = styled(FaHeart)`
     position: absolute;
     top: 85%;
     left: 60%;
+    color: ${props => props.isFav ? "#dc3545" : "white"}
 `
 
 const WatchedIcon = styled(ImBookmark)`
@@ -14,6 +15,7 @@ const WatchedIcon = styled(ImBookmark)`
     position: absolute;
     top: 85%;
     left: 80%;
+    color: ${props => props.isSeen ? "#dc3545" : "white"}
 `
 
 export {FavoriteIcon, WatchedIcon}
