@@ -5,8 +5,8 @@ import { searchReducer } from "./searchHandle";
 import { paginationReducer } from "./paginationContext";
 import { userReducer } from "./user";
 import { loadMoreReducer } from "./loadMoreMovies";
-// import { persistStore, persistReducer } from 'redux-persist'
-
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 const rootReducer = combineReducers({
     user: userReducer,
@@ -17,18 +17,18 @@ const rootReducer = combineReducers({
     load: loadMoreReducer,
 })
 
-// const persistConfig = {
-//     key: 'root',
-//     storage,
-//     //whitelist: ["counter"]
-// }
+const persistConfig = {
+    key: 'root',
+    storage,
+    //whitelist: ["counter"]
+}
 
-// const persistedReducer = persistReducer(persistConfig, rootReducer)
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
-// const store = createStore(persistedReducer, applyMiddleware(logger))
-const store = createStore(rootReducer)
+const store = createStore(persistedReducer)
+// const store = createStore(rootReducer)
 
 store.subscribe(() => console.log("STORE:::", store.getState()))
 
-// export const persistor = persistStore(store)
+export const persistor = persistStore(store)
 export default store
