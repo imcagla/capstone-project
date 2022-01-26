@@ -47,12 +47,15 @@ function CardSlideContainer(props) {
                                 }...
                             </li>
                         </ul>
-                        <div>
+                        {
+                            user.userLogin && <div>
                             <FavoriteIcon isFav={favoritesList?.includes(item.id)}
                                 onClick={() => dispatch(addFavList(item.id))} />
                             <WatchedIcon isSeen={seenList?.includes(item.id)}
                                 onClick={() => dispatch(addSeenList(item.id))} />
                         </div>
+                        }
+                        
                     </div>
                 </CardDescription>
             </Card>
