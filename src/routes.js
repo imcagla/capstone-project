@@ -4,6 +4,7 @@ import Login from "./components/Login"
 import Profile from "./components/Profile"
 import SortFilter from "./components/SortFilter"
 
+
 export const routes = [
     {name: "Home", pathname: "/", element: Home, isNav:false},
     {name: "Movies", pathname: "/sort-filter", element: SortFilter, isNav:false},
