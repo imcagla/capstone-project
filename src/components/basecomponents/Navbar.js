@@ -4,8 +4,7 @@ import { useSelector, useDispatch } from "react-redux"
 
 import { routes } from "../../routes"
 import { changeTheme } from "../../reduxStore/themeChanger"
-import { BsSunFill } from "react-icons/bs"
-import { MdDarkMode } from "react-icons/md"
+import { DarkIcon, LightIcon } from '../../styledComponents/Icons';
 
 
 function Navbar() {
@@ -41,11 +40,11 @@ function Navbar() {
                         {
                             routes.filter(item => item.isNav).map((item, index) => <li className='pt-3 px-3' key={index}><Link to={item.pathname} className={`text-decoration-none ${state.theme ? "text-light" : "text-danger"}`} >{item.name}</Link></li>)
                         }
-                        <button className={`btn rounded-circle ${state.theme ? "text-light border-light" : "text-danger border-danger"} mt-2`}
+                        <button className={`btn rounded-circle ${!state.theme ? "text-danger border-danger" : "text-danger border-danger bg-dark"} mt-2`}
                             onClick={() => dispatch(changeTheme(state.theme))}
                         >
                             {
-                                state.theme ? <BsSunFill /> : <MdDarkMode />
+                                state.theme ? <DarkIcon /> : <LightIcon />
                             }
                         </button>
                     </ul>
