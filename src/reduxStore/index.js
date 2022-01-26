@@ -8,7 +8,7 @@ import { userReducer } from "./user";
 
 
 const rootReducer = combineReducers({
-    users: userReducer,
+    user: userReducer,
     theme: themeReducer,
     trend: trendReducer,
     search: searchReducer,

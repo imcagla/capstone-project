@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../reduxStore/user';
+import { validateUser } from '../reduxStore/user';
 import { Button } from '../styledComponents/CardContainer';
 import { Input } from '../styledComponents/SearchComponents';
 import { InputContainer, LoginContainer } from '../styledComponents/Login';
@@ -22,7 +22,7 @@ function Login() {
       <Button 
       className='btn btn-danger'
       theme={themeName} 
-      onClick={() => dispatch(loginUser(userName, password))}>
+      onClick={() => dispatch(validateUser(userName, password))}>
         LOGIN
       </Button>
       </InputContainer>

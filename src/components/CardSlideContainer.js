@@ -10,16 +10,16 @@ import { StyledLink } from "../styledComponents/Link"
 
 function CardSlideContainer(props) {
     const dispatch = useDispatch()
-    const { theme, users } = useSelector((state) => state)
+    const { theme, user } = useSelector((state) => state)
     const themeName = theme ? "light" : "dark";
     const [genresList, setGenresList] = useState([])
-    // console.log(users[0].favoritesList.favoritesFilms)
+    // console.log(user.favoritesList.favoritesFilms)
     const genresQuery = useQuery("genres", () => fetchGenres, { reply: false })
     // console.log("query:::", genresQuery)
 
 
-    const favoritesList = users[0]?.favoritesList.favoritesFilms
-    const seenList = users[0]?.seenList.seenFilms
+    const favoritesList = user?.favoritesList?.favoritesFilms
+    const seenList = user?.seenList?.seenFilms
 
 
     // let genresList = []
@@ -49,9 +49,9 @@ function CardSlideContainer(props) {
                         </ul>
                         <div>
                             <FavoriteIcon isFav={favoritesList?.includes(item.id)}
-                                onClick={() => dispatch(addFavList(users[0].username, item.id))} />
+                                onClick={() => dispatch(addFavList(item.id))} />
                             <WatchedIcon isSeen={seenList?.includes(item.id)}
-                                onClick={() => dispatch(addSeenList(users[0].username, item.id))} />
+                                onClick={() => dispatch(addSeenList(item.id))} />
                         </div>
                     </div>
                 </CardDescription>

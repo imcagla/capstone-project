@@ -2,38 +2,57 @@
 
 // loginUser(username, password), addSeenFilms(username, movieId), addFavoritesList(userName, movieId)
 
-const LOGIN_USER = "LOGIN_USER"
+const VALIDATE_USER = "VALIDATE_USER"
 const ADD_SEEN_MOVIES = "ADD_SEEN_MOVIES"
 const ADD_FAV_MOVIES = "ADD_FAV_MOVIES"
 
 
-export const loginUser = (username, password) => ({
-    type: LOGIN_USER,
-    payload: { username, password, seenList: { seenFilms: [], totalCount: 0 }, favoritesList: { favoritesFilms: [], totalCount: 0 } }
+export const validateUser = (username, password) => ({
+    type: VALIDATE_USER,
+    payload: { username, password }
 })
 
-export const addSeenList = (username, movieId) => ({
+export const addSeenList = (movieId) => ({
     type: ADD_SEEN_MOVIES,
-    payload: { username, movieId }
+    payload: movieId
 })
 
-export const addFavList = (username, movieId) => ({
+export const addFavList = (movieId) => ({
     type: ADD_FAV_MOVIES,
-    payload: { username, movieId }
+    payload: movieId
 })
 
-const userReducer = (users = [], action) => {
+const userReducer = (user = {
+    "avatarUrl": "https://i.picsum.photos/id/1005/150/150.jpg?hmac=-Q1z4K5WO9Q7qDB-R9vrj9440_mRxpeHZMOFHblbB6s",
+    "username": "username",
+    "password": "password",
+    "socials": {
+        "twitter": "https://twitter.com/",
+        "instagram": "https://www.instagram.com/"
+    },
+    "seenList": {
+        "seenFilms": [
+        ],
+        "totalCount": 0
+    },
+    "favoritesList": {
+        "favoritesFilms": [
+        ],
+        "totalCount": 0
+    },
+    "joinDate": "December 2021"
+}, action) => {
     switch (action.type) {
-        case LOGIN_USER:
-            return [action.payload, ...users]
+        case VALIDATE_USER:
+            return action.payload.username === user.username && action.payload.password === user.password ? { ...user, userLogin: true } : { ...user, userLogin: false }
         case ADD_FAV_MOVIES:
-            return users.map(item => item.username === action.payload.username && !item.favoritesList.favoritesFilms.includes(action.payload.movieId) ?
-                { ...item, favoritesList: { favoritesFilms: [...item.favoritesList.favoritesFilms, action.payload.movieId], totalCount: item.favoritesList.totalCount + 1 } } : item)
+            return !user.favoritesList.favoritesFilms.includes(action.payload) ?
+                { ...user, favoritesList: { favoritesFilms: [...user.favoritesList.favoritesFilms, action.payload], totalCount: user.favoritesList.totalCount + 1 } } : user
         case ADD_SEEN_MOVIES:
-            return users.map(item => item.username === action.payload.username && !item.seenList.seenFilms.includes(action.payload.movieId) ?
-                { ...item, seenList: { seenFilms: [...item.seenList.seenFilms, action.payload.movieId], totalCount: item.seenList.totalCount + 1 } } : item)
+            return !user.seenList.seenFilms.includes(action.payload) ?
+                { ...user, seenList: { seenFilms: [...user.seenList.seenFilms, action.payload], totalCount: user.seenList.totalCount + 1 } } : user
         default:
-            return users
+            return user
     }
 }
 
