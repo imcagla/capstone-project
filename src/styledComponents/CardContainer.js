@@ -54,6 +54,11 @@ const Button = styled.button`
     padding: 0.25em 1.5em;
     border: 2px solid #dc3545;
     border-radius: 20px;
+    transition: 0.3s;
+    &:hover{
+        background: #dc3545;
+        color: ${props => props.theme === "light" ? "white" : "#131414"};
+    }
 `
 
 

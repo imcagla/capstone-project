@@ -8,7 +8,7 @@ import { addSeenList, addFavList } from "../reduxStore/user"
 import { StyledLink } from "../styledComponents/Link"
 
 
-function CardSlideContainer(props) {
+function Cards(props) {
     const dispatch = useDispatch()
     const { theme, user } = useSelector((state) => state)
     const themeName = theme ? "light" : "dark";
@@ -32,7 +32,7 @@ function CardSlideContainer(props) {
     return <>
         {
             props.data?.map(item => <Card theme={themeName} className='position-relative'>
-                <img height={"230"} width={"150"} style={{ objectFit: "cover" }}
+                <img height={props.height} width={props.width} style={{ objectFit: "cover" }}
                     src={item.poster_path === null ? `https://tigres.com.tr/wp-content/uploads/2016/11/orionthemes-placeholder-image-1.png` : `https://image.tmdb.org/t/p/w200${item?.poster_path}`}
                     className='rounded-3' alt="" />
                 <CardDescription>
@@ -43,8 +43,8 @@ function CardSlideContainer(props) {
                                 {
                                     item.genre_ids.map(item =>
                                         genresList
-                                            ?.filter(genre => item === (genre.id)).map(item => <span>{item.name} </span>)).slice(0, 2)
-                                }...
+                                            ?.filter(genre => item === (genre.id)).map(item => <span>{item.name} </span>))
+                                }
                             </li>
                         </ul>
                         {
@@ -64,4 +64,4 @@ function CardSlideContainer(props) {
     </>;
 }
 
-export default CardSlideContainer;
+export default Cards;

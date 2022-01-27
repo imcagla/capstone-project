@@ -5,6 +5,7 @@ import { validateUser } from '../reduxStore/user';
 import { Button } from '../styledComponents/CardContainer';
 import { Input } from '../styledComponents/SearchComponents';
 import { InputContainer, LoginContainer } from '../styledComponents/Login';
+import { MainContainer } from '../styledComponents/MainContainer';
 
 
 function Login() {
@@ -23,7 +24,7 @@ function Login() {
   }, [user, navigate])
 
 
-  return <div className='d-flex justify-content-center'>
+  return <MainContainer>
     <LoginContainer theme={themeName}>
       <InputContainer>
         <Input theme={themeName} type="text" placeholder='username' onChange={(e) => setUserName(e.target.value)} />
@@ -40,7 +41,7 @@ function Login() {
       </InputContainer>
     </LoginContainer>
 
-  </div>
+  </MainContainer>
 
 }
 

@@ -6,7 +6,8 @@ import { Button, Container } from '../styledComponents/CardContainer';
 import { changeTrendingPeriod } from "../reduxStore/trendingPeriod"
 import Search from "./Search"
 import SearchPagination from './SearchPagination';
-import CardSlideContainer from './CardSlideContainer';
+import Cards from './Cards';
+import { MainContainer } from '../styledComponents/MainContainer';
 
 function Home() {
   const dispatch = useDispatch()
@@ -18,14 +19,14 @@ function Home() {
   const trendingData = useQuery(['trending movies', trend], () => fetchTrendingMovies(trend), { retry: false })
 
 
-  return (<div className='container my-3'>
+  return (<MainContainer>
     <Search />
     {
       search !== "" ? <SearchPagination /> :
         <>
           <h4>Discover</h4>
           <Container theme={themeName}>
-          <CardSlideContainer data={discoverData?.data?.data?.results} />
+          <Cards height={"230"} width={"150"} data={discoverData?.data?.data?.results} />
           </Container>
           <div className='d-flex'>
             <h4>Trending</h4>
@@ -45,11 +46,11 @@ function Home() {
             </div>
           </div>
           <Container theme={themeName}>
-          <CardSlideContainer data={trendingData?.data?.data?.results} />
+          <Cards  height={"230"} width={"150"} data={trendingData?.data?.data?.results} />
           </Container>
         </>
     }
-  </div>
+  </MainContainer>
   );
 }
 

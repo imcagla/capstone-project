@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate'
 import { useQuery } from 'react-query';
 import { fetchMovies } from '../api';
-import CardSlideContainer from './CardSlideContainer';
+import Cards from './Cards';
 import { useDispatch } from 'react-redux';
 import { paginationHandler } from '../reduxStore/paginationContext';
 
@@ -24,7 +24,7 @@ function SearchPagination() {
 
     return <div className='container text-center my-3'>
         <h4 className='text-start'>Search Results: </h4>
-        <CardSlideContainer data={searchData?.data?.data?.results.slice(selectedPage, selectedPage + perPage)} />
+        <Cards  height={"230"} width={"150"} data={searchData?.data?.data?.results.slice(selectedPage, selectedPage + perPage)} />
         {
             searchData?.data?.data?.results.length === 0 && <div className='alert alert-secondary fw-bold fs-3 col-6 mx-auto text-center py-5 mt-5' role="alert">No results found!</div>
         }
