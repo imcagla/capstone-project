@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import { useQuery } from 'react-query';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchGenres } from '../api';
 import { CardDescription, Card } from '../styledComponents/CardContainer';
 import { FavoriteIcon, WatchedIcon } from "../styledComponents/Icons"
 import { addSeenList, addFavList } from "../reduxStore/user"
@@ -10,24 +8,13 @@ import { StyledLink } from "../styledComponents/Link"
 
 function Cards(props) {
     const dispatch = useDispatch()
-    const { theme, user } = useSelector((state) => state)
+    const { theme, user, genres } = useSelector((state) => state)
     const themeName = theme ? "light" : "dark";
-    const [genresList, setGenresList] = useState([])
-    // console.log(user.favoritesList.favoritesFilms)
-    const genresQuery = useQuery("genres", () => fetchGenres, { reply: false })
-    // console.log("query:::", genresQuery)
-
 
     const favoritesList = user?.favoritesList?.favoritesFilms
     const seenList = user?.seenList?.seenFilms
 
 
-    // let genresList = []
-    genresQuery?.data?.then((val) =>
-        // val?.data?.genres?.map((item, index) => genresList[index] = item)
-        setGenresList(val?.data?.genres)
-    )
-    // console.log("genres:::", genresList)
 
     return <>
         {
@@ -42,7 +29,7 @@ function Cards(props) {
                             <li className='text-muted small'>
                                 {
                                     item.genre_ids.map(item =>
-                                        genresList
+                                        genres
                                             ?.filter(genre => item === (genre.id)).map(item => <span>{item.name} </span>))
                                 }
                             </li>

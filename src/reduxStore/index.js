@@ -5,6 +5,7 @@ import { searchReducer } from "./searchHandle";
 import { paginationReducer } from "./paginationContext";
 import { userReducer } from "./user";
 import { loadMoreReducer } from "./loadMoreMovies";
+import { genresReducer } from "./getGenres";
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     search: searchReducer,
     pagination: paginationReducer,
     load: loadMoreReducer,
+    genres: genresReducer,
 })
 
 const persistConfig = {
