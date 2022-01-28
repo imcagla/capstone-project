@@ -8,6 +8,7 @@ import { loadMoreReducer } from "./loadMoreMovies";
 import { genresReducer } from "./getGenres";
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { sortFilterReducer } from "./sortFilterStates";
 
 const rootReducer = combineReducers({
     user: userReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     pagination: paginationReducer,
     load: loadMoreReducer,
     genres: genresReducer,
+    sortFilter: sortFilterReducer,
 })
 
 const persistConfig = {

@@ -13,4 +13,7 @@ export const fetchGenres = () => BASE_AXIOS.get(`https://api.themoviedb.org/3/ge
 
 export const fetchSingleMovie = (movieId) => BASE_AXIOS.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`) 
 
-export const fetchPopularTopMovies = (type, page) => BASE_AXIOS.get(`https://api.themoviedb.org/3/movie/${type}?api_key=${apiKey}&page=${page}`)
+export const fetchPopularTopMovies = (type, page, sortingValue, startDate, endDate, genres) => BASE_AXIOS.get(`https://api.themoviedb.org/3/movie/${type}?api_key=${apiKey}&sort_by=${sortingValue}&page=${page}&release_date.gte=${startDate}&release_date.lte=${endDate}&with_genres=${genres.toString()}`)
+
+
+// export const fetchSortedFilteredMovies = (sortingVal, page, startDate, endDate, genres) => BASE_AXIOS.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=${sortingVal}&page=${page}&release_date.gte=${startDate}&release_date.lte=${endDate}&with_genres=${genres.toString()}`)

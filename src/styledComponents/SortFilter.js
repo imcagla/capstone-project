@@ -6,7 +6,7 @@ export const SortFilterGrid = styled.div`
     grid-gap: 5px;
     grid-template-columns: 30% 60% auto;
     padding: 10px 7%;
-    position: sticky;
+    position: none;
     top: 0;
     z-index: 999;
 `
@@ -24,6 +24,6 @@ export const FilterDateContainer = styled.div`
     grid-gap: 10px 10px;
     grid-template-columns: auto auto auto;
     align-items: center;
-    margin-top: 5px;
+    margin: 8px 0;
 `
 
