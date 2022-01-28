@@ -7,7 +7,7 @@ import { MdDarkMode } from "react-icons/md"
 
 const FavoriteIcon = styled(FaHeart)`
     font-size: 25px;
-    position: absolute;
+    position: ${props => props.loc === "table" ? "none":"absolute" };
     top: 85%;
     left: 60%;
     color: ${props => props.isFav ? "#dc3545" : "white"}
@@ -15,7 +15,7 @@ const FavoriteIcon = styled(FaHeart)`
 
 const WatchedIcon = styled(ImBookmark)`
     font-size: 25px;
-    position: absolute;
+    position: ${props => props.loc === "table" ? "none":"absolute" };
     top: 85%;
     left: 80%;
     color: ${props => props.isSeen ? "#dc3545" : "white"}

@@ -25,7 +25,7 @@ function Cards(props) {
                 <CardDescription>
                     <div className="row">
                         <ul className='list-unstyled fw-bold'>
-                            <StyledLink to={`movies/${item.id}`}><li className='fs-6'>{item.title} - {item.release_date.substring(0, 4)}</li></StyledLink>
+                            <StyledLink to={`/movies/${item.id}`}><li className='fs-6'>{item.title} - {item.release_date.substring(0, 4)}</li></StyledLink>
                             <li className='text-muted small'>
                                 {
                                     item.genre_ids.map(item =>

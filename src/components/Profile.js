@@ -1,7 +1,79 @@
 import React from 'react';
+import { useQueries } from 'react-query';
+import { useSelector } from 'react-redux';
+import { fetchSingleMovie } from '../api';
+import { FavoriteIcon, WatchedIcon } from '../styledComponents/Icons';
+import { useDispatch } from 'react-redux';
+import { addFavList, addSeenList } from '../reduxStore/user';
+import { StyledTable } from '../styledComponents/styledTable';
 
 function Profile() {
-  return <div>Profile</div>;
+  const dispatch = useDispatch()
+  const {user, theme} = useSelector(state=> state)
+  const themeName = theme ? "light" : "dark"
+  console.log("USSER::", user)
+
+  const allFilms = user.favoritesList.favoritesFilms?.concat(user.seenList.seenFilms)
+  const reducedAllFilms = allFilms.filter((item, index) => allFilms.indexOf(item) === index)
+
+
+  console.log("ALL:::", allFilms)
+  console.log("ALL:::", reducedAllFilms)
+
+  const movies = useQueries(
+    reducedAllFilms.map(movieId => {
+      return {
+        queryKey: ["movies", movieId],
+        queryFn: () => fetchSingleMovie(movieId),
+        retry: false,
+        select: state => state.data
+      }
+    })
+  )
+
+  const data = movies.map(item => item?.data).map(item => ({...item, genres: [item?.genres?.map(item => item.name)].toString()}))
+
+  console.log("DATA:::",data)
+  console.log("MOVIES:::",movies)
+
+  const columns = [
+    {
+      title: 'Film ID',
+      dataIndex: 'id',
+      key: 'id',
+      width: 150,
+    },
+    {
+      title: 'Film Title',
+      dataIndex: 'title',
+      key: 'title',
+      width: 150,
+    },
+    {
+      title: 'Film Genre',
+      dataIndex: 'genres',
+      key: 'genres',
+      width: 200,
+    },
+    {
+      title: 'Icon Actions',
+      dataIndex: '',
+      key: 'operations',
+      render: (movie) => (
+        user.userLogin && <div>
+        <FavoriteIcon loc={"table"} isFav={user?.favoritesList?.favoritesFilms?.includes(movie.id)}
+            onClick={() => dispatch(addFavList(movie.id))} />
+        <WatchedIcon loc={"table"} isSeen={user?.seenList?.seenFilms?.includes(movie.id)}
+            onClick={() => dispatch(addSeenList(movie.id))} />
+    </div>
+    )
+    },
+  ];
+
+
+  return <div>Profile
+    <StyledTable theme={themeName} columns={columns} data={data} />
+  </div>;
 }
 
 export default Profile;

@@ -3,7 +3,7 @@ import { searchHandler } from '../reduxStore/searchHandle';
 import { useDispatch } from 'react-redux';
 import { Input } from '../styledComponents/SearchComponents';
 import { useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 function Search() {
