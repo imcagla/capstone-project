@@ -3,6 +3,7 @@ import {Routes, Route} from "react-router-dom"
 import {useSelector} from "react-redux"
 import Navbar from "./components/basecomponents/Navbar";
 import Footer from "./components/basecomponents/Footer";
+import StyledNavbar from "./components/basecomponents/StyledNavbar";
 
 function App() {
   const theme = useSelector((state) => state.theme)
@@ -11,6 +12,7 @@ function App() {
   document.getElementById("root").style.color = theme ? "black":"white"
   return (
     <>
+    <StyledNavbar/>
       <Navbar />
       <Routes>
         {
