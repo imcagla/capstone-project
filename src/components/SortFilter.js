@@ -6,7 +6,7 @@ import { fetchPopularTopMovies, fetchGenres } from '../api';
 import Cards from './Cards';
 import { loadMoreMovies } from '../reduxStore/loadMoreMovies';
 import { MainContainer } from '../styledComponents/MainContainer';
-import { Button } from '../styledComponents/CardContainer';
+import { Button, Container } from '../styledComponents/CardContainer';
 import { SortFilterGrid, GridContainer, FilterDateContainer, FilterButtons, FilteredButtons } from '../styledComponents/SortFilter';
 import { StyledSelect } from '../styledComponents/Dropdown';
 import { Input } from '../styledComponents/SearchComponents';
@@ -65,11 +65,11 @@ function SortFilter() {
           <Input theme={themeName} onChange={(e) => dispatch(getFromDateFilter(e.target.value))} type="date" id="from_date" name="from_date"></Input>
           <Input theme={themeName} onChange={(e) => dispatch(getToDateFilter(e.target.value))} type="date" id="to_date" name="to_date"></Input>
         </FilterDateContainer>
-        <div>
+        <Container>
           {
             genres?.filter(item => !sortFilter?.filteringGenres?.includes(item.id)).map(item=> <FilterButtons onClick={() => dispatch(getGenreFilter(item.id))} key={item.id} theme={themeName}>{item.name}</FilterButtons>)
           }
-        </div>
+        </Container>
         
       </GridContainer>
       <FilterButtons theme={themeName} onClick={() => console.log("Search yapıldığında filmler filtrelenecek!")} >Search</FilterButtons>

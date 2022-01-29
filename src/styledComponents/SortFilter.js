@@ -5,10 +5,11 @@ export const SortFilterGrid = styled.div`
     display: grid;
     grid-template-columns: 30% 60% auto;
     padding: 10px 7%;
-    position: none;
     top: 0;
     z-index: 999;
-    
+    @media only screen and (max-width: 960px) {
+        grid-template-columns: 100%;
+    }
 `
 
 export const GridContainer = styled.div`
