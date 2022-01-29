@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { validateUser } from '../reduxStore/user';
 import { Button } from '../styledComponents/CardContainer';
 import { Input } from '../styledComponents/SearchComponents';
-import { InputContainer, LoginContainer } from '../styledComponents/Login';
+import { InputContainer, LoginContainer, LoginMainContainer } from '../styledComponents/Login';
 import { MainContainer } from '../styledComponents/MainContainer';
 
 
@@ -25,7 +25,8 @@ function Login() {
 
 
   return <MainContainer>
-    <LoginContainer theme={themeName}>
+    <LoginMainContainer>
+      <LoginContainer theme={themeName}>
       <InputContainer>
         <Input theme={themeName} type="text" placeholder='username' onChange={(e) => setUserName(e.target.value)} />
         <Input theme={themeName} type="password" placeholder='password' onChange={(e) => setPassword(e.target.value)} />
@@ -38,8 +39,10 @@ function Login() {
           }}>
           LOGIN
         </Button>
-      </InputContainer>
+      </InputContainer>  
     </LoginContainer>
+    </LoginMainContainer>
+    
 
   </MainContainer>
 
