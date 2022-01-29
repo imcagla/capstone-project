@@ -83,9 +83,7 @@ export const NavbarTitle = styled.h1`
     justify-self: start;
     margin-left: 20px;
     cursor: pointer;
-    @media only screen and (max-width: 960px) {
-        display:none;
-    }
+    
 `
 
 export const NavMenuIcon = styled.div`
@@ -107,4 +105,8 @@ export const ThemeChangerButton = styled.button`
     background-color: ${props => props.theme === "dark" ? "#DDDDDD" : "#222831"};
     color:  ${props => props.theme === "dark" ? "#222831" : "#DDDDDD"};
     border: 2px solid #F05454;
+    @media only screen and (max-width: 960px) {
+        margin-right: auto;
+        margin-left: 15px;
+    }
 `

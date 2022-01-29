@@ -16,18 +16,15 @@ import { getSortVal, getGenreFilter, removeGenreFilter, getFromDateFilter, getTo
 function SortFilter() {
   const dispatch = useDispatch()
   const { load, theme, genres, sortFilter } = useSelector(state => state)
-  console.log("LOAD:::", load)
-  const params = useParams()
-  console.log(params)
-
+  const params = useParams() 
   const themeName = theme ? "light" : "dark"
 
 
   const movies = useQueries(
     load.map(page => {
       return {
-        queryKey: ["movies", params.type, page, sortFilter.sortingValue, sortFilter.startDate, sortFilter.endDate, sortFilter.filteringGenres],
-        queryFn: () => fetchPopularTopMovies(params.type, page, sortFilter.sortingValue, sortFilter.startDate, sortFilter.endDate, sortFilter.filteringGenres),
+        queryKey: ["movies", params?.type, page, sortFilter?.sortingValue, sortFilter?.startDate, sortFilter?.endDate, sortFilter?.filteringGenres],
+        queryFn: () => fetchPopularTopMovies(params?.type, page, sortFilter?.sortingValue, sortFilter?.startDate, sortFilter?.endDate, sortFilter?.filteringGenres),
         retry: false
       }
     })
@@ -43,7 +40,7 @@ function SortFilter() {
 
   useEffect(() => {
     dispatch(getSortFilterResult(movies))
-  }, [load, dispatch, movies])
+  }, [load])
 
   console.log("MOVIES:::", movies)
 
@@ -71,7 +68,7 @@ function SortFilter() {
         </FilterDateContainer>
         <Container>
           {
-            genres?.filter(item => !sortFilter?.filteringGenres?.includes(item.id)).map(item => <FilterButtons onClick={() => dispatch(getGenreFilter(item.id))} key={item.id} theme={themeName}>{item.name}</FilterButtons>)
+            genres?.filter(item => !sortFilter?.filteringGenres?.includes(item?.id)).map(item => <FilterButtons onClick={() => dispatch(getGenreFilter(item?.id))} key={item?.id} theme={themeName}>{item?.name}</FilterButtons>)
           }
         </Container>
 
@@ -86,12 +83,15 @@ function SortFilter() {
     </SortFilterGrid>
     <div>
       {
-        genres?.filter(item => sortFilter?.filteringGenres?.includes(item.id))?.map(item => <FilteredButtons theme={themeName}>{item.name} <span onClick={() => dispatch(removeGenreFilter(item.id))}> X </span></FilteredButtons>)
+        genres?.filter(item => sortFilter?.filteringGenres?.includes(item?.id))?.map(item => <FilteredButtons theme={themeName}>{item?.name} <span onClick={() => dispatch(removeGenreFilter(item?.id))}> X </span></FilteredButtons>)
       }
     </div>
-    {
-      sortFilter?.results?.map(item => item.isLoading ? <p>Loading...</p> : <Cards height={"280"} width={"180"} data={item?.data?.data?.results} />)
+    <div>
+      {
+      sortFilter?.results?.map(item => item?.isLoading ? <p>Loading...</p> : <Cards height={"280"} width={"180"} data={item?.data?.data?.results} />)
     }
+    </div>
+    
     <div>
       {
         (sortFilter?.results[sortFilter?.results?.length - 1]?.data !== undefined && (sortFilter?.results[0]?.data?.data?.results?.length !== 0)) && <Button theme={themeName}
@@ -101,11 +101,16 @@ function SortFilter() {
           Load More
         </Button>
       }
+    </div>
+
+    <div>
       {
         sortFilter?.results[0]?.data?.data?.results?.length === 0 && <div>No results found!</div>
       }
-
     </div>
+
+
+
   </MainContainer>;
 }
 

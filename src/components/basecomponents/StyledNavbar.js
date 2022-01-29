@@ -19,11 +19,9 @@ function StyledNavbar() {
     const themeName = theme ? "light" : "dark"
 
     return <NavbarContent theme={themeName}>
-        <NavbarTitle>
+        <NavbarTitle theme={themeName} >
             <StyledLink theme={themeName} to="/">Movies</StyledLink>
         </NavbarTitle>
-
-
 
         <NavMenuIcon theme={themeName} onClick={() => setClicked(!clicked)}>{clicked ? <FaTimes/> : <HiMenu/>}</NavMenuIcon>
         <ul className={clicked ? 'nav-menu active' : 'nav-menu'} >
