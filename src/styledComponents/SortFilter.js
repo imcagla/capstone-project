@@ -38,3 +38,21 @@ export const FilterButtons = styled.button`
         background: ${props => props.theme === "dark" ? "rgb(221, 221, 221, 0.7)" : "rgb(34, 40, 49, 0.7)"};
     }
 `
+
+export const FilteredButtons = styled.button`
+background: ${props => props.theme === "dark" ? "rgb(221, 221, 221, 0.7)" : "rgb(34, 40, 49, 0.7)"};
+    color: ${props => props.theme === "dark" ? "#222831" : "#DDDDDD"};
+    padding: 5px 10px;
+    outline: none;
+    font-size: 13px;
+    border: 0px;
+    margin: 5px;
+    border-radius: 5px;
+    & > span {
+        font-size: 15px;
+        padding-left: 7px;
+        &:hover {
+            color: whitesmoke;
+        }
+    }
+`

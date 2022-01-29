@@ -7,11 +7,11 @@ import Cards from './Cards';
 import { loadMoreMovies } from '../reduxStore/loadMoreMovies';
 import { MainContainer } from '../styledComponents/MainContainer';
 import { Button } from '../styledComponents/CardContainer';
-import { SortFilterGrid, GridContainer, FilterDateContainer, FilterButtons } from '../styledComponents/SortFilter';
+import { SortFilterGrid, GridContainer, FilterDateContainer, FilterButtons, FilteredButtons } from '../styledComponents/SortFilter';
 import { StyledSelect } from '../styledComponents/Dropdown';
 import { Input } from '../styledComponents/SearchComponents';
 import { getGenres } from '../reduxStore/getGenres';
-import { getSortVal, getGenreFilter, getFromDateFilter, getToDateFilter } from '../reduxStore/sortFilterStates';
+import { getSortVal, getGenreFilter, removeGenreFilter, getFromDateFilter, getToDateFilter } from '../reduxStore/sortFilterStates';
 
 function SortFilter() {
   const dispatch = useDispatch()
@@ -67,13 +67,18 @@ function SortFilter() {
         </FilterDateContainer>
         <div>
           {
-            genres?.map(item=> <FilterButtons onClick={() => dispatch(getGenreFilter(item.id))} key={item.id} theme={themeName}>{item.name}</FilterButtons>)
+            genres?.filter(item => !sortFilter?.filteringGenres?.includes(item.id)).map(item=> <FilterButtons onClick={() => dispatch(getGenreFilter(item.id))} key={item.id} theme={themeName}>{item.name}</FilterButtons>)
           }
         </div>
         
       </GridContainer>
       <FilterButtons theme={themeName} onClick={() => console.log("Search yapıldığında filmler filtrelenecek!")} >Search</FilterButtons>
     </SortFilterGrid>
+    <div>
+      {
+        genres?.filter(item => sortFilter?.filteringGenres?.includes(item.id))?.map(item => <FilteredButtons theme={themeName}>{item.name} <span onClick={() => dispatch(removeGenreFilter(item.id))}> X </span></FilteredButtons>)
+      }
+    </div>
 
     {
       movies.map(item => <Cards height={"280"} width={"180"} data={item?.data?.data?.results} />)
