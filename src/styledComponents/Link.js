@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 const StyledLink = styled(Link)`
     text-decoration:none;
-    color: white;
+    color: ${props => props.theme === "dark" ? "#DDDDDD" : "#222831"};
     &:hover {
-        color: whitesmoke;
+        color: ${props => props.theme === "dark" ? "white" : "black"};
     }
 `
 

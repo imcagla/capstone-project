@@ -1,15 +1,13 @@
 import styled from "styled-components";
 
 export const NavbarContent = styled.nav`
-    background: linear-gradient(120deg, #ffe02d, #fccf05);
+    background: ${props => props.theme === "dark" ? "#222831" : "#DDDDDD"};
     height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    font-size: 1.3rem;
-    position: fixed;
-    width: 100vw;
+    font-size: 1rem;
+    width: 100%;
     z-index: 99999;
 
     @media only screen and (max-width: 960px) {
@@ -18,7 +16,7 @@ export const NavbarContent = styled.nav`
     
     & > .nav-menu {
         display: grid;
-        grid-template-columns: repeat(3, auto);
+        grid-template-columns: repeat(4, auto);
         grid-gap: 10px;
         list-style: none;
         text-align: center;
@@ -27,7 +25,6 @@ export const NavbarContent = styled.nav`
         margin-right: 1.5rem;
 
         @media only screen and (max-width: 960px) {
-            display: flex;
             flex-direction: column;
             width: 100%;
             height: auto;
@@ -41,7 +38,9 @@ export const NavbarContent = styled.nav`
 
     & .active {
         @media only screen and (max-width: 960px) {
-        background: tomato;
+        display: block;
+        background-color: #222831;
+        padding-right: 30px;
         left: 0;
         opacity: 1;
         transition: all 0.5s ease;
@@ -51,13 +50,12 @@ export const NavbarContent = styled.nav`
 
     & > ul {
         & > .nav-links {
-            color: white;
             text-decoration: none;
             margin-top: 1rem;
             padding: 0.5rem 1rem;
             align-items:center;
             &:hover {
-                background-color: #fdfd2550;
+                background-color: ${props => props.theme === "dark" ? "#30475E" : "whitesmoke"};
                 border-radius: 5px;
                 transition: all 0.2s ease-out;
             }
@@ -69,29 +67,9 @@ export const NavbarContent = styled.nav`
                 display: table;
                 list-style: none;
                 &:hover {
-                    background-color: #fdfd25b0;
+                    background-color: #DDDDDD;
                     border-radius: 0;
                 }
-            }
-        }
-
-        & > .nav-links-mobile {
-            display: none;
-            &:hover {
-                background: white;
-                color: tomato;
-                transition: 250ms;
-            }
-            @media only screen and (max-width: 960px) {
-                display: block;
-                padding: 1.5rem;
-                margin: 0 auto 1.5rem;
-                background: tomato;
-                border-radius: 15px;
-                text-decoration: none;
-                color: white;
-                text-align: center;
-                width: 80vw;
             }
         }
     }
@@ -101,7 +79,7 @@ export const NavbarContent = styled.nav`
 `
 
 export const NavbarTitle = styled.h1`
-    color: white;
+    color: ${props => props.theme === "dark" ? "#DDDDDD" : "#222831"};
     justify-self: start;
     margin-left: 20px;
     cursor: pointer;
@@ -112,13 +90,13 @@ export const NavbarTitle = styled.h1`
 
 export const NavMenuIcon = styled.div`
     display:none;
+    color: ${props => props.theme === "dark" ? "#DDDDDD" : "#222831"};
     @media only screen and (max-width: 960px) {
         display: block;
         position: absolute;
         top: 0;
         right: 0;
-        transform: translate(-100%, 30%);
-        font-size: 1.8rem;
+        font-size: 2.5rem;
         cursor: pointer;
     }
 `
@@ -126,7 +104,7 @@ export const NavMenuIcon = styled.div`
 export const ThemeChangerButton = styled.button`
     border-radius: 50%;
     padding: 8px 15px;
-    background-color: ${props => props.theme === "dark" ? "tomato" : "black"};
-    color: white;
-    border: 2px solid tomato;
+    background-color: ${props => props.theme === "dark" ? "#DDDDDD" : "#222831"};
+    color:  ${props => props.theme === "dark" ? "#222831" : "#DDDDDD"};
+    border: 2px solid #F05454;
 `

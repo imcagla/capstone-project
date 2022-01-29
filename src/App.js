@@ -13,7 +13,6 @@ function App() {
   return (
     <>
     <StyledNavbar/>
-      <Navbar />
       <Routes>
         {
           routes.map((item, index) => <Route key={index} path={item.pathname} element={<item.element />} />)
