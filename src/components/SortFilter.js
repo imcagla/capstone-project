@@ -41,9 +41,9 @@ function SortFilter() {
     dispatch(getGenres(val?.data?.genres))
   )
 
-    useEffect(() => {
-      dispatch(getSortFilterResult(movies))
-    }, [load])
+  useEffect(() => {
+    dispatch(getSortFilterResult(movies))
+  }, [load, dispatch, movies])
 
   console.log("MOVIES:::", movies)
 
@@ -76,9 +76,13 @@ function SortFilter() {
         </Container>
 
       </GridContainer>
-      <FilterButtons theme={themeName} onClick={() => {dispatch(getSortFilterResult(movies))
-      dispatch(resetLoad())
-      dispatch(getSortFilterResult(movies))}} >Search</FilterButtons>
+      <FilterButtons theme={themeName}
+        onClick={() => {
+          dispatch(getSortFilterResult(movies))
+          dispatch(resetLoad())
+        }} >
+        Search
+      </FilterButtons>
     </SortFilterGrid>
     <div>
       {
@@ -90,12 +94,12 @@ function SortFilter() {
     }
     <div>
       {
-        (sortFilter?.results[sortFilter?.results?.length - 1]?.data !== undefined && (sortFilter?.results[0]?.data?.data?.results?.length !== 0 )) && <Button theme={themeName}
+        (sortFilter?.results[sortFilter?.results?.length - 1]?.data !== undefined && (sortFilter?.results[0]?.data?.data?.results?.length !== 0)) && <Button theme={themeName}
           onClick={() => {
             dispatch(loadMoreMovies())
           }} >
-            Load More
-          </Button>
+          Load More
+        </Button>
       }
       {
         sortFilter?.results[0]?.data?.data?.results?.length === 0 && <div>No results found!</div>
