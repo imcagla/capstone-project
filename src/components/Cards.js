@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CardDescription, Card } from '../styledComponents/CardContainer';
 import { FavoriteIcon, WatchedIcon } from "../styledComponents/Icons"
 import { addSeenList, addFavList } from "../reduxStore/user"
-import { StyledLink } from "../styledComponents/Link"
+import { StyledTitleLink } from "../styledComponents/Link"
 
 
 function Cards(props) {
@@ -25,7 +25,7 @@ function Cards(props) {
                 <CardDescription>
                     <div className="row">
                         <ul className='list-unstyled fw-bold'>
-                            <StyledLink to={`/movies/${item.id}`}><li className='fs-6'>{item.title} - {item.release_date.substring(0, 4)}</li></StyledLink>
+                            <StyledTitleLink theme={themeName} to={`/movies/${item.id}`}><li className='fs-6'>{item.title} - {item.release_date.substring(0, 4)}</li></StyledTitleLink>
                             <li className='text-muted small'>
                                 {
                                     item.genre_ids.map(item =>

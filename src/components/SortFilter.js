@@ -48,7 +48,7 @@ function SortFilter() {
       <GridContainer theme={themeName}>
         Sort by:
         <div>
-          <StyledSelect onChange={(e) => dispatch(getSortVal(e.target.options[e.target.selectedIndex].value))}>
+          <StyledSelect theme={themeName} onChange={(e) => dispatch(getSortVal(e.target.options[e.target.selectedIndex].value))}>
             <option value="original_title.asc">Movie Title (from A to Z)</option>
             <option value="original_title.desc">Movie Title (from Z to A)</option>
             <option value="popularity.desc">Most Populars</option>
@@ -70,6 +70,7 @@ function SortFilter() {
             genres?.map(item=> <Button onClick={() => dispatch(getGenreFilter(item.id))} key={item.id} theme={themeName}>{item.name}</Button>)
           }
         </div>
+        
       </GridContainer>
       <Button theme={themeName} onClick={() => console.log("Search yapıldığında filmler filtrelenecek!")} >Search</Button>
     </SortFilterGrid>

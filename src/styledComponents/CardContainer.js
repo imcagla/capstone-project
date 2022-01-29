@@ -12,11 +12,11 @@ const Container = styled.div`
         height: 11px;
     }
     &::-webkit-scrollbar-thumb {
-        background: #dc3545; 
+        background: #F05454; 
         border-radius: 10px;
     }
     &::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 2px ${props => props.theme === "dark" ? "#dc3545" : "black"}; 
+        box-shadow: inset 0 0 2px ${props => props.theme === "dark" ? "#F05454" : "black"}; 
         border-radius: 10px;
     }
 `
@@ -49,14 +49,14 @@ const Card = styled.div`
 
 const Button = styled.button`
     background: ${props => props.theme === "light" ? "white" : "#131414"};
-    color: #dc3545;
+    color: #F05454;
     font-size: 1em;
     padding: 0.25em 1.5em;
-    border: 2px solid #dc3545;
+    border: 2px solid #F05454;
     border-radius: 20px;
     transition: 0.3s;
     &:hover{
-        background: #dc3545;
+        background: #F05454;
         color: ${props => props.theme === "light" ? "white" : "#131414"};
     }
 `

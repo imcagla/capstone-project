@@ -1,7 +1,6 @@
 import {routes} from "./routes"
 import {Routes, Route} from "react-router-dom"
 import {useSelector} from "react-redux"
-import Navbar from "./components/basecomponents/Navbar";
 import Footer from "./components/basecomponents/Footer";
 import StyledNavbar from "./components/basecomponents/StyledNavbar";
 

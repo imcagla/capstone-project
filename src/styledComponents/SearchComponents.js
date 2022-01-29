@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 const Input = styled.input`
-    border: 1px solid ${props => props.theme ==="dark" ? "#dc3545" : "gray"};
+    border: 1px solid ${props => props.theme ==="dark" ? "#F05454" : "gray"};
     background-color: ${props => props.theme === "dark" ? "#131414" : "white"};
     color: ${props => props.theme === "dark" ? "white" : "black"};
     width: auto;
@@ -10,8 +10,8 @@ const Input = styled.input`
     border-radius: 20px;
     &:focus {
         outline: none;
-        border: 1px solid ${props => props.theme ==="dark" ? "#dc3545" : "gray"};
-        box-shadow: inset 0 0 2px ${props => props.theme === "dark" ? "#dc3545" : "black"};
+        border: 1px solid ${props => props.theme ==="dark" ? "#F05454" : "gray"};
+        box-shadow: inset 0 0 2px ${props => props.theme === "dark" ? "#F05454" : "black"};
     };
 `
 

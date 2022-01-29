@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from "react-router-dom"
+import { useNavigate} from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 
 import { routes } from "../../routes"
@@ -27,7 +27,7 @@ function StyledNavbar() {
 
         <NavMenuIcon theme={themeName} onClick={() => setClicked(!clicked)}>{clicked ? <FaTimes/> : <HiMenu/>}</NavMenuIcon>
         <ul className={clicked ? 'nav-menu active' : 'nav-menu'} >
-            <StyledSelect onChange={(e) => dispatch(navigate(`/sort-filter/${e.target.options[e.target.selectedIndex].value}`))} className='nav-links'>
+            <StyledSelect onClick={(e) => dispatch(navigate(`/sort-filter/${e.target.options[e.target.selectedIndex].value}`))} className='nav-links'>
                 <option value="popular">Popular</option>
                 <option value="top_rated">Top Rated</option>
             </StyledSelect>

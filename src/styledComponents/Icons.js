@@ -10,7 +10,7 @@ const FavoriteIcon = styled(FaHeart)`
     position: ${props => props.loc === "table" ? "none":"absolute" };
     top: 85%;
     left: 60%;
-    color: ${props => props.isFav ? "#dc3545" : "white"}
+    color: ${props => props.isFav ? "#F05454" : "white"}
 `
 
 const WatchedIcon = styled(ImBookmark)`
@@ -18,7 +18,7 @@ const WatchedIcon = styled(ImBookmark)`
     position: ${props => props.loc === "table" ? "none":"absolute" };
     top: 85%;
     left: 80%;
-    color: ${props => props.isSeen ? "#dc3545" : "white"}
+    color: ${props => props.isSeen ? "#F05454" : "white"}
 `
 
 const LightIcon = styled(BsSunFill)`

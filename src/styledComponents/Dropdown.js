@@ -2,10 +2,12 @@ import styled from "styled-components";
 
 
 export const StyledSelect = styled.select`
-    background-color: black;
-    color: white;
+    color: #222831;
     padding: 5px 10px;
     &:hover {
-        color:black;
+        color: ${props => props.theme === "dark" ? "white" : "black"};
+        background-color: ${props => props.theme === "dark" ? "#30475E" : "whitesmoke"};
+        border-radius: 5px;
+        transition: all 0.2s ease-out;
     }
 `
