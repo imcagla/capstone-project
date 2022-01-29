@@ -3,6 +3,9 @@ const GENRE_FILTER = "GENRE_FILTER"
 const REMOVE_GENRE_FILTER = "REMOVE_GENRE_FILTER"
 const DATE_FROM_FILTER = "DATE_FROM_FILTER"
 const DATE_TO_FILTER = "DATE_TO_FILTER"
+const GET_SORT_FILTER_RESULTS = "GET_SORT_FILTER_RESULTS"
+
+
 
 export const getSortVal = (value) => ({
     type: SORT_VAL,
@@ -29,6 +32,11 @@ export const getToDateFilter = (endDate) => ({
     payload: endDate
 })
 
+export const getSortFilterResult = (movies) => ({
+    type: GET_SORT_FILTER_RESULTS,
+    payload: movies
+})
+
 
 export const sortFilterReducer = (sortFilter = {sortingValue: "", filteringGenres: [], startDate:"", endDate:"" }, action) => {
     switch (action.type) {
@@ -42,6 +50,8 @@ export const sortFilterReducer = (sortFilter = {sortingValue: "", filteringGenre
             return {...sortFilter, startDate: action.payload}
         case DATE_TO_FILTER:
             return {...sortFilter, endDate: action.payload}
+        case GET_SORT_FILTER_RESULTS:
+            return {...sortFilter, results: action.payload}
         default:
             return sortFilter
     }

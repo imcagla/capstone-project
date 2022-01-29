@@ -39,7 +39,7 @@ export const NavbarContent = styled.nav`
     & .active {
         @media only screen and (max-width: 960px) {
         display: block;
-        background-color: #222831;
+        background-color: ${props => props.theme === "dark" ? "#222831" : "#DDDDDD"};
         padding-right: 30px;
         left: 0;
         opacity: 1;
@@ -67,7 +67,7 @@ export const NavbarContent = styled.nav`
                 display: table;
                 list-style: none;
                 &:hover {
-                    background-color: #DDDDDD;
+                    background-color:${props => props.theme === "dark" ? "#30475E" : "whitesmoke"};
                     border-radius: 0;
                 }
             }

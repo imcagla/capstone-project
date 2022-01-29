@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQueries, useQuery } from 'react-query';
 import { useParams } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPopularTopMovies, fetchGenres } from '../api';
 import Cards from './Cards';
-import { loadMoreMovies } from '../reduxStore/loadMoreMovies';
+import { loadMoreMovies, resetLoad } from '../reduxStore/loadMoreMovies';
 import { MainContainer } from '../styledComponents/MainContainer';
 import { Button, Container } from '../styledComponents/CardContainer';
 import { SortFilterGrid, GridContainer, FilterDateContainer, FilterButtons, FilteredButtons } from '../styledComponents/SortFilter';
 import { StyledSelect } from '../styledComponents/Dropdown';
 import { Input } from '../styledComponents/SearchComponents';
 import { getGenres } from '../reduxStore/getGenres';
-import { getSortVal, getGenreFilter, removeGenreFilter, getFromDateFilter, getToDateFilter } from '../reduxStore/sortFilterStates';
+import { getSortVal, getGenreFilter, removeGenreFilter, getFromDateFilter, getToDateFilter, getSortFilterResult } from '../reduxStore/sortFilterStates';
 
 function SortFilter() {
   const dispatch = useDispatch()
@@ -19,7 +19,7 @@ function SortFilter() {
   console.log("LOAD:::", load)
   const params = useParams()
   console.log(params)
-  
+
   const themeName = theme ? "light" : "dark"
 
 
@@ -41,7 +41,11 @@ function SortFilter() {
     dispatch(getGenres(val?.data?.genres))
   )
 
-  console.log("MOVIES:::",movies)
+    useEffect(() => {
+      dispatch(getSortFilterResult(movies))
+    }, [load])
+
+  console.log("MOVIES:::", movies)
 
   return <MainContainer>
     <SortFilterGrid>
@@ -67,24 +71,36 @@ function SortFilter() {
         </FilterDateContainer>
         <Container>
           {
-            genres?.filter(item => !sortFilter?.filteringGenres?.includes(item.id)).map(item=> <FilterButtons onClick={() => dispatch(getGenreFilter(item.id))} key={item.id} theme={themeName}>{item.name}</FilterButtons>)
+            genres?.filter(item => !sortFilter?.filteringGenres?.includes(item.id)).map(item => <FilterButtons onClick={() => dispatch(getGenreFilter(item.id))} key={item.id} theme={themeName}>{item.name}</FilterButtons>)
           }
         </Container>
-        
+
       </GridContainer>
-      <FilterButtons theme={themeName} onClick={() => console.log("Search yapıldığında filmler filtrelenecek!")} >Search</FilterButtons>
+      <FilterButtons theme={themeName} onClick={() => {dispatch(getSortFilterResult(movies))
+      dispatch(resetLoad())
+      dispatch(getSortFilterResult(movies))}} >Search</FilterButtons>
     </SortFilterGrid>
     <div>
       {
         genres?.filter(item => sortFilter?.filteringGenres?.includes(item.id))?.map(item => <FilteredButtons theme={themeName}>{item.name} <span onClick={() => dispatch(removeGenreFilter(item.id))}> X </span></FilteredButtons>)
       }
     </div>
-
     {
-      movies.map(item => <Cards height={"280"} width={"180"} data={item?.data?.data?.results} />)
+      sortFilter?.results?.map(item => item.isLoading ? <p>Loading...</p> : <Cards height={"280"} width={"180"} data={item?.data?.data?.results} />)
     }
     <div>
-      <Button theme={themeName} onClick={() => dispatch(loadMoreMovies())} >Load More</Button>
+      {
+        (sortFilter?.results[sortFilter?.results?.length - 1]?.data !== undefined && (sortFilter?.results[0]?.data?.data?.results?.length !== 0 )) && <Button theme={themeName}
+          onClick={() => {
+            dispatch(loadMoreMovies())
+          }} >
+            Load More
+          </Button>
+      }
+      {
+        sortFilter?.results[0]?.data?.data?.results?.length === 0 && <div>No results found!</div>
+      }
+
     </div>
   </MainContainer>;
 }
