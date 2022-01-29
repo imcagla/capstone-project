@@ -7,7 +7,7 @@ import Cards from './Cards';
 import { loadMoreMovies } from '../reduxStore/loadMoreMovies';
 import { MainContainer } from '../styledComponents/MainContainer';
 import { Button } from '../styledComponents/CardContainer';
-import { SortFilterGrid, GridContainer, FilterDateContainer } from '../styledComponents/SortFilter';
+import { SortFilterGrid, GridContainer, FilterDateContainer, FilterButtons } from '../styledComponents/SortFilter';
 import { StyledSelect } from '../styledComponents/Dropdown';
 import { Input } from '../styledComponents/SearchComponents';
 import { getGenres } from '../reduxStore/getGenres';
@@ -67,12 +67,12 @@ function SortFilter() {
         </FilterDateContainer>
         <div>
           {
-            genres?.map(item=> <Button onClick={() => dispatch(getGenreFilter(item.id))} key={item.id} theme={themeName}>{item.name}</Button>)
+            genres?.map(item=> <FilterButtons onClick={() => dispatch(getGenreFilter(item.id))} key={item.id} theme={themeName}>{item.name}</FilterButtons>)
           }
         </div>
         
       </GridContainer>
-      <Button theme={themeName} onClick={() => console.log("Search yapıldığında filmler filtrelenecek!")} >Search</Button>
+      <FilterButtons theme={themeName} onClick={() => console.log("Search yapıldığında filmler filtrelenecek!")} >Search</FilterButtons>
     </SortFilterGrid>
 
     {

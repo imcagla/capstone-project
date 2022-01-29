@@ -26,3 +26,15 @@ export const FilterDateContainer = styled.div`
     margin: 8px 0;
 `
 
+export const FilterButtons = styled.button`
+    background: ${props => props.theme === "dark" ? "#DDDDDD" : "#222831"};
+    color: ${props => props.theme === "dark" ? "#222831" : "#DDDDDD"};
+    padding: 5px 10px;
+    outline: none;
+    border: 0px;
+    margin: 5px;
+    border-radius: 5px;
+    &:hover {
+        background: ${props => props.theme === "dark" ? "rgb(221, 221, 221, 0.7)" : "rgb(34, 40, 49, 0.7)"};
+    }
+`
