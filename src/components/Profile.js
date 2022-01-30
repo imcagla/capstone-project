@@ -2,14 +2,18 @@ import React from 'react';
 import { useQueries } from 'react-query';
 import { useSelector } from 'react-redux';
 import { fetchSingleMovie } from '../api';
-import { FavoriteIcon, WatchedIcon } from '../styledComponents/Icons';
+import { FavoriteIcon, WatchedIcon, TwitterIcon, InstagramIcon } from '../styledComponents/Icons';
 import { useDispatch } from 'react-redux';
 import { addFavList, addSeenList } from '../reduxStore/user';
-import { StyledTable } from '../styledComponents/styledTable';
+import { StyledTable, ProfileGrid, ProfileInfo, ProfileInfoGrid } from '../styledComponents/styledTable';
+import { MainContainer } from "../styledComponents/MainContainer"
+import { ProfileImg } from '../styledComponents/NavbarStyles';
+
+
 
 function Profile() {
   const dispatch = useDispatch()
-  const {user, theme} = useSelector(state=> state)
+  const { user, theme } = useSelector(state => state)
   const themeName = theme ? "light" : "dark"
   console.log("USSER::", user)
 
@@ -31,10 +35,10 @@ function Profile() {
     })
   )
 
-  const data = movies.map(item => item?.data).map(item => ({...item, genres: [item?.genres?.map(item => item.name)].toString()}))
+  const data = movies.map(item => item?.data).map(item => ({ ...item, genres: [item?.genres?.map(item => item.name)].toString() }))
 
-  console.log("DATA:::",data)
-  console.log("MOVIES:::",movies)
+  console.log("DATA:::", data)
+  console.log("MOVIES:::", movies)
 
   const columns = [
     {
@@ -61,19 +65,43 @@ function Profile() {
       key: 'operations',
       render: (movie) => (
         user.userLogin && <div>
-        <FavoriteIcon loc={"table"} isFav={user?.favoritesList?.favoritesFilms?.includes(movie.id)}
+          <FavoriteIcon loc={"table"} isFav={user?.favoritesList?.favoritesFilms?.includes(movie.id)}
             onClick={() => dispatch(addFavList(movie.id))} />
-        <WatchedIcon loc={"table"} isSeen={user?.seenList?.seenFilms?.includes(movie.id)}
+          <WatchedIcon loc={"table"} isSeen={user?.seenList?.seenFilms?.includes(movie.id)}
             onClick={() => dispatch(addSeenList(movie.id))} />
-    </div>
-    )
+        </div>
+      )
     },
   ];
 
 
-  return <div>Profile
-    <StyledTable theme={themeName} columns={columns} data={data} />
-  </div>;
+  return <MainContainer>
+    <ProfileGrid>
+      <ProfileInfo>
+        <ProfileInfoGrid theme={themeName}>
+          <ProfileImg width={"200px"} src={user.avatarUrl} alt="" />
+          <div>
+            <p className="username"> {user.username.toUpperCase()} </p>
+            <p className="join-date"> {user.joinDate} </p>
+            <ul className='list'>
+              <li>  <span className='movie-counts'>{user.seenList.totalCount}</span> Seen Movies</li>
+              <li>  <span className='movie-counts'>{user.favoritesList.totalCount}</span> Favorites Movies</li>
+            </ul>
+            <div>
+              <a href={user.socials.instagram}>
+                <InstagramIcon theme={themeName} />
+              </a>
+              <a href={user.socials.twitter}>
+                <TwitterIcon theme={themeName} />
+              </a>
+            </div>
+          </div>
+        </ProfileInfoGrid>
+      </ProfileInfo>
+      <StyledTable
+        theme={themeName} columns={columns} data={data} />
+    </ProfileGrid>
+  </MainContainer>;
 }
 
 export default Profile;

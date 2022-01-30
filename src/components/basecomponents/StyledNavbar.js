@@ -45,7 +45,7 @@ function StyledNavbar() {
                 </StyledLink>
             </li> : <><li className='nav-links'>
                 <StyledLink theme={themeName} to="/profile" >
-                    <ProfileImg src={user.avatarUrl} alt="" />
+                    <ProfileImg width={"30px"} src={user.avatarUrl} alt="" />
                 </StyledLink>
             </li>
             <li className='nav-links'>

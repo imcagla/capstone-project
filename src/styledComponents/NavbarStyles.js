@@ -114,5 +114,6 @@ export const ThemeChangerButton = styled.button`
 
 export const ProfileImg = styled.img`
     border-radius: 100%;
-    width: 30px;
+    width: ${props => props.width};
+    box-shadow: 0 0 5px rgb(34, 40, 49, 0.5);
 `
