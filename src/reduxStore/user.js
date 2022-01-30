@@ -5,11 +5,16 @@
 const VALIDATE_USER = "VALIDATE_USER"
 const ADD_SEEN_MOVIES = "ADD_SEEN_MOVIES"
 const ADD_FAV_MOVIES = "ADD_FAV_MOVIES"
+const USER_LOGOUT = "USER_LOGOUT"
 
 
 export const validateUser = (username, password) => ({
     type: VALIDATE_USER,
     payload: { username, password }
+})
+
+export const userLogout = () => ({
+    type: USER_LOGOUT
 })
 
 export const addSeenList = (movieId) => ({
@@ -22,7 +27,7 @@ export const addFavList = (movieId) => ({
     payload: movieId
 })
 
-const userReducer = (user = {
+const initialState = {
     "avatarUrl": "https://i.picsum.photos/id/1005/150/150.jpg?hmac=-Q1z4K5WO9Q7qDB-R9vrj9440_mRxpeHZMOFHblbB6s",
     "username": "username",
     "password": "password",
@@ -40,8 +45,11 @@ const userReducer = (user = {
         ],
         "totalCount": 0
     },
+    userLogin: false,
     "joinDate": "December 2021"
-}, action) => {
+}
+
+const userReducer = (user = initialState, action) => {
     switch (action.type) {
         case VALIDATE_USER:
             return action.payload.username === user.username && action.payload.password === user.password ? { ...user, userLogin: true } : { ...user, userLogin: false }
@@ -51,6 +59,8 @@ const userReducer = (user = {
         case ADD_SEEN_MOVIES:
             return !user.seenList.seenFilms.includes(action.payload) ?
                 { ...user, seenList: { seenFilms: [...user.seenList.seenFilms, action.payload], totalCount: user.seenList.totalCount + 1 } } : user
+        case USER_LOGOUT:
+            return initialState
         default:
             return user
     }

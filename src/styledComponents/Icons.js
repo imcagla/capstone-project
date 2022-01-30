@@ -3,6 +3,7 @@ import { FaHeart } from "react-icons/fa"
 import { ImBookmark } from "react-icons/im"
 import { BsSunFill } from "react-icons/bs"
 import { MdDarkMode } from "react-icons/md"
+import { FiLogOut } from "react-icons/fi"
 
 
 const FavoriteIcon = styled(FaHeart)`
@@ -37,4 +38,9 @@ const DarkIcon = styled(MdDarkMode)`
     }  
 `
 
-export {FavoriteIcon, WatchedIcon, LightIcon, DarkIcon}
+const LogOutIcon = styled(FiLogOut)`
+    cursor: pointer;
+    font-size: 21px;
+`
+
+export {FavoriteIcon, WatchedIcon, LightIcon, DarkIcon, LogOutIcon}

@@ -14,6 +14,6 @@ export const routes = [
     {name: "Profile", pathname: "/profile", element: Profile, isNav:false},
     {name: "About", pathname: "/about", element: About, isNav:true},
     {name: "Contact", pathname: "/contact", element: Contact, isNav:true},
-    {name: "Login", pathname: "/login", element: Login, isNav:true},
+    {name: "Login", pathname: "/login", element: Login, isNav:false},
     {name: "Detail", pathname: "/movies/:movieId", element: Detail, isNav:false},
 ]

@@ -16,7 +16,7 @@ export const NavbarContent = styled.nav`
     
     & > .nav-menu {
         display: grid;
-        grid-template-columns: repeat(4, auto);
+        grid-template-columns: repeat(5, auto);
         grid-gap: 10px;
         list-style: none;
         text-align: center;
@@ -109,4 +109,10 @@ export const ThemeChangerButton = styled.button`
         margin-right: auto;
         margin-left: 15px;
     }
+`
+
+
+export const ProfileImg = styled.img`
+    border-radius: 100%;
+    width: 30px;
 `

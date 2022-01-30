@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {CgProfile} from "react-icons/cg"
 
 export const DetailGrid = styled.div`
     display: grid;
