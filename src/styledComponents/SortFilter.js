@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 
+export const SortFilterMainContainer = styled.div`
+    text-align:center;
+`
+
 export const SortFilterGrid = styled.div`
     display: grid;
     grid-template-columns: 30% 60% auto;

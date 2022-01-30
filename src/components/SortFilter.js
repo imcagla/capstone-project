@@ -7,7 +7,7 @@ import Cards from './Cards';
 import { loadMoreMovies, resetLoad } from '../reduxStore/loadMoreMovies';
 import { MainContainer } from '../styledComponents/MainContainer';
 import { Button, Container } from '../styledComponents/CardContainer';
-import { SortFilterGrid, GridContainer, FilterDateContainer, FilterButtons, FilteredButtons } from '../styledComponents/SortFilter';
+import { SortFilterGrid, GridContainer, FilterDateContainer, FilterButtons, FilteredButtons, SortFilterMainContainer } from '../styledComponents/SortFilter';
 import { StyledSelect } from '../styledComponents/Dropdown';
 import { Input } from '../styledComponents/SearchComponents';
 import { getGenres } from '../reduxStore/getGenres';
@@ -26,7 +26,6 @@ function SortFilter() {
         queryKey: ["movies", params?.type, page, sortFilter?.sortingValue, sortFilter?.startDate, sortFilter?.endDate, sortFilter?.filteringGenres],
         queryFn: () => fetchPopularTopMovies(params?.type, page, sortFilter?.sortingValue, sortFilter?.startDate, sortFilter?.endDate, sortFilter?.filteringGenres),
         retry: false,
-        notifyOnNetworkStatusChange: true
       }
     })
   )
@@ -40,17 +39,20 @@ function SortFilter() {
   )
 
   useEffect(() => {
-    movies[movies.length-1].isFetched && dispatch(getSortFilterResult(movies))
+    dispatch(getSortFilterResult(movies))
     dispatch(resetLoad())
   }, [])
 
   useEffect(() => {
-    movies[movies.length-1].isFetched && dispatch(getSortFilterResult(movies))
-  }, [load, params.type, movies[movies.length-1].isFetched])
+     dispatch(getSortFilterResult(movies))
+  }, [load, params.type])
 
   console.log("MOVIES:::", movies)
 
   return <MainContainer>
+    <SortFilterMainContainer>
+
+    
     <SortFilterGrid>
       <GridContainer theme={themeName}>
         Sort by:
@@ -114,7 +116,7 @@ function SortFilter() {
       }
     </div>
 
-
+</SortFilterMainContainer>
 
   </MainContainer>;
 }

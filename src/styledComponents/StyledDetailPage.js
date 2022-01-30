@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import {CgProfile} from "react-icons/cg"
 
 export const DetailGrid = styled.div`
     display: grid;
@@ -14,9 +14,52 @@ export const DetailGrid = styled.div`
         & > h6 {
             color: gray;
         }
+        & > ul {
+            display: flex;
+            list-style: none;
+            float: right;
+            & > li {
+                margin: 15px;
+            }
+        }
     }
     & > img {
         width: 100%;
+        max-width: 300px;
+        @media screen and (max-width: 900px) {
+            margin: auto;
+        }
+    }
+    & > div {
+        & > h5 {
+            margin-top: 30px;
+            text-align:start;
+        }
+    }
+    & > .review-part {
+        background-color: ${props => props.theme ==="dark" ? "rgb(48, 71, 94, 0.2)": "rgb(240, 84, 84, 0.2)"};
+        border-radius: 25px;
+        padding: 0 15px; 
+        margin: 20px 20px 20px 0;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.37);
+        & > p{
+            font-size: 12px;
+            & > span {
+                padding: 5px 10px;
+                border-radius: 50%;
+                background-color: whitesmoke;
+                border: 1px solid gray;
+                font-weight: bold;
+                margin-right: 10px;
+                font-size: 15px;
+                color: gray;
+            }
+        }
+        
+    }
+    @media screen and (max-width: 900px) {
+        grid-template-columns: 100%;
+        text-align: center;
     }
 `
 

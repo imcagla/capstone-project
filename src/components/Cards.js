@@ -10,7 +10,7 @@ function Cards(props) {
     const dispatch = useDispatch()
     const { theme, user, genres } = useSelector((state) => state)
     const themeName = theme ? "light" : "dark";
-
+    console.log("PROPS::", props)
     const favoritesList = user?.favoritesList?.favoritesFilms
     const seenList = user?.seenList?.seenFilms
 
