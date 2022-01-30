@@ -4,7 +4,7 @@ const Input = styled.input`
     border: 1px solid ${props => props.theme ==="dark" ? "#F05454" : "gray"};
     background-color: ${props => props.theme === "dark" ? "#131414" : "white"};
     color: ${props => props.theme === "dark" ? "white" : "black"};
-    width: auto;
+    width: 100%;
     height: 35px;
     padding: 15px;
     border-radius: 20px;
