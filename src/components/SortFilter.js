@@ -25,7 +25,8 @@ function SortFilter() {
       return {
         queryKey: ["movies", params?.type, page, sortFilter?.sortingValue, sortFilter?.startDate, sortFilter?.endDate, sortFilter?.filteringGenres],
         queryFn: () => fetchPopularTopMovies(params?.type, page, sortFilter?.sortingValue, sortFilter?.startDate, sortFilter?.endDate, sortFilter?.filteringGenres),
-        retry: false
+        retry: false,
+        notifyOnNetworkStatusChange: true
       }
     })
   )
@@ -39,8 +40,13 @@ function SortFilter() {
   )
 
   useEffect(() => {
-    dispatch(getSortFilterResult(movies))
-  }, [load])
+    movies[movies.length-1].isFetched && dispatch(getSortFilterResult(movies))
+    dispatch(resetLoad())
+  }, [])
+
+  useEffect(() => {
+    movies[movies.length-1].isFetched && dispatch(getSortFilterResult(movies))
+  }, [load, params.type, movies[movies.length-1].isFetched])
 
   console.log("MOVIES:::", movies)
 
@@ -88,10 +94,9 @@ function SortFilter() {
     </div>
     <div>
       {
-      sortFilter?.results?.map(item => item?.isLoading ? <p>Loading...</p> : <Cards height={"280"} width={"180"} data={item?.data?.data?.results} />)
+      sortFilter?.results?.map(item => item?.isLoading ? <h5>Loading...</h5> : <Cards height={"280"} width={"180"} data={item?.data?.data?.results} />)
     }
     </div>
-    
     <div>
       {
         (sortFilter?.results[sortFilter?.results?.length - 1]?.data !== undefined && (sortFilter?.results[0]?.data?.data?.results?.length !== 0)) && <Button theme={themeName}
@@ -101,7 +106,7 @@ function SortFilter() {
           Load More
         </Button>
       }
-    </div>
+    </div> 
 
     <div>
       {

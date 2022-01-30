@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 
 import { routes } from "../../routes"
@@ -8,8 +8,8 @@ import { DarkIcon, LightIcon } from '../../styledComponents/Icons';
 import { NavbarContent, NavbarTitle, NavMenuIcon, ThemeChangerButton } from '../../styledComponents/NavbarStyles';
 import { StyledSelect } from '../../styledComponents/Dropdown';
 import { StyledLink } from '../../styledComponents/Link';
-import {HiMenu} from "react-icons/hi"
-import {FaTimes} from "react-icons/fa"
+import { HiMenu } from "react-icons/hi"
+import { FaTimes } from "react-icons/fa"
 
 function StyledNavbar() {
     const navigate = useNavigate()
@@ -23,9 +23,14 @@ function StyledNavbar() {
             <StyledLink theme={themeName} to="/">Movies</StyledLink>
         </NavbarTitle>
 
-        <NavMenuIcon theme={themeName} onClick={() => setClicked(!clicked)}>{clicked ? <FaTimes/> : <HiMenu/>}</NavMenuIcon>
+        <NavMenuIcon theme={themeName} onClick={() => setClicked(!clicked)}>{clicked ? <FaTimes /> : <HiMenu />}</NavMenuIcon>
         <ul className={clicked ? 'nav-menu active' : 'nav-menu'} >
-            <StyledSelect onClick={(e) => dispatch(navigate(`/sort-filter/${e.target.options[e.target.selectedIndex].value}`))} className='nav-links'>
+            <StyledSelect
+                onClick={(e) => {
+                    e.target.options[e.target.selectedIndex].value !== "" && dispatch(navigate(`/sort-filter/${e.target.options[e.target.selectedIndex].value}`))
+                }}
+                className='nav-links'>
+                <option disabled selected value=""> Movies </option>
                 <option value="popular">Popular</option>
                 <option value="top_rated">Top Rated</option>
             </StyledSelect>

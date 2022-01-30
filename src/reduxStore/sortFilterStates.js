@@ -38,7 +38,7 @@ export const getSortFilterResult = (movies) => ({
 })
 
 
-export const sortFilterReducer = (sortFilter = {sortingValue: "", filteringGenres: [], startDate:"", endDate:"" }, action) => {
+export const sortFilterReducer = (sortFilter = {sortingValue: "", filteringGenres: [], startDate:"", endDate:"", results: [] }, action) => {
     switch (action.type) {
         case SORT_VAL:
             return { ...sortFilter, sortingValue: action.payload }
