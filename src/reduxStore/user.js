@@ -54,11 +54,13 @@ const userReducer = (user = initialState, action) => {
         case VALIDATE_USER:
             return action.payload.username === user.username && action.payload.password === user.password ? { ...user, userLogin: true } : { ...user, userLogin: false }
         case ADD_FAV_MOVIES:
-            return !user.favoritesList.favoritesFilms.includes(action.payload) ?
-                { ...user, favoritesList: { favoritesFilms: [...user.favoritesList.favoritesFilms, action.payload], totalCount: user.favoritesList.totalCount + 1 } } : user
+            return !user.favoritesList.favoritesFilms?.includes(action.payload) ?
+                { ...user, favoritesList: { favoritesFilms: [...user.favoritesList.favoritesFilms, action.payload], totalCount: user.favoritesList.totalCount + 1 } } :
+                { ...user, favoritesList: { favoritesFilms: user.favoritesList.favoritesFilms?.filter(item => item !== action.payload), totalCount: user.favoritesList.totalCount - 1 } }
         case ADD_SEEN_MOVIES:
             return !user.seenList.seenFilms.includes(action.payload) ?
-                { ...user, seenList: { seenFilms: [...user.seenList.seenFilms, action.payload], totalCount: user.seenList.totalCount + 1 } } : user
+                { ...user, seenList: { seenFilms: [...user.seenList.seenFilms, action.payload], totalCount: user.seenList.totalCount + 1 } } :
+                { ...user, seenList: { seenFilms: user.seenList.seenFilms?.filter(item => item !== action.payload), totalCount: user.seenList.totalCount - 1 } }
         case USER_LOGOUT:
             return initialState
         default:

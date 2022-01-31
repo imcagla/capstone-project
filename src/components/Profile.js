@@ -2,9 +2,7 @@ import React from 'react';
 import { useQueries } from 'react-query';
 import { useSelector } from 'react-redux';
 import { fetchSingleMovie } from '../api';
-import { FavoriteIcon, WatchedIcon, TwitterIcon, InstagramIcon } from '../styledComponents/Icons';
-import { useDispatch } from 'react-redux';
-import { addFavList, addSeenList } from '../reduxStore/user';
+import { TwitterIcon, InstagramIcon } from '../styledComponents/Icons';
 import { StyledTable, ProfileGrid, ProfileInfo, ProfileInfoGrid } from '../styledComponents/styledTable';
 import { MainContainer } from "../styledComponents/MainContainer"
 import { ProfileImg } from '../styledComponents/NavbarStyles';
@@ -13,30 +11,29 @@ import SeenFavIcons from './SeenFavIcons';
 
 
 function Profile() {
-  const dispatch = useDispatch()
   const { user, theme } = useSelector(state => state)
   const themeName = theme ? "light" : "dark"
   console.log("USSER::", user)
 
-  const allFilms = user.favoritesList.favoritesFilms?.concat(user.seenList.seenFilms)
-  const reducedAllFilms = allFilms.filter((item, index) => allFilms.indexOf(item) === index)
+  const allFilms = user?.favoritesList?.favoritesFilms?.concat(user?.seenList?.seenFilms)
+  const reducedAllFilms = allFilms?.filter((item, index) => allFilms?.indexOf(item) === index)
 
 
   console.log("ALL:::", allFilms)
   console.log("ALL:::", reducedAllFilms)
 
   const movies = useQueries(
-    reducedAllFilms.map(movieId => {
+    reducedAllFilms?.map(movieId => {
       return {
         queryKey: ["movies", movieId],
         queryFn: () => fetchSingleMovie(movieId),
         retry: false,
-        select: state => state.data
+        select: state => state?.data
       }
     })
   )
 
-  const data = movies.map(item => item?.data).map(item => ({ ...item, genres: [item?.genres?.map(item => item.name)].toString() }))
+  const data = movies?.map(item => item?.data).map(item => ({ ...item, genres: [item?.genres?.map(item => item.name)].toString() }))
 
   console.log("DATA:::", data)
   console.log("MOVIES:::", movies)
