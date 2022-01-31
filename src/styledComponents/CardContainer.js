@@ -36,6 +36,7 @@ export const CardDescription = styled.div`
 `
 
 export const Card = styled.div`
+    position:relative;
     display:inline-block;
     white-space:normal;
     margin: 5px 10px;

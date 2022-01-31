@@ -9,7 +9,6 @@ import { paginationHandler } from '../reduxStore/paginationContext';
 import { MainContainer } from '../styledComponents/MainContainer';
 import { PaginationContainer } from '../styledComponents/SearchComponents';
 import { Alert } from '../styledComponents/Alert';
-
 function SearchPagination() {
     const dispatch = useDispatch()
     const { search, pagination: selectedPage } = useSelector((state) => state)
@@ -21,7 +20,7 @@ function SearchPagination() {
 
     // when data is fetched update pageCount
     if (searchData.isFetched) {
-        pageCount = Math.ceil(searchData.data.data.results.length / perPage)
+        pageCount = Math.ceil(searchData?.data?.data?.results?.length / perPage)
     }
 
     return <MainContainer>
@@ -29,7 +28,7 @@ function SearchPagination() {
         <PaginationContainer>
             <Cards height={"230"} width={"150"} data={searchData?.data?.data?.results.slice(selectedPage, selectedPage + perPage)} />
             {
-                searchData?.data?.data?.results.length === 0 && <Alert>No results found!</Alert>
+                searchData?.data?.data?.results?.length === 0 && <Alert>No results found!</Alert>
             }
             <ReactPaginate
                 breakLabel="..."
