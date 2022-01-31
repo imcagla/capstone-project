@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { paginationHandler } from '../reduxStore/paginationContext';
 import { MainContainer } from '../styledComponents/MainContainer';
 import { PaginationContainer } from '../styledComponents/SearchComponents';
+import { Alert } from '../styledComponents/Alert';
 
 function SearchPagination() {
     const dispatch = useDispatch()
@@ -28,7 +29,7 @@ function SearchPagination() {
         <PaginationContainer>
             <Cards height={"230"} width={"150"} data={searchData?.data?.data?.results.slice(selectedPage, selectedPage + perPage)} />
             {
-                searchData?.data?.data?.results.length === 0 && <div className='alert alert-secondary fw-bold fs-3 col-6 mx-auto text-center py-5 mt-5' role="alert">No results found!</div>
+                searchData?.data?.data?.results.length === 0 && <Alert>No results found!</Alert>
             }
             <ReactPaginate
                 breakLabel="..."
