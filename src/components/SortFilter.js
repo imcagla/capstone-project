@@ -7,7 +7,7 @@ import Cards from './Cards';
 import { loadMoreMovies, resetLoad } from '../reduxStore/loadMoreMovies';
 import { MainContainer } from '../styledComponents/MainContainer';
 import { Button, Container } from '../styledComponents/CardContainer';
-import { SortFilterGrid, GridContainer, FilterDateContainer, FilterButtons, FilteredButtons, SortFilterMainContainer } from '../styledComponents/SortFilter';
+import { SortFilterGrid, GridContainer, FilterDateContainer, FilterButtons, FilteredButtons, SortFilterMainContainer, SortFilterTitle } from '../styledComponents/SortFilter';
 import { StyledSelect } from '../styledComponents/Dropdown';
 import { Input } from '../styledComponents/SearchComponents';
 import { getGenres } from '../reduxStore/getGenres';
@@ -55,7 +55,7 @@ function SortFilter() {
     <SortFilterMainContainer>
       <SortFilterGrid>
         <GridContainer theme={themeName}>
-          Sort by:
+           <SortFilterTitle>Sort by:</SortFilterTitle>
           <div>
             <StyledSelect theme={themeName} onChange={(e) => dispatch(getSortVal(e.target.options[e.target.selectedIndex].value))}>
               <option value="original_title.asc">Movie Title (from A to Z)</option>
@@ -68,7 +68,7 @@ function SortFilter() {
           </div>
         </GridContainer>
         <GridContainer theme={themeName}>
-          Filter by:
+          <SortFilterTitle>Filter by: </SortFilterTitle>
           <FilterDateContainer>
             Date:
             <Input theme={themeName} onChange={(e) => dispatch(getFromDateFilter(e.target.value))} type="date" id="from_date" name="from_date"></Input>
@@ -100,17 +100,12 @@ function SortFilter() {
       </div>
       <div>
         {
-          (movies[movies?.length - 1]?.data !== undefined && (movies[0]?.data?.data?.results?.length !== 0)) && <Button theme={themeName}
+          (movies[movies?.length - 1]?.data === undefined || (movies[movies?.length - 1]?.data?.data?.results?.length === 0)) ? <Alert>No more results found!</Alert> : <Button theme={themeName}
             onClick={() => {
               dispatch(loadMoreMovies())
             }} >
             Load More
-          </Button>
-        }
-      </div>
-      <div>
-        {
-          movies[0]?.data?.data?.results?.length === 0 && <Alert>No results found!</Alert>
+          </Button> 
         }
       </div>
     </SortFilterMainContainer>

@@ -61,3 +61,8 @@ background: ${props => props.theme === "dark" ? "rgb(221, 221, 221, 0.7)" : "rgb
         }
     }
 `
+
+export const SortFilterTitle = styled.h5`
+    margin-bottom: 20px;
+    text-align: start;
+`

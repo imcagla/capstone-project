@@ -8,7 +8,6 @@ import SeenFavIcons from './SeenFavIcons';
 function Cards(props) {
     const { theme, genres } = useSelector((state) => state)
     const themeName = theme ? "light" : "dark";
-    console.log("PROPS::", props)
     
 
 

@@ -6,7 +6,6 @@ import { addFavList, addSeenList } from '../reduxStore/user';
 function SeenFavIcons(props) {
     const dispatch = useDispatch()
     const {user} = useSelector(state => state)
-    console.log("USER:::", user)
     const {movieId, loc} = props
 
   return <div>
