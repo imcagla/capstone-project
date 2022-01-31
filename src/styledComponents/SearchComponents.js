@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-const Input = styled.input`
+export const Input = styled.input`
     border: 1px solid ${props => props.theme ==="dark" ? "#F05454" : "gray"};
     background-color: ${props => props.theme === "dark" ? "#131414" : "white"};
     color: ${props => props.theme === "dark" ? "white" : "black"};
@@ -15,4 +15,6 @@ const Input = styled.input`
     };
 `
 
-export {Input}
+export const PaginationContainer = styled.div`
+    text-align:center;
+`

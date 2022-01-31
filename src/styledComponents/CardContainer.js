@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 
-const Container = styled.div`
+export const Container = styled.div`
     margin: 20px 0px;
     overflow: auto;
     white-space:nowrap;
@@ -21,13 +21,13 @@ const Container = styled.div`
     }
 `
 
-const CardDescription = styled.div`
+export const CardDescription = styled.div`
     display:none;
     position: absolute;
     top:0;
     start:0;
     padding: 4px;
-    border-radius: 5px;
+    border-radius: 7px;
     color: white;
     background-color: rgba(0, 0, 0, 0.8);
     cursor: pointer;
@@ -35,7 +35,7 @@ const CardDescription = styled.div`
     height: 100%;
 `
 
-const Card = styled.div`
+export const Card = styled.div`
     display:inline-block;
     white-space:normal;
     margin: 5px 10px;
@@ -47,7 +47,7 @@ const Card = styled.div`
       }
 `
 
-const Button = styled.button`
+export const Button = styled.button`
     background: ${props => props.theme === "light" ? "white" : "#131414"};
     color: #F05454;
     font-size: 1em;
@@ -61,5 +61,6 @@ const Button = styled.button`
     }
 `
 
-
-export { Card, Container, CardDescription, Button }
+export const CardImg = styled.img`
+    border-radius: 7px;
+`

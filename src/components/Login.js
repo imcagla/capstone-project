@@ -32,7 +32,6 @@ function Login() {
         <Input theme={themeName} type="password" placeholder='password' onChange={(e) => setPassword(e.target.value)} />
 
         <Button
-          className='btn btn-danger'
           theme={themeName}
           onClick={() => {
             dispatch(validateUser(userName, password))

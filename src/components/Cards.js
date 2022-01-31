@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { CardDescription, Card } from '../styledComponents/CardContainer';
+import { CardDescription, Card, CardImg } from '../styledComponents/CardContainer';
 import { StyledTitleLink } from "../styledComponents/Link"
 import SeenFavIcons from './SeenFavIcons';
 
@@ -16,9 +16,8 @@ function Cards(props) {
     return <>
         {
             props.data?.map(item => <Card theme={themeName} className='position-relative'>
-                <img height={props.height} width={props.width} style={{ objectFit: "cover" }}
-                    src={item.poster_path === null ? `https://tigres.com.tr/wp-content/uploads/2016/11/orionthemes-placeholder-image-1.png` : `https://image.tmdb.org/t/p/w200${item?.poster_path}`}
-                    className='rounded-3' alt="" />
+                <CardImg height={props.height} width={props.width} style={{ objectFit: "cover" }}
+                    src={item.poster_path === null ? `https://tigres.com.tr/wp-content/uploads/2016/11/orionthemes-placeholder-image-1.png` : `https://image.tmdb.org/t/p/w200${item?.poster_path}`} alt="" />
                 <CardDescription>
                     <div className="row">
                         <ul className='list-unstyled fw-bold'>

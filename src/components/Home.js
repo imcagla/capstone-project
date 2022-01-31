@@ -8,6 +8,7 @@ import Search from "./Search"
 import SearchPagination from './SearchPagination';
 import Cards from './Cards';
 import { MainContainer } from '../styledComponents/MainContainer';
+import { ButtonGroupContainer, ButtonGroupRow } from '../styledComponents/HomeStyle';
 
 function Home() {
   const dispatch = useDispatch()
@@ -28,23 +29,23 @@ function Home() {
           <Container theme={themeName}>
           <Cards height={"230"} width={"150"} data={discoverData?.data?.data?.results} />
           </Container>
-          <div className='d-flex'>
+          <ButtonGroupContainer>
             <h4>Trending</h4>
-            <div className="btn-group ms-auto">
-              <Button theme={themeName}
+            <ButtonGroupRow trend={trend} theme={themeName}>
+              <Button 
                 onClick={() => dispatch(changeTrendingPeriod("week"))}
-                className={`btn btn-danger ${trend === "week" ? "active" : null}`}
+                className={`btn-week`}
               >
                 Week
               </Button>
-              <Button theme={themeName}
+              <Button 
                 onClick={() => dispatch(changeTrendingPeriod("day"))}
-                className={`btn btn-danger ${trend === "day" ? "active" : null}`}
+                className={`btn-day`}
               >
                 Day
               </Button>
-            </div>
-          </div>
+            </ButtonGroupRow>
+          </ButtonGroupContainer>
           <Container theme={themeName}>
           <Cards  height={"230"} width={"150"} data={trendingData?.data?.data?.results} />
           </Container>
