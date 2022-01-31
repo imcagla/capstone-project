@@ -9,7 +9,6 @@ import { genresReducer } from "./getGenres";
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { sortFilterReducer } from "./sortFilterStates";
-import { filterTableReducer } from "./filterTableData";
 
 const rootReducer = combineReducers({
     user: userReducer,
@@ -20,7 +19,6 @@ const rootReducer = combineReducers({
     load: loadMoreReducer,
     genres: genresReducer,
     sortFilter: sortFilterReducer,
-    tableData: filterTableReducer,
 })
 
 const persistConfig = {

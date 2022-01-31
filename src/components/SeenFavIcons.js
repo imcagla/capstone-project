@@ -11,9 +11,9 @@ function SeenFavIcons(props) {
   return <div>
       {
           user.userLogin && <div>
-          <FavoriteIcon loc={loc} isFav={user?.favoritesList?.favoritesFilms?.includes(movieId)}
+          <FavoriteIcon loc={loc} isfav={user?.favoritesList?.favoritesFilms?.includes(movieId)}
             onClick={() => dispatch(addFavList(movieId))} />
-          <WatchedIcon loc={loc} isSeen={user?.seenList?.seenFilms?.includes(movieId)}
+          <WatchedIcon loc={loc} isseen={user?.seenList?.seenFilms?.includes(movieId)}
             onClick={() => dispatch(addSeenList(movieId))} />
         </div>
       }

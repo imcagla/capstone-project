@@ -95,7 +95,7 @@ function SortFilter() {
       </div>
       <div>
         {
-          movies?.map(item => item?.isLoading ? <h5>Loading...</h5> : <Cards height={"280"} width={"180"} data={item?.data?.data?.results} />)
+          movies?.map((item, index) => item?.isLoading ? <h5>Loading...</h5> : <Cards key={index} height={"280"} width={"180"} data={item?.data?.data?.results} />)
         }
       </div>
       <div>

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { useQueries } from 'react-query';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSingleMovie } from '../api';
@@ -9,12 +9,11 @@ import { ProfileImg } from '../styledComponents/NavbarStyles';
 import SeenFavIcons from './SeenFavIcons';
 import { StyledSelect } from "../styledComponents/Dropdown"
 import { getSortVal } from '../reduxStore/sortFilterStates';
-import { filterByReleaseDate, filterByFavSeen } from '../reduxStore/filterTableData';
 
 
 function Profile() {
   const dispatch = useDispatch()
-  const { user, theme, sortFilter, tableData } = useSelector(state => state)
+  const { user, theme, sortFilter } = useSelector(state => state)
   const themeName = theme ? "light" : "dark"
   console.log("USSER::", user)
 
@@ -29,24 +28,13 @@ function Profile() {
       return {
         queryKey: ["movies", movieId],
         queryFn: () => fetchSingleMovie(movieId),
-        retry: false,
-        select: state => state?.data
+        select: state => state?.data,
       }
     })
   )
 
-  const data = tableData?.map(item => item?.data).map(item => ({ ...item, genres: [item?.genres?.map(item => item.name)].toString() }))
- 
-  useEffect(() => {
-    if(sortFilter.sortingValue === "favorites") {
-      dispatch(filterByFavSeen(movies, user?.favoritesList?.favoritesFilms))
-    } else if (sortFilter.sortingValue === "seen") {
-      dispatch(filterByFavSeen(movies, user?.seenList?.seenFilms))
-    } else if (sortFilter.sortingValue === "closest_release_date") {
-      dispatch(filterByReleaseDate(movies))
-    }
-  }, [sortFilter.sortingValue])
-    
+  const data = movies?.map(item => item?.data).map(item => ({ ...item, genres: [item?.genres?.map(item => item.name)].toString() }))
+
   console.log(sortFilter)
   console.log("DATA:::", data)
   console.log("MOVIES:::", movies)
@@ -112,9 +100,16 @@ function Profile() {
           <option value="seen">Seenlist</option>
         </StyledSelect>
         <StyledTable
-          theme={themeName} columns={columns} 
-          data={data}
-            />
+          theme={themeName} columns={columns}
+
+          data={
+            sortFilter.sortingValue === "closest_release_date" ?
+              data?.sort((prev, curr) => curr?.release_date > prev?.release_date) :
+              sortFilter.sortingValue === "favorites" ?
+                data?.filter(item => user.favoritesList.favoritesFilms?.includes(item?.id)) :
+                data?.filter(item => user.seenList.seenFilms?.includes(item?.id))
+          }
+        />
       </TableContainer>
     </ProfileGrid>
   </MainContainer>;

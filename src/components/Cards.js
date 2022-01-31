@@ -14,7 +14,7 @@ function Cards(props) {
 
     return <>
         {
-            props.data?.map(item => <Card theme={themeName}>
+            props.data?.map(item => <Card key={item.id} theme={themeName}>
                 <CardImg height={props.height} width={props.width} style={{ objectFit: "cover" }}
                     src={item.poster_path === null ? `https://tigres.com.tr/wp-content/uploads/2016/11/orionthemes-placeholder-image-1.png` : `https://image.tmdb.org/t/p/w200${item?.poster_path}`} alt="" />
                 <CardDescription>

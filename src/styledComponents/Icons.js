@@ -11,7 +11,7 @@ export const FavoriteIcon = styled(FaHeart)`
     position: ${props => props.loc === "table" ? "none":"absolute" };
     top: 85%;
     left: 60%;
-    color: ${props => props.isFav ? "#F05454" : "gray"};
+    color: ${props => props.isfav ? "#F05454" : "gray"};
     cursor: pointer;
 `
 
@@ -20,7 +20,7 @@ export const WatchedIcon = styled(ImBookmark)`
     position: ${props => props.loc === "table" ? "none":"absolute" };
     top: 85%;
     left: 80%;
-    color: ${props => props.isSeen ? "#F05454" : "gray"};
+    color: ${props => props.isseen ? "#F05454" : "gray"};
     cursor: pointer;
 `
 
