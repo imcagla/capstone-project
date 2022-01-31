@@ -9,12 +9,17 @@ import SearchPagination from './SearchPagination';
 import Cards from './Cards';
 import { MainContainer } from '../styledComponents/MainContainer';
 import { ButtonGroupContainer, ButtonGroupRow } from '../styledComponents/HomeStyle';
+import { useLocation } from 'react-router-dom';
+
+
 
 function Home() {
   const dispatch = useDispatch()
-  const { theme, trend, search } = useSelector((state) => state)
+  const location = useLocation()
+  const { theme, trend } = useSelector((state) => state)
   const themeName = theme ? "light" : "dark";
 
+  
 
   const discoverData = useQuery('discover movies', fetchDiscoverMovies, { retry: false })
   const trendingData = useQuery(['trending movies', trend], () => fetchTrendingMovies(trend), { retry: false })
@@ -23,7 +28,7 @@ function Home() {
   return (<MainContainer>
     <Search />
     {
-      search !== "" ? <SearchPagination /> :
+      location.pathname==="/search" ? <SearchPagination /> :
         <>
           <h4>Discover</h4>
           <Container theme={themeName}>

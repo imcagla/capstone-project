@@ -10,7 +10,7 @@ export const routes = [
     {name: "Home", pathname: "/", element: Home, isNav:false},
     {name: "Movies", pathname: "/sort-filter", element: SortFilter, isNav:false},
     {name: "Movies", pathname: "/sort-filter/:type", element: SortFilter, isNav:false},
-    {title: "Search", pathname: "/search", element: Home, isNav:false},
+    {name: "Search", pathname: "/search", element: Home, isNav:false},
     {name: "Profile", pathname: "/profile", element: Profile, isNav:false},
     {name: "About", pathname: "/about", element: About, isNav:true},
     {name: "Contact", pathname: "/contact", element: Contact, isNav:true},
