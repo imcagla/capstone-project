@@ -8,6 +8,7 @@ import { addFavList, addSeenList } from '../reduxStore/user';
 import { StyledTable, ProfileGrid, ProfileInfo, ProfileInfoGrid } from '../styledComponents/styledTable';
 import { MainContainer } from "../styledComponents/MainContainer"
 import { ProfileImg } from '../styledComponents/NavbarStyles';
+import SeenFavIcons from './SeenFavIcons';
 
 
 
@@ -64,12 +65,7 @@ function Profile() {
       dataIndex: '',
       key: 'operations',
       render: (movie) => (
-        user.userLogin && <div>
-          <FavoriteIcon loc={"table"} isFav={user?.favoritesList?.favoritesFilms?.includes(movie.id)}
-            onClick={() => dispatch(addFavList(movie.id))} />
-          <WatchedIcon loc={"table"} isSeen={user?.seenList?.seenFilms?.includes(movie.id)}
-            onClick={() => dispatch(addSeenList(movie.id))} />
-        </div>
+        <SeenFavIcons loc={"table"} movieId={movie.id} />
       )
     },
   ];

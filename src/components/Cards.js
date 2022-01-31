@@ -1,18 +1,15 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { CardDescription, Card } from '../styledComponents/CardContainer';
-import { FavoriteIcon, WatchedIcon } from "../styledComponents/Icons"
-import { addSeenList, addFavList } from "../reduxStore/user"
 import { StyledTitleLink } from "../styledComponents/Link"
+import SeenFavIcons from './SeenFavIcons';
 
 
 function Cards(props) {
-    const dispatch = useDispatch()
-    const { theme, user, genres } = useSelector((state) => state)
+    const { theme, genres } = useSelector((state) => state)
     const themeName = theme ? "light" : "dark";
     console.log("PROPS::", props)
-    const favoritesList = user?.favoritesList?.favoritesFilms
-    const seenList = user?.seenList?.seenFilms
+    
 
 
 
@@ -34,14 +31,7 @@ function Cards(props) {
                                 }
                             </li>
                         </ul>
-                        {
-                            user.userLogin && <div>
-                            <FavoriteIcon isFav={favoritesList?.includes(item.id)}
-                                onClick={() => dispatch(addFavList(item.id))} />
-                            <WatchedIcon isSeen={seenList?.includes(item.id)}
-                                onClick={() => dispatch(addSeenList(item.id))} />
-                        </div>
-                        }
+                        <SeenFavIcons movieId={item.id} />
                         
                     </div>
                 </CardDescription>
