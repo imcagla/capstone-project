@@ -15,6 +15,7 @@ export const ProfileGrid = styled.div`
     grid-template-columns: 30% 70%;
     text-align: center;
     align-items:center;
+    margin-top: 30px;
     @media only screen and (max-width: 960px) {
         grid-template-columns: auto;
     }
@@ -59,4 +60,8 @@ export const ProfileInfoGrid = styled.div`
 export const ProfileInfo = styled.div`
     text-align: start;
     
+`
+
+export const TableContainer = styled.div`
+    margin-top: 30px;
 `

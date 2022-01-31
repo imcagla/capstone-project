@@ -1,23 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useQueries } from 'react-query';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchSingleMovie } from '../api';
 import { TwitterIcon, InstagramIcon } from '../styledComponents/Icons';
-import { StyledTable, ProfileGrid, ProfileInfo, ProfileInfoGrid } from '../styledComponents/styledTable';
+import { StyledTable, ProfileGrid, ProfileInfo, ProfileInfoGrid, TableContainer } from '../styledComponents/ProfileStyle';
 import { MainContainer } from "../styledComponents/MainContainer"
 import { ProfileImg } from '../styledComponents/NavbarStyles';
 import SeenFavIcons from './SeenFavIcons';
-
+import { StyledSelect } from "../styledComponents/Dropdown"
+import { getSortVal } from '../reduxStore/sortFilterStates';
+import { filterByReleaseDate, filterByFavSeen } from '../reduxStore/filterTableData';
 
 
 function Profile() {
-  const { user, theme } = useSelector(state => state)
+  const dispatch = useDispatch()
+  const { user, theme, sortFilter, tableData } = useSelector(state => state)
   const themeName = theme ? "light" : "dark"
   console.log("USSER::", user)
 
   const allFilms = user?.favoritesList?.favoritesFilms?.concat(user?.seenList?.seenFilms)
   const reducedAllFilms = allFilms?.filter((item, index) => allFilms?.indexOf(item) === index)
-
 
   console.log("ALL:::", allFilms)
   console.log("ALL:::", reducedAllFilms)
@@ -33,8 +35,19 @@ function Profile() {
     })
   )
 
-  const data = movies?.map(item => item?.data).map(item => ({ ...item, genres: [item?.genres?.map(item => item.name)].toString() }))
-
+  const data = tableData?.map(item => item?.data).map(item => ({ ...item, genres: [item?.genres?.map(item => item.name)].toString() }))
+ 
+  useEffect(() => {
+    if(sortFilter.sortingValue === "favorites") {
+      dispatch(filterByFavSeen(movies, user?.favoritesList?.favoritesFilms))
+    } else if (sortFilter.sortingValue === "seen") {
+      dispatch(filterByFavSeen(movies, user?.seenList?.seenFilms))
+    } else if (sortFilter.sortingValue === "closest_release_date") {
+      dispatch(filterByReleaseDate(movies))
+    }
+  }, [sortFilter.sortingValue])
+    
+  console.log(sortFilter)
   console.log("DATA:::", data)
   console.log("MOVIES:::", movies)
 
@@ -91,8 +104,18 @@ function Profile() {
           </div>
         </ProfileInfoGrid>
       </ProfileInfo>
-      <StyledTable
-        theme={themeName} columns={columns} data={data} />
+      <TableContainer>
+        Filter By:
+        <StyledSelect theme={themeName} onChange={(e) => dispatch(getSortVal(e.target.options[e.target.selectedIndex].value))}>
+          <option value="closest_release_date">Closest release date</option>
+          <option value="favorites">Favorites</option>
+          <option value="seen">Seenlist</option>
+        </StyledSelect>
+        <StyledTable
+          theme={themeName} columns={columns} 
+          data={data}
+            />
+      </TableContainer>
     </ProfileGrid>
   </MainContainer>;
 }
