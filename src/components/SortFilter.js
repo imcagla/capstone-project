@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useQueries, useQuery } from 'react-query';
 import { useParams } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPopularTopMovies, fetchGenres, fetchSortFilterMovies } from '../api';
+import { fetchGenres, fetchSortFilterMovies } from '../api';
 import Cards from './Cards';
 import { loadMoreMovies, resetLoad } from '../reduxStore/loadMoreMovies';
 import { MainContainer } from '../styledComponents/MainContainer';
@@ -45,10 +45,12 @@ function SortFilter() {
   useEffect(() => {
     movies[0].refetch()
     dispatch(resetLoad())
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
     movies[load[load.length - 1] - 1]?.refetch()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [load, load.length, params.type])
 
   console.log("MOVIES:::", movies)

@@ -20,8 +20,3 @@ export const fetchSimilarMovies = (movieId) => BASE_AXIOS.get(`/movie/${movieId}
 export const fetchReviews = (movieId) => BASE_AXIOS.get(`/movie/${movieId}/reviews?api_key=${apiKey}`)
 
 export const fetchSortFilterMovies = (sortingValue, page, startDate, endDate, genres) => BASE_AXIOS.get(`/discover/movie?api_key=${apiKey}&sort_by=${sortingValue}&page=${page}&release_date.gte=${startDate}&release_date.lte=${endDate}&with_genres=${genres.toString()}`)
-
-export const fetchPopularTopMovies = (type, sortingValue, page) =>  BASE_AXIOS.get(`/movie/${type}?api_key=${apiKey}&sort_by=${sortingValue}&page=${page}`)
-
-
-// export const fetchSortedFilteredMovies = (sortingVal, page, startDate, endDate, genres) => BASE_AXIOS.get(`/discover/movie?api_key=${apiKey}&sort_by=${sortingVal}&page=${page}&release_date.gte=${startDate}&release_date.lte=${endDate}&with_genres=${genres.toString()}`)
