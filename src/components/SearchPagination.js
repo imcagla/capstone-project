@@ -1,22 +1,42 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import ReactPaginate from 'react-paginate'
+import React, { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
+import ReactPaginate from 'react-paginate'
+import { useSelector, useDispatch } from 'react-redux';
 import { fetchMovies } from '../api';
 import Cards from './Cards';
-import { useDispatch } from 'react-redux';
-import { paginationHandler } from '../reduxStore/paginationContext';
-import { MainContainer } from '../styledComponents/MainContainer';
-import { PaginationContainer } from '../styledComponents/SearchComponents';
 import { Alert } from '../styledComponents/Alert';
+import { MainContainer } from '../styledComponents/MainContainer';
+import { paginationHandler } from '../reduxStore/paginationContext';
+import { PaginationContainer } from '../styledComponents/SearchComponents';
+
+
 function SearchPagination() {
     const dispatch = useDispatch()
     const { search, pagination: selectedPage } = useSelector((state) => state)
     const perPage = 5
-    let pageCount
+    let pageCount = 0
 
-    const searchData = useQuery(["search movies", search], () => fetchMovies(search), { retry: false })
-    console.log("DATA:::", searchData)
+
+    const debouncedSearchTerm = useDebounce(search, 500);
+
+    function useDebounce(value, delay) {
+        const [debouncedValue, setDebouncedValue] = useState(value);
+        useEffect(
+            () => {
+                const handler = setTimeout(() => {
+                    setDebouncedValue(value);
+                }, delay);
+                return () => {
+                    clearTimeout(handler);
+                };
+            },
+            [value, delay]
+        );
+        return debouncedValue;
+    }
+
+    const searchData = useQuery(["search movies", debouncedSearchTerm], () => fetchMovies(debouncedSearchTerm), { retry: false })
+
 
     // when data is fetched update pageCount
     if (searchData.isFetched) {
