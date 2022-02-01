@@ -15,13 +15,10 @@ function Profile() {
   const dispatch = useDispatch()
   const { user, theme, sortFilter } = useSelector(state => state)
   const themeName = theme ? "light" : "dark"
-  console.log("USSER::", user)
 
   const allFilms = user?.favoritesList?.favoritesFilms?.concat(user?.seenList?.seenFilms)
   const reducedAllFilms = allFilms?.filter((item, index) => allFilms?.indexOf(item) === index)
 
-  console.log("ALL:::", allFilms)
-  console.log("ALL:::", reducedAllFilms)
 
   const movies = useQueries(
     reducedAllFilms?.map(movieId => {
@@ -34,10 +31,6 @@ function Profile() {
   )
 
   const data = movies?.map(item => item?.data).map(item => ({ ...item, genres: [item?.genres?.map(item => item.name)].toString() }))
-
-  console.log(sortFilter)
-  console.log("DATA:::", data)
-  console.log("MOVIES:::", movies)
 
   const columns = [
     {
@@ -100,8 +93,8 @@ function Profile() {
           <option value="seen">Seenlist</option>
         </StyledSelect>
         <StyledTable
-          theme={themeName} columns={columns}
-
+          theme={themeName} 
+          columns={columns}
           data={
             sortFilter.sortingValue === "closest_release_date" ?
               data?.sort((prev, curr) => curr?.release_date > prev?.release_date) :

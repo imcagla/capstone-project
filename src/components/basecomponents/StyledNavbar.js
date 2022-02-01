@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-
 import { routes } from "../../routes"
 import { changeTheme } from "../../reduxStore/themeChanger"
 import { DarkIcon, LightIcon } from '../../styledComponents/Icons';
@@ -12,6 +11,8 @@ import { HiMenu } from "react-icons/hi"
 import { FaTimes } from "react-icons/fa"
 import { LogOutIcon } from '../../styledComponents/Icons';
 import { userLogout } from "../../reduxStore/user"
+import { getSortVal } from "../../reduxStore/sortFilterStates"
+
 
 function StyledNavbar() {
     const navigate = useNavigate()
@@ -30,11 +31,13 @@ function StyledNavbar() {
             <StyledSelect
                 onClick={(e) => {
                     e.target.options[e.target.selectedIndex].value !== "" && navigate(`/sort-filter/${e.target.options[e.target.selectedIndex].value}`)
+                    dispatch(getSortVal(e.target.options[e.target.selectedIndex].value))
+
                 }}
                 className='nav-links'>
                 <option disabled selected value=""> Movies </option>
-                <option value="popular">Popular</option>
-                <option value="top_rated">Top Rated</option>
+                <option value="popularity.desc">Popular</option>
+                <option value="vote_average.desc">Top Rated</option>
             </StyledSelect>
             {
                 routes.filter(item => item.isNav).map((item, index) => <li className='nav-links' key={index}><StyledLink theme={themeName} to={item.pathname} >{item.name}</StyledLink></li>)
@@ -48,12 +51,12 @@ function StyledNavbar() {
                     <ProfileImg width={"30px"} src={user.avatarUrl} alt="" />
                 </StyledLink>
             </li>
-            <li className='nav-links'>
+                <li className='nav-links'>
                     <LogOutIcon onClick={() => {
                         dispatch(userLogout())
                         navigate(`/login`)
-                        }} />
-            </li></>
+                    }} />
+                </li></>
             }
         </ul>
         <ThemeChangerButton theme={themeName}

@@ -9,19 +9,19 @@ export const fetchDiscoverMovies = () => BASE_AXIOS.get(`/discover/movie?api_key
 
 export const fetchTrendingMovies = (trendValue) => BASE_AXIOS.get(`/trending/movie/${trendValue}?api_key=${apiKey}&page=1`);
 
-export const fetchGenres = () => BASE_AXIOS.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`)
+export const fetchGenres = () => BASE_AXIOS.get(`/genre/movie/list?api_key=${apiKey}`)
 
-export const fetchSingleMovie = (movieId) => BASE_AXIOS.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`) 
+export const fetchSingleMovie = (movieId) => BASE_AXIOS.get(`/movie/${movieId}?api_key=${apiKey}`) 
 
-export const fetchSingleMovieCredits = (movieId) => BASE_AXIOS.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`)
+export const fetchSingleMovieCredits = (movieId) => BASE_AXIOS.get(`/movie/${movieId}/credits?api_key=${apiKey}`)
 
-export const fetchSimilarMovies = (movieId) => BASE_AXIOS.get(`https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${apiKey}`)
+export const fetchSimilarMovies = (movieId) => BASE_AXIOS.get(`/movie/${movieId}/similar?api_key=${apiKey}`)
 
-export const fetchReviews = (movieId) => BASE_AXIOS.get(`https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${apiKey}`)
+export const fetchReviews = (movieId) => BASE_AXIOS.get(`/movie/${movieId}/reviews?api_key=${apiKey}`)
 
-export const fetchPopularTopMovies = (type, page, sortingValue, startDate, endDate, genres) => BASE_AXIOS.get(`https://api.themoviedb.org/3/movie/${type}?api_key=${apiKey}&sort_by=${sortingValue}&page=${page}&release_date.gte=${startDate}&release_date.lte=${endDate}&with_genres=${genres.toString()}`)
+export const fetchSortFilterMovies = (sortingValue, page, startDate, endDate, genres) => BASE_AXIOS.get(`/discover/movie?api_key=${apiKey}&sort_by=${sortingValue}&page=${page}&release_date.gte=${startDate}&release_date.lte=${endDate}&with_genres=${genres.toString()}`)
+
+export const fetchPopularTopMovies = (type, sortingValue, page) =>  BASE_AXIOS.get(`/movie/${type}?api_key=${apiKey}&sort_by=${sortingValue}&page=${page}`)
 
 
-
-
-// export const fetchSortedFilteredMovies = (sortingVal, page, startDate, endDate, genres) => BASE_AXIOS.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=${sortingVal}&page=${page}&release_date.gte=${startDate}&release_date.lte=${endDate}&with_genres=${genres.toString()}`)
+// export const fetchSortedFilteredMovies = (sortingVal, page, startDate, endDate, genres) => BASE_AXIOS.get(`/discover/movie?api_key=${apiKey}&sort_by=${sortingVal}&page=${page}&release_date.gte=${startDate}&release_date.lte=${endDate}&with_genres=${genres.toString()}`)

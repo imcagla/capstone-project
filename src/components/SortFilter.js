@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useQueries, useQuery } from 'react-query';
 import { useParams } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPopularTopMovies, fetchGenres } from '../api';
+import { fetchPopularTopMovies, fetchGenres, fetchSortFilterMovies } from '../api';
 import Cards from './Cards';
 import { loadMoreMovies, resetLoad } from '../reduxStore/loadMoreMovies';
 import { MainContainer } from '../styledComponents/MainContainer';
@@ -24,13 +24,15 @@ function SortFilter() {
   const movies = useQueries(
     load.map(page => {
       return {
-        queryKey: ["movies", params?.type, page, sortFilter?.sortingValue, sortFilter?.startDate, sortFilter?.endDate, sortFilter?.filteringGenres],
-        queryFn: () => fetchPopularTopMovies(params?.type, page, sortFilter?.sortingValue, sortFilter?.startDate, sortFilter?.endDate, sortFilter?.filteringGenres),
+        queryKey: ["movies",sortFilter.sortingValue, page, sortFilter?.startDate, sortFilter?.endDate, sortFilter?.filteringGenres],
+        queryFn: () => fetchSortFilterMovies(sortFilter.sortingValue, page, sortFilter?.startDate, sortFilter?.endDate, sortFilter?.filteringGenres),
+        select: state => state?.data,
         enabled: false,
         keepPreviousData: true,
       }
     })
   )
+
 
   const genresQuery = useQuery("genres", () => fetchGenres, { retry: false })
 
@@ -71,8 +73,8 @@ function SortFilter() {
           <SortFilterTitle>Filter by: </SortFilterTitle>
           <FilterDateContainer>
             Date:
-            <Input theme={themeName} onChange={(e) => dispatch(getFromDateFilter(e.target.value))} type="date" id="from_date" name="from_date"></Input>
-            <Input theme={themeName} onChange={(e) => dispatch(getToDateFilter(e.target.value))} type="date" id="to_date" name="to_date"></Input>
+            <Input theme={themeName} value={sortFilter?.startDate} onChange={(e) => dispatch(getFromDateFilter(e.target.value))} type="date" id="from_date" name="from_date"></Input>
+            <Input theme={themeName} value={sortFilter?.endDate} onChange={(e) => dispatch(getToDateFilter(e.target.value))} type="date" id="to_date" name="to_date"></Input>
           </FilterDateContainer>
           <Container>
             {
@@ -95,12 +97,12 @@ function SortFilter() {
       </div>
       <div>
         {
-          movies?.map((item, index) => item?.isLoading ? <h5>Loading...</h5> : <Cards key={index} height={"280"} width={"180"} data={item?.data?.data?.results} />)
+          movies?.map((item, index) => item?.isLoading ? <h5>Loading...</h5> : <Cards key={index} height={"280"} width={"180"} data={item?.data?.results} />)
         }
       </div>
       <div>
         {
-          (movies[movies?.length - 1]?.data === undefined || (movies[movies?.length - 1]?.data?.data?.results?.length === 0)) ? <Alert>No more results found!</Alert> : <Button theme={themeName}
+          (movies[movies?.length - 1]?.data === undefined || (movies[movies?.length - 1]?.data?.results?.length === 0)) ? <Alert>No more results found!</Alert> : <Button theme={themeName}
             onClick={() => {
               dispatch(loadMoreMovies())
             }} >

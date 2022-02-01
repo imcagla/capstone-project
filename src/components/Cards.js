@@ -20,7 +20,7 @@ function Cards(props) {
                 <CardDescription>
                     <div className="row">
                         <ul className='list-unstyled fw-bold'>
-                            <StyledTitleLink theme={themeName} to={`/movies/${item.id}`}><li className='fs-6'>{item.title} - {item.release_date?.substring(0, 4)}</li></StyledTitleLink>
+                            <StyledTitleLink theme={themeName} to={`/movies/${item.id}`}><li className='fs-6'>{item.original_title} - {item.release_date?.substring(0, 4)}</li></StyledTitleLink>
                             <li className='text-muted small'>
                                 {
                                     item.genre_ids.map(item =>
