@@ -28,7 +28,7 @@ function Home() {
   return (<MainContainer>
     <Search />
     {
-      location.pathname==="/search" ? <SearchPagination /> :
+      location?.pathname==="/search" ? <SearchPagination /> :
         <>
           <h4>Discover</h4>
           <Container theme={themeName}>

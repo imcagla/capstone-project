@@ -14,7 +14,7 @@ function App() {
     <StyledNavbar/>
       <Routes>
         {
-          routes.map((item, index) => <Route key={index} path={item.pathname} element={<item.element />} />)
+          routes.map((item, index) => <Route key={index} path={item?.pathname} element={<item.element />} />)
         }
       </Routes>
       <Footer />

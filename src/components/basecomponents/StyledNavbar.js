@@ -40,14 +40,14 @@ function StyledNavbar() {
                 <option value="vote_average.desc">Top Rated</option>
             </StyledSelect>
             {
-                routes.filter(item => item.isNav).map((item, index) => <li onClick={() => setClicked(!clicked)} className='nav-links' key={index}><StyledLink theme={themeName} to={item.pathname} >{item.name}</StyledLink></li>)
+                routes.filter(item => item.isNav).map((item, index) => <li onClick={() => setClicked(!clicked)} className='nav-links' key={index}><StyledLink theme={themeName} to={item?.pathname} >{item.name}</StyledLink></li>)
             }
             {!user.userLogin ? <li className='nav-links'>
-                <StyledLink theme={themeName} to="/login" >
+                <StyledLink onClick={() => setClicked(!clicked)} theme={themeName} to="/login" >
                     Login
                 </StyledLink>
             </li> : <><li className='nav-links'>
-                <StyledLink theme={themeName} to="/profile" >
+                <StyledLink onClick={() => setClicked(!clicked)} theme={themeName} to="/profile" >
                     <ProfileImg width={"30px"} src={user.avatarUrl} alt="" />
                 </StyledLink>
             </li>
@@ -55,6 +55,7 @@ function StyledNavbar() {
                     <LogOutIcon onClick={() => {
                         dispatch(userLogout())
                         navigate(`/login`)
+                        setClicked(false)
                     }} />
                 </li></>
             }

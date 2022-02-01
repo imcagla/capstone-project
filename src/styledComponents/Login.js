@@ -14,7 +14,7 @@ export const LoginContainer = styled.div`
     justify-content: center;
     height: 50vh;
     width: 30vw;
-    background-color:${props => props.theme === "dark" ? "black" : "whitesmoke"} ;
+    background-color:${props => props.theme === "dark" ? "#222831" : "whitesmoke"} ;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.37);
     border-radius: 25px;
     @media only screen and (max-width: 992px) {
