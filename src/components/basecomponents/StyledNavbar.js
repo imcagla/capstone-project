@@ -23,7 +23,7 @@ function StyledNavbar() {
 
     return <NavbarContent theme={themeName}>
         <NavbarTitle theme={themeName} >
-            <StyledLink theme={themeName} to="/">Movies</StyledLink>
+            <StyledLink onClick={() => setClicked(false)} theme={themeName} to="/">Movies</StyledLink>
         </NavbarTitle>
 
         <NavMenuIcon theme={themeName} onClick={() => setClicked(!clicked)}>{clicked ? <FaTimes /> : <HiMenu />}</NavMenuIcon>
@@ -36,11 +36,11 @@ function StyledNavbar() {
                 }}
                 className='nav-links'>
                 <option disabled selected value=""> Movies </option>
-                <option value="popularity.desc">Popular</option>
+                <option value="popularity.desc"> Popular</option>
                 <option value="vote_average.desc">Top Rated</option>
             </StyledSelect>
             {
-                routes.filter(item => item.isNav).map((item, index) => <li className='nav-links' key={index}><StyledLink theme={themeName} to={item.pathname} >{item.name}</StyledLink></li>)
+                routes.filter(item => item.isNav).map((item, index) => <li onClick={() => setClicked(!clicked)} className='nav-links' key={index}><StyledLink theme={themeName} to={item.pathname} >{item.name}</StyledLink></li>)
             }
             {!user.userLogin ? <li className='nav-links'>
                 <StyledLink theme={themeName} to="/login" >
