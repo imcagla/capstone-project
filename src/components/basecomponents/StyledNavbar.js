@@ -12,6 +12,7 @@ import { FaTimes } from "react-icons/fa"
 import { LogOutIcon } from '../../styledComponents/Icons';
 import { userLogout } from "../../reduxStore/user"
 import { getSortVal } from "../../reduxStore/sortFilterStates"
+import {Dropdown, DropdownList} from "../../styledComponents/Dropdown"
 
 
 function StyledNavbar() {
@@ -28,17 +29,20 @@ function StyledNavbar() {
 
         <NavMenuIcon theme={themeName} onClick={() => setClicked(!clicked)}>{clicked ? <FaTimes /> : <HiMenu />}</NavMenuIcon>
         <ul className={clicked ? 'nav-menu active' : 'nav-menu'} >
-            <StyledSelect
-                onClick={(e) => {
-                    e.target.options[e.target.selectedIndex].value !== "" && navigate(`/sort-filter/${e.target.options[e.target.selectedIndex].value}`)
-                    dispatch(getSortVal(e.target.options[e.target.selectedIndex].value))
+            <Dropdown theme={themeName} onClick={() => setClicked(!clicked)}>
+                Movies
+                <DropdownList theme={themeName} >
+                    <li onClick={(e) => dispatch(getSortVal(e.target.name))}>
+                        <StyledLink theme={themeName} name="vote_average.desc"  to="/sort-filter/vote_average.desc">
+                            Top Rated
+                        </StyledLink></li>
+                    <li onClick={(e) => dispatch(getSortVal(e.target.name))}>  
+                    <StyledLink theme={themeName} name="popularity.desc" to="/sort-filter/popularity.desc">
+                        Popular
+                    </StyledLink></li>
+                </DropdownList>
+            </Dropdown>
 
-                }}
-                className='nav-links'>
-                <option disabled selected value=""> Movies </option>
-                <option value="popularity.desc"> Popular</option>
-                <option value="vote_average.desc">Top Rated</option>
-            </StyledSelect>
             {
                 routes.filter(item => item.isNav).map((item, index) => <li onClick={() => setClicked(!clicked)} className='nav-links' key={index}><StyledLink theme={themeName} to={item?.pathname} >{item.name}</StyledLink></li>)
             }
