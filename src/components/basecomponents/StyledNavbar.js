@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { routes } from "../../routes"
-import { changeTheme } from "../../reduxStore/themeChanger"
-import { DarkIcon, LightIcon } from '../../styledComponents/Icons';
-import { NavbarContent, NavbarTitle, NavMenuIcon, ThemeChangerButton, ProfileImg } from '../../styledComponents/NavbarStyles';
-import { StyledSelect } from '../../styledComponents/Dropdown';
-import { StyledLink } from '../../styledComponents/Link';
 import { HiMenu } from "react-icons/hi"
 import { FaTimes } from "react-icons/fa"
-import { LogOutIcon } from '../../styledComponents/Icons';
+import { routes } from "../../routes"
 import { userLogout } from "../../reduxStore/user"
+import { changeTheme } from "../../reduxStore/themeChanger"
 import { getSortVal } from "../../reduxStore/sortFilterStates"
+import { DarkIcon, LightIcon, LogOutIcon } from '../../styledComponents/Icons';
+import { StyledLink } from '../../styledComponents/Link';
 import {Dropdown, DropdownList} from "../../styledComponents/Dropdown"
+import { NavbarContent, NavbarTitle, NavMenuIcon, ThemeChangerButton, ProfileImg } from '../../styledComponents/NavbarStyles';
 
 
 function StyledNavbar() {
