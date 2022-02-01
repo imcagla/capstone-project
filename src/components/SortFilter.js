@@ -104,7 +104,7 @@ function SortFilter() {
       </div>
       <div>
         {
-          (movies[movies?.length - 1]?.data === undefined || (movies[movies?.length - 1]?.data?.results?.length === 0)) ? <Alert>No more results found!</Alert> : <Button theme={themeName}
+          ((movies[movies?.length - 1]?.data?.results?.length === 0)) ? <Alert>No more results found!</Alert> : <Button theme={themeName}
             onClick={() => {
               dispatch(loadMoreMovies())
             }} >
