@@ -17,3 +17,11 @@ export const StyledTitleLink = styled(Link)`
         color: white;
     }
 `
+
+export const StyledAnchor = styled.a`
+    text-decoration:none;
+    color: ${props => props.theme === "dark" ? "#DDDDDD" : "#222831"};
+    &:hover {
+        color: ${props => props.theme === "dark" ? "white" : "black"};
+    }
+`

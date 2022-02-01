@@ -1,10 +1,20 @@
 import styled from "styled-components"
-import { FaHeart } from "react-icons/fa"
+import { FaHeart, FaLinkedinIn } from "react-icons/fa"
 import { ImBookmark } from "react-icons/im"
 import { BsSunFill, BsTwitter, BsInstagram } from "react-icons/bs"
 import { MdDarkMode } from "react-icons/md"
 import { FiLogOut } from "react-icons/fi"
+import {BsGithub} from "react-icons/bs"
 
+export const LinkedinIcon = styled(FaLinkedinIn)`
+    font-size: 30px;
+    margin: 5px;
+`
+
+export const GithubIcon = styled(BsGithub)`
+    font-size: 30px;
+    margin: 5px;
+`
 
 export const FavoriteIcon = styled(FaHeart)`
     font-size: 25px;
