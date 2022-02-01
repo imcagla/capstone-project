@@ -3,7 +3,7 @@ import { useQueries } from 'react-query';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSingleMovie } from '../api';
 import { TwitterIcon, InstagramIcon } from '../styledComponents/Icons';
-import { StyledTable, ProfileGrid, ProfileInfo, ProfileInfoGrid, TableContainer } from '../styledComponents/ProfileStyle';
+import { StyledTable, ProfileGrid, ProfileInfo, ProfileInfoGrid, TableContainer, TableDropdownContainer } from '../styledComponents/ProfileStyle';
 import { MainContainer } from "../styledComponents/MainContainer"
 import { ProfileImg } from '../styledComponents/NavbarStyles';
 import SeenFavIcons from './SeenFavIcons';
@@ -85,13 +85,15 @@ function Profile() {
           </div>
         </ProfileInfoGrid>
       </ProfileInfo>
-      <TableContainer>
-        Filter By:
+      <TableContainer theme={themeName}>
+        <TableDropdownContainer>
+          Filter By:
         <StyledSelect theme={themeName} onChange={(e) => dispatch(getSortVal(e.target.options[e.target.selectedIndex].value))}>
           <option value="closest_release_date">Closest release date</option>
           <option value="favorites">Favorites</option>
           <option value="seen">Seenlist</option>
         </StyledSelect>
+        </TableDropdownContainer>
         <StyledTable
           theme={themeName} 
           columns={columns}

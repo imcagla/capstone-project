@@ -29,6 +29,10 @@ export const ProfileInfoGrid = styled.div`
     @media only screen and (max-width: 960px) {
         grid-template-columns: 40% 60%;
     }
+    @media only screen and (max-width: 600px) {
+        grid-template-columns: auto;
+        justify-content:center;
+    }
     & > div {
         & > .username {
             font-weight: bold;
@@ -63,5 +67,17 @@ export const ProfileInfo = styled.div`
 `
 
 export const TableContainer = styled.div`
-    margin-top: 30px;
+    background-color: ${props => props.theme ==="dark" ? "rgb(34, 40, 49, 1)": "rgb(221, 221, 221, 0.5)"};
+    border-radius: 25px;
+    padding: 30px;
+    @media only screen and (max-width: 960px) {
+        margin-top: 30px;
+    }
+`
+
+export const TableDropdownContainer = styled.div`
+    padding-bottom: 20px;
+    width: 50%;
+    text-align: start;
+
 `
