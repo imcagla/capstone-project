@@ -14,7 +14,6 @@ import { getSortVal } from '../reduxStore/sortFilterStates';
 function Profile() {
   const dispatch = useDispatch()
   const { user, theme, sortFilter } = useSelector(state => state)
-  const themeName = theme ? "light" : "dark"
 
   const allFilms = user?.favoritesList?.favoritesFilms?.concat(user?.seenList?.seenFilms)
   const reducedAllFilms = allFilms?.filter((item, index) => allFilms?.indexOf(item) === index)
@@ -65,7 +64,7 @@ function Profile() {
   return <MainContainer>
     <ProfileGrid>
       <ProfileInfo>
-        <ProfileInfoGrid theme={themeName}>
+        <ProfileInfoGrid theme={theme}>
           <ProfileImg width={"200px"} src={user.avatarUrl} alt="" />
           <div>
             <p className="username"> {user.username.toUpperCase()} </p>
@@ -76,26 +75,26 @@ function Profile() {
             </ul>
             <div>
               <a href={user.socials.instagram}>
-                <InstagramIcon theme={themeName} />
+                <InstagramIcon theme={theme} />
               </a>
               <a href={user.socials.twitter}>
-                <TwitterIcon theme={themeName} />
+                <TwitterIcon theme={theme} />
               </a>
             </div>
           </div>
         </ProfileInfoGrid>
       </ProfileInfo>
-      <TableContainer theme={themeName}>
+      <TableContainer theme={theme}>
         <TableDropdownContainer>
           Filter By:
-        <StyledSelect theme={themeName} onChange={(e) => dispatch(getSortVal(e.target.options[e.target.selectedIndex].value))}>
+        <StyledSelect theme={theme} onChange={(e) => dispatch(getSortVal(e.target.options[e.target.selectedIndex].value))}>
           <option value="closest_release_date">Closest release date</option>
           <option value="favorites">Favorites</option>
           <option value="seen">Seenlist</option>
         </StyledSelect>
         </TableDropdownContainer>
         <StyledTable
-          theme={themeName} 
+          theme={theme} 
           columns={columns}
           data={
             sortFilter.sortingValue === "closest_release_date" ?

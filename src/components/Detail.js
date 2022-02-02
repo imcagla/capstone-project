@@ -13,7 +13,6 @@ import { DetailGrid, CastCard, CastCardDescription } from '../styledComponents/S
 function Detail() {
   const { movieId } = useParams()
   const { theme } = useSelector(state => state)
-  const themeName = theme ? "light" : "dark"
 
   const reviewsQuery = useQuery(["reviews", movieId], () => fetchReviews(movieId), { retry: false, select: state => state?.data })
   console.log("REVIEWS:::", reviewsQuery)
@@ -32,7 +31,7 @@ function Detail() {
 
 
   return <MainContainer>
-    <DetailGrid theme={themeName}>
+    <DetailGrid theme={theme}>
       <img src={movieData?.poster_path === null ? `https://tigres.com.tr/wp-content/uploads/2016/11/orionthemes-placeholder-image-1.png` : `https://image.tmdb.org/t/p/w300${movieData?.poster_path}`} alt="" />
       <div className='detail-description'>
         <h2>
@@ -70,7 +69,7 @@ function Detail() {
       </div>
       <div>
         <h5> Cast Members:</h5>
-        <Container theme={themeName}>
+        <Container theme={theme}>
 
           {
             movieCastData?.map(item => <CastCard> <img width={"100"} height={"150"} src={item.profile_path === null ? `https://tigres.com.tr/wp-content/uploads/2016/11/orionthemes-placeholder-image-1.png` : `https://image.tmdb.org/t/p/w200${item?.profile_path}`} alt="" />
@@ -86,7 +85,7 @@ function Detail() {
 
     <div>
       <h5>Similar Movies:</h5>
-      <Container theme={themeName}>
+      <Container theme={theme}>
         <Cards height={"230"} width={"150"} data={similarMoviesData?.results} />
       </Container>
     </div>

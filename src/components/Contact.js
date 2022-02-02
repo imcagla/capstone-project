@@ -9,24 +9,23 @@ import { StyledAnchor } from '../styledComponents/Link';
 
 function Contact() {
   const {theme} = useSelector(state => state)
-  const themeName = theme ? "light" : "dark"
 
   return <MainContainer>
-    <ContactContainer theme={themeName}>
+    <ContactContainer theme={theme}>
     <h1>Get In Touch With Me!</h1>
       <ContactGrid>
         <ContactColumn>
           <h4>İmran Çağla Eyüboğlu</h4>
           <p>Frontend Developer</p>
         </ContactColumn>
-        <ContactColumn theme={themeName}>
+        <ContactColumn theme={theme}>
           <h4>Social</h4>
           <ul>
             <li>
-              <StyledAnchor theme={themeName} href="https://github.com/imcagla"><GithubIcon /></StyledAnchor>
+              <StyledAnchor theme={theme} href="https://github.com/imcagla"><GithubIcon /></StyledAnchor>
             </li>
             <li>
-              <StyledAnchor theme={themeName} href="https://www.linkedin.com/in/imrancaglaeyuboglu/"><LinkedinIcon /></StyledAnchor>
+              <StyledAnchor theme={theme} href="https://www.linkedin.com/in/imrancaglaeyuboglu/"><LinkedinIcon /></StyledAnchor>
             </li>
           </ul>
         </ContactColumn>

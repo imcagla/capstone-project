@@ -25,7 +25,6 @@ function Cards(props) {
                                     item.genre_ids.map(item =>
                                         genres
                                             ?.filter(genre => item === (genre.id)).map(item => item.name)).join(", ")
-                                            
                                 }
                             </li>
                         </ul>

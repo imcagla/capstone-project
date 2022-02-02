@@ -14,7 +14,6 @@ function Login() {
   const [userName, setUserName] = useState("")
   const [password, setPassword] = useState("")
   const { theme, user } = useSelector(state => state)
-  const themeName = theme ? "light" : "dark";
 
 
   useEffect(() => {
@@ -26,13 +25,13 @@ function Login() {
 
   return <MainContainer>
     <LoginMainContainer>
-      <LoginContainer theme={themeName}>
+      <LoginContainer theme={theme}>
       <InputContainer>
-        <Input theme={themeName} type="text" placeholder='username' onChange={(e) => setUserName(e.target.value)} />
-        <Input theme={themeName} type="password" placeholder='password' onChange={(e) => setPassword(e.target.value)} />
+        <Input theme={theme} type="text" placeholder='username' onChange={(e) => setUserName(e.target.value)} />
+        <Input theme={theme} type="password" placeholder='password' onChange={(e) => setPassword(e.target.value)} />
 
         <Button
-          theme={themeName}
+          theme={theme}
           onClick={() => {
             dispatch(validateUser(userName, password))
           }}>

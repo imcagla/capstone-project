@@ -17,7 +17,6 @@ function Home() {
   const dispatch = useDispatch()
   const location = useLocation()
   const { theme, trend } = useSelector((state) => state)
-  const themeName = theme ? "light" : "dark";
 
   
 
@@ -31,12 +30,12 @@ function Home() {
       location?.pathname==="/search" ? <SearchPagination /> :
         <>
           <h4>Discover</h4>
-          <Container theme={themeName}>
+          <Container theme={theme}>
           <Cards height={"230"} width={"150"} data={discoverData?.data?.data?.results} />
           </Container>
           <ButtonGroupContainer>
             <h4>Trending</h4>
-            <ButtonGroupRow trend={trend} theme={themeName}>
+            <ButtonGroupRow trend={trend} theme={theme}>
               <Button 
                 onClick={() => dispatch(changeTrendingPeriod("week"))}
                 className={`btn-week`}
@@ -51,7 +50,7 @@ function Home() {
               </Button>
             </ButtonGroupRow>
           </ButtonGroupContainer>
-          <Container theme={themeName}>
+          <Container theme={theme}>
           <Cards  height={"230"} width={"150"} data={trendingData?.data?.data?.results} />
           </Container>
         </>

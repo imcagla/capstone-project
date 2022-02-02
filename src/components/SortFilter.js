@@ -18,7 +18,6 @@ function SortFilter() {
   const dispatch = useDispatch()
   const { load, theme, genres, sortFilter } = useSelector(state => state)
   const params = useParams()
-  const themeName = theme ? "light" : "dark"
 
 
   const movies = useQueries(
@@ -58,10 +57,10 @@ function SortFilter() {
   return <MainContainer>
     <SortFilterMainContainer>
       <SortFilterGrid>
-        <GridContainer theme={themeName}>
+        <GridContainer theme={theme}>
            <SortFilterTitle>Sort by:</SortFilterTitle>
           <div>
-            <StyledSelect theme={themeName} onChange={(e) => dispatch(getSortVal(e.target.options[e.target.selectedIndex].value))}>
+            <StyledSelect theme={theme} onChange={(e) => dispatch(getSortVal(e.target.options[e.target.selectedIndex].value))}>
               <option value="original_title.asc">Movie Title (from A to Z)</option>
               <option value="original_title.desc">Movie Title (from Z to A)</option>
               <option value="popularity.desc">Most Populars</option>
@@ -71,20 +70,20 @@ function SortFilter() {
             </StyledSelect>
           </div>
         </GridContainer>
-        <GridContainer theme={themeName}>
+        <GridContainer theme={theme}>
           <SortFilterTitle>Filter by: </SortFilterTitle>
           <FilterDateContainer>
             Date:
-            <Input theme={themeName} value={sortFilter?.startDate} onChange={(e) => dispatch(getFromDateFilter(e.target.value))} type="date" id="from_date" name="from_date"></Input>
-            <Input theme={themeName} value={sortFilter?.endDate} onChange={(e) => dispatch(getToDateFilter(e.target.value))} type="date" id="to_date" name="to_date"></Input>
+            <Input theme={theme} value={sortFilter?.startDate} onChange={(e) => dispatch(getFromDateFilter(e.target.value))} type="date" id="from_date" name="from_date"></Input>
+            <Input theme={theme} value={sortFilter?.endDate} onChange={(e) => dispatch(getToDateFilter(e.target.value))} type="date" id="to_date" name="to_date"></Input>
           </FilterDateContainer>
           <Container>
             {
-              genres?.filter(item => !sortFilter?.filteringGenres?.includes(item?.id)).map(item => <FilterButtons onClick={() => dispatch(getGenreFilter(item?.id))} key={item?.id} theme={themeName}>{item?.name}</FilterButtons>)
+              genres?.filter(item => !sortFilter?.filteringGenres?.includes(item?.id)).map(item => <FilterButtons onClick={() => dispatch(getGenreFilter(item?.id))} key={item?.id} theme={theme}>{item?.name}</FilterButtons>)
             }
           </Container>
         </GridContainer>
-        <FilterButtons theme={themeName}
+        <FilterButtons theme={theme}
           onClick={() => {
             dispatch(getSortFilterResult(movies))
             dispatch(resetLoad())
@@ -94,7 +93,7 @@ function SortFilter() {
       </SortFilterGrid>
       <div>
         {
-          genres?.filter(item => sortFilter?.filteringGenres?.includes(item?.id))?.map(item => <FilteredButtons theme={themeName}>{item?.name} <span onClick={() => dispatch(removeGenreFilter(item?.id))}> X </span></FilteredButtons>)
+          genres?.filter(item => sortFilter?.filteringGenres?.includes(item?.id))?.map(item => <FilteredButtons theme={theme}>{item?.name} <span onClick={() => dispatch(removeGenreFilter(item?.id))}> X </span></FilteredButtons>)
         }
       </div>
       <div>
@@ -104,7 +103,7 @@ function SortFilter() {
       </div>
       <div>
         {
-          ((movies[movies?.length - 1]?.data?.results?.length === 0)) ? <Alert>No more results found!</Alert> : <Button theme={themeName}
+          ((movies[movies?.length - 1]?.data?.results?.length === 0)) ? <Alert>No more results found!</Alert> : <Button theme={theme}
             onClick={() => {
               dispatch(loadMoreMovies())
             }} >

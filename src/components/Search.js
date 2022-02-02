@@ -11,10 +11,9 @@ function Search() {
   const navigate = useNavigate()
   const location = useLocation()
   const { theme, search } = useSelector(state => state)
-  const themeName = theme ? "light" : "dark"
 
   return <MainContainer>
-    <Input theme={themeName} type="text" placeholder='search' value={location?.pathname === "/search" ? search : ""} onChange={(e) => {
+    <Input theme={theme} type="text" placeholder='search' value={location?.pathname === "/search" ? search : ""} onChange={(e) => {
       dispatch(searchHandler(e.target.value))
       navigate(`/search?q=${e.target.value}`)
     }} />
