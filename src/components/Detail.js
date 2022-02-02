@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchSimilarMovies, fetchSingleMovie, fetchSingleMovieCredits, fetchReviews } from '../api';
-import { Container } from '../styledComponents/CardContainer';
+import { Container, CardImg } from '../styledComponents/CardContainer';
 import Cards from './Cards';
 import { MainContainer } from '../styledComponents/MainContainer';
 import { DetailGrid, CastCard, CastCardDescription } from '../styledComponents/StyledDetailPage';
@@ -72,7 +72,7 @@ function Detail() {
         <Container theme={theme}>
 
           {
-            movieCastData?.map(item => <CastCard> <img width={"100"} height={"150"} src={item.profile_path === null ? `https://tigres.com.tr/wp-content/uploads/2016/11/orionthemes-placeholder-image-1.png` : `https://image.tmdb.org/t/p/w200${item?.profile_path}`} alt="" />
+            movieCastData?.map(item => <CastCard> <CardImg width={"100"} height={"150"} src={item.profile_path === null ? `https://tigres.com.tr/wp-content/uploads/2016/11/orionthemes-placeholder-image-1.png` : `https://image.tmdb.org/t/p/w200${item?.profile_path}`} alt="" />
               <CastCardDescription>
                 <div>{item.name}</div>
                 <div>{item.character}</div>

@@ -67,7 +67,7 @@ export const CastCard = styled.div`
     display:inline-block;
     white-space:normal;
     margin: 6px;
-    vertical-align:middle;
+    vertical-align: top;
     white-space:normal;
     align-items: start;
 `
