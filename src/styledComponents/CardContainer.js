@@ -25,7 +25,7 @@ export const CardDescription = styled.div`
     display:none;
     position: absolute;
     top:0;
-    start:0;
+    left: 0;
     padding: 4px;
     border-radius: 7px;
     color: white;
@@ -33,6 +33,17 @@ export const CardDescription = styled.div`
     cursor: pointer;
     width: 100%;
     height: 100%;
+    & > ul {
+        position: absolute;
+        left: -20px;
+        display: inline-block;
+        list-style: none;
+        font-weight: bold;
+        & > li {
+            font-size: 12px;
+            color: gray;
+        }
+    }
 `
 
 export const Card = styled.div`
@@ -64,4 +75,5 @@ export const Button = styled.button`
 
 export const CardImg = styled.img`
     border-radius: 7px;
+    object-fit: cover;
 `
