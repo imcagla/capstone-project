@@ -1,7 +1,7 @@
 const CHANGETHEME = "CHANGETHEME";
 
 // ACTION CREATERS
-export const changeTheme = (value = true) => {
+export const changeTheme = (value) => {
     return {
         type: CHANGETHEME,
         payload: value
@@ -9,10 +9,10 @@ export const changeTheme = (value = true) => {
 }
 
 // REDUCER
-const themeReducer = (theme = true, action) => {
+const themeReducer = (theme = "light", action) => {
     switch(action.type) {
         case CHANGETHEME:
-            return !action.payload
+            return theme === "dark" ? "light" : "dark"
         default:
             return theme
     }

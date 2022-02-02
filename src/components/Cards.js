@@ -7,25 +7,25 @@ import SeenFavIcons from './SeenFavIcons';
 
 function Cards(props) {
     const { theme, genres } = useSelector((state) => state)
-    const themeName = theme ? "light" : "dark";
     
 
 
 
     return <>
         {
-            props.data?.map(item => <Card key={item.id} theme={themeName}>
+            props.data?.map(item => <Card key={item.id} theme={theme}>
                 <CardImg height={props.height} width={props.width} 
                     src={item.poster_path === null ? `https://tigres.com.tr/wp-content/uploads/2016/11/orionthemes-placeholder-image-1.png` : `https://image.tmdb.org/t/p/w200${item?.poster_path}`} alt="" />
                 <CardDescription>
                     
                         <ul>
-                            <StyledTitleLink theme={themeName} to={`/movies/${item.id}`}><li>{item.original_title} - {item.release_date?.substring(0, 4)}</li></StyledTitleLink>
+                            <StyledTitleLink theme={theme} to={`/movies/${item.id}`}><li>{item.original_title} - {item.release_date?.substring(0, 4)}</li></StyledTitleLink>
                             <li>
                                 {
                                     item.genre_ids.map(item =>
                                         genres
-                                            ?.filter(genre => item === (genre.id)).map(item => <span>{item.name} </span>))
+                                            ?.filter(genre => item === (genre.id)).map(item => item.name)).join(", ")
+                                            
                                 }
                             </li>
                         </ul>

@@ -6,10 +6,9 @@ import { useSelector } from 'react-redux';
 
 function About() {
   const {theme} = useSelector(state => state)
-  const themeName = theme ? "light" : "dark"
 
   return <MainContainer>
-    <AboutContainer theme={themeName}>
+    <AboutContainer theme={theme}>
       <h3>UP School Capstone Project</h3>
       <p>
         This project is the capstone project given at UP School Front-end Development Program, created by Imran Cagla Eyuboglu. <a href="https://developers.themoviedb.org/4/getting-started/authorization">The Movie Database API</a> is used. The Movie Database API provides a large database about Movies. People can find any kind of movie they look for in this page, by filtering, sorting and searching. First thing to do is LOGIN!

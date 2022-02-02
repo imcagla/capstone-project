@@ -7,30 +7,29 @@ import { StyledLink } from "../../styledComponents/Link"
 
 function Footer() {
   const { theme, user } = useSelector(state => state)
-  const themeName = theme ? "light" : "dark"
 
 
-  return <FooterContainer theme={themeName}>
+  return <FooterContainer theme={theme}>
     <FooterWrapper>
       <FooterRow>
       <FooterColumn>
-          <FooterLink theme={themeName} href={user.socials.twitter} >
-            <TwitterIcon theme={themeName} />
+          <FooterLink theme={theme} href={user.socials.twitter} >
+            <TwitterIcon theme={theme} />
             Twitter
           </FooterLink>
-          <FooterLink theme={themeName} href={user.socials.instagram} >
-            <InstagramIcon theme={themeName} />
+          <FooterLink theme={theme} href={user.socials.instagram} >
+            <InstagramIcon theme={theme} />
             Instagram
           </FooterLink>
         </FooterColumn>
       </FooterRow>
       <FooterRow>
         <FooterColumn>
-           <StyledLink to="/about" ><FooterTitle theme={themeName}> About</FooterTitle></StyledLink>
-           <StyledLink to="/contact" ><FooterTitle theme={themeName}>Contact</FooterTitle></StyledLink> 
-           <StyledLink to="/profile" ><FooterTitle theme={themeName}>Profile</FooterTitle></StyledLink> 
+           <StyledLink to="/about" ><FooterTitle theme={theme}> About</FooterTitle></StyledLink>
+           <StyledLink to="/contact" ><FooterTitle theme={theme}>Contact</FooterTitle></StyledLink> 
+           <StyledLink to="/profile" ><FooterTitle theme={theme}>Profile</FooterTitle></StyledLink> 
            {
-             user.userLogin ? "" : <StyledLink to="/login" ><FooterTitle theme={themeName}>Login</FooterTitle></StyledLink>
+             user.userLogin ? "" : <StyledLink to="/login" ><FooterTitle theme={theme}>Login</FooterTitle></StyledLink>
            }
             
         </FooterColumn>
