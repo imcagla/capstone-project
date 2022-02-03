@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "./CardContainer";
+import { Button } from "./BaseStyleComponents";
 
 
 export const SortFilterMainContainer = styled.div`

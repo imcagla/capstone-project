@@ -1,8 +1,8 @@
 import React from 'react';
-import { MainContainer } from "../styledComponents/MainContainer"
-import { AboutContainer } from '../styledComponents/AboutStyle';
-import { FavoriteIcon, WatchedIcon } from '../styledComponents/Icons';
 import { useSelector } from 'react-redux';
+import { MainContainer } from "../../styledComponents/BaseStyleComponents"
+import { AboutContainer } from '../../styledComponents/AboutStyle';
+import { FavoriteIcon, WatchedIcon } from '../../styledComponents/Icons';
 
 function About() {
   const {theme} = useSelector(state => state)

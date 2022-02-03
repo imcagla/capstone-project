@@ -1,10 +1,10 @@
-import Home from "./components/Home"
-import Detail from "./components/Detail"
-import Login from "./components/Login"
-import Profile from "./components/Profile"
-import SortFilter from "./components/SortFilter"
-import About from "./components/About"
-import Contact from "./components/Contact"
+import Home from "./components/pages/Home"
+import Detail from "./components/pages/Detail"
+import Login from "./components/pages/Login"
+import Profile from "./components/pages/Profile"
+import SortFilter from "./components/pages/SortFilter"
+import About from "./components/pages/About"
+import Contact from "./components/pages/Contact"
 
 export const routes = [
     {name: "Home", pathname: "/", element: Home, isNav:false},

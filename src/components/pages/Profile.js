@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useQueries } from 'react-query';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSingleMovie } from '../api';
-import { TwitterIcon, InstagramIcon } from '../styledComponents/Icons';
-import { StyledTable, ProfileGrid, ProfileInfo, ProfileInfoGrid, TableContainer, TableDropdownContainer } from '../styledComponents/ProfileStyle';
-import { MainContainer } from "../styledComponents/MainContainer"
-import { ProfileImg } from '../styledComponents/NavbarStyles';
-import SeenFavIcons from './SeenFavIcons';
-import { StyledSelect } from "../styledComponents/Dropdown"
-import { getSortVal } from '../reduxStore/sortFilterStates';
+import { fetchSingleMovie } from '../../api';
+import { TwitterIcon, InstagramIcon } from '../../styledComponents/Icons';
+import { StyledTable, ProfileGrid, ProfileInfo, ProfileInfoGrid, TableContainer, TableDropdownContainer } from '../../styledComponents/ProfileStyle';
+import { MainContainer } from "../../styledComponents/BaseStyleComponents"
+import { ProfileImg } from '../../styledComponents/NavbarStyles';
+import SeenFavIcons from '../SeenFavIcons';
+import { StyledSelect } from "../../styledComponents/Dropdown"
+import { getSortVal } from '../../reduxStore/sortFilterStates';
 
 
 function Profile() {

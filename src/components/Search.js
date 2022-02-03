@@ -2,8 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { searchHandler } from '../reduxStore/searchHandle';
-import { Input } from '../styledComponents/SearchComponents';
-import { MainContainer } from '../styledComponents/MainContainer';
+import { Input } from '../styledComponents/SearchStyle';
+import { MainContainer } from '../styledComponents/BaseStyleComponents';
 
 
 function Search() {

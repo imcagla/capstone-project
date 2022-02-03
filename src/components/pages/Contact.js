@@ -1,9 +1,9 @@
 import React from 'react';
-import {MainContainer} from "../styledComponents/MainContainer"
-import { ContactContainer, ContactGrid, ContactColumn } from '../styledComponents/ContactStyle';
-import { LinkedinIcon, GithubIcon, MailIcon } from '../styledComponents/Icons';
+import {MainContainer} from "../../styledComponents/BaseStyleComponents"
+import { ContactContainer, ContactGrid, ContactColumn } from '../../styledComponents/ContactStyle';
+import { LinkedinIcon, GithubIcon, MailIcon } from '../../styledComponents/Icons';
 import { useSelector } from 'react-redux';
-import { StyledAnchor } from '../styledComponents/Link';
+import { StyledAnchor } from '../../styledComponents/Link';
 
 
 

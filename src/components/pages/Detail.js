@@ -2,11 +2,11 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchSimilarMovies, fetchSingleMovie, fetchSingleMovieCredits, fetchReviews } from '../api';
-import { Container, CardImg } from '../styledComponents/CardContainer';
-import Cards from './Cards';
-import { MainContainer } from '../styledComponents/MainContainer';
-import { DetailGrid, CastCard, CastCardDescription } from '../styledComponents/StyledDetailPage';
+import { fetchSimilarMovies, fetchSingleMovie, fetchSingleMovieCredits, fetchReviews } from '../../api';
+import {  CardImg } from '../../styledComponents/CardContainer';
+import Cards from '../Cards';
+import { Container, MainContainer } from '../../styledComponents/BaseStyleComponents';
+import { DetailGrid, CastCard, CastCardDescription } from '../../styledComponents/DetailStyle';
 
 
 

@@ -6,7 +6,6 @@ export const ButtonGroupContainer = styled.div`
 `
 
 export const ButtonGroupRow = styled.div`
-    
     margin-left:auto;
     & > .btn-week {
         border-top-right-radius: 0px;

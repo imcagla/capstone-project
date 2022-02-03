@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { validateUser } from '../reduxStore/user';
-import { Button } from '../styledComponents/CardContainer';
-import { Input } from '../styledComponents/SearchComponents';
-import { InputContainer, LoginContainer, LoginMainContainer } from '../styledComponents/Login';
-import { MainContainer } from '../styledComponents/MainContainer';
+import { validateUser } from '../../reduxStore/user';
+import { Button } from '../../styledComponents/BaseStyleComponents';
+import { Input } from '../../styledComponents/SearchStyle';
+import { InputContainer, LoginContainer, LoginMainContainer } from '../../styledComponents/LoginStyle';
+import { MainContainer } from '../../styledComponents/BaseStyleComponents';
 
 
 function Login() {

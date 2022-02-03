@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { FooterContainer, FooterWrapper, FooterRow, FooterColumn, FooterTitle, FooterLink } from '../../styledComponents/FooterStyles';
+import { FooterContainer, FooterWrapper, FooterRow, FooterColumn, FooterTitle, FooterLink } from '../../styledComponents/FooterStyle';
 import { TwitterIcon, InstagramIcon } from '../../styledComponents/Icons';
 import { StyledLink } from "../../styledComponents/Link"
 

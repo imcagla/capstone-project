@@ -4,10 +4,10 @@ import ReactPaginate from 'react-paginate'
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchMovies } from '../api';
 import Cards from './Cards';
-import { Alert } from '../styledComponents/Alert';
-import { MainContainer } from '../styledComponents/MainContainer';
+import { Alert } from '../styledComponents/BaseStyleComponents';
+import { MainContainer } from '../styledComponents/BaseStyleComponents';
 import { paginationHandler } from '../reduxStore/paginationContext';
-import { PaginationContainer } from '../styledComponents/SearchComponents';
+import { PaginationContainer } from '../styledComponents/SearchStyle';
 
 
 function SearchPagination() {

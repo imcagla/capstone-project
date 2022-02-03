@@ -2,16 +2,16 @@ import React, { useEffect } from 'react';
 import { useQueries } from 'react-query';
 import { useParams } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSortFilterMovies } from '../api';
-import Cards from './Cards';
-import { loadMoreMovies, resetLoad } from '../reduxStore/loadMoreMovies';
-import { MainContainer } from '../styledComponents/MainContainer';
-import { Button, Container } from '../styledComponents/CardContainer';
-import { SortFilterGrid, GridContainer, FilterDateContainer, FilterButtons, SearchButton, FilteredButtons, SortFilterMainContainer, SortFilterTitle } from '../styledComponents/SortFilter';
-import { StyledSelect } from '../styledComponents/Dropdown';
-import { Input } from '../styledComponents/SearchComponents';
-import { getSortVal, getGenreFilter, removeGenreFilter, getFromDateFilter, getToDateFilter, getSortFilterResult } from '../reduxStore/sortFilterStates';
-import { Alert } from '../styledComponents/Alert';
+import { fetchSortFilterMovies } from '../../api';
+import Cards from '../Cards';
+import { loadMoreMovies, resetLoad } from '../../reduxStore/loadMoreMovies';
+import { Container, MainContainer, Alert, Button } from '../../styledComponents/BaseStyleComponents';
+import { SortFilterGrid, GridContainer, FilterDateContainer, FilterButtons, SearchButton, FilteredButtons, SortFilterMainContainer, SortFilterTitle } from '../../styledComponents/SortFilterStyle';
+import { StyledSelect } from '../../styledComponents/Dropdown';
+import { Input } from '../../styledComponents/SearchStyle';
+import { getSortVal, getGenreFilter, removeGenreFilter, getFromDateFilter, getToDateFilter, getSortFilterResult } from '../../reduxStore/sortFilterStates';
+
+
 
 function SortFilter() {
   const dispatch = useDispatch()
