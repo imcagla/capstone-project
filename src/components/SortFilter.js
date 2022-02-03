@@ -7,7 +7,7 @@ import Cards from './Cards';
 import { loadMoreMovies, resetLoad } from '../reduxStore/loadMoreMovies';
 import { MainContainer } from '../styledComponents/MainContainer';
 import { Button, Container } from '../styledComponents/CardContainer';
-import { SortFilterGrid, GridContainer, FilterDateContainer, FilterButtons, FilteredButtons, SortFilterMainContainer, SortFilterTitle } from '../styledComponents/SortFilter';
+import { SortFilterGrid, GridContainer, FilterDateContainer, FilterButtons, SearchButton, FilteredButtons, SortFilterMainContainer, SortFilterTitle } from '../styledComponents/SortFilter';
 import { StyledSelect } from '../styledComponents/Dropdown';
 import { Input } from '../styledComponents/SearchComponents';
 import { getSortVal, getGenreFilter, removeGenreFilter, getFromDateFilter, getToDateFilter, getSortFilterResult } from '../reduxStore/sortFilterStates';
@@ -75,13 +75,15 @@ function SortFilter() {
             }
           </Container>
         </GridContainer>
-        <FilterButtons theme={theme}
+        <div>
+        <SearchButton theme={theme}
           onClick={() => {
             dispatch(getSortFilterResult(movies))
             dispatch(resetLoad())
           }} >
           Search
-        </FilterButtons>
+        </SearchButton>
+        </div>
       </SortFilterGrid>
       <div>
         {

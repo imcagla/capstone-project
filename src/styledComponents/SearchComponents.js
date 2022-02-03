@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const Input = styled.input`
     border: 1px solid ${props => props.theme ==="dark" ? "#F05454" : "gray"};
-    background-color: ${props => props.theme === "dark" ? "#131414" : "white"};
+    background-color: ${props => props.theme === "dark" ? "#14171c" : "white"};
     color: ${props => props.theme === "dark" ? "white" : "black"};
     width: 100%;
     height: 35px;

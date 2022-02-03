@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "./CardContainer";
 
 
 export const SortFilterMainContainer = styled.div`
@@ -8,17 +9,19 @@ export const SortFilterMainContainer = styled.div`
 export const SortFilterGrid = styled.div`
     display: grid;
     grid-template-columns: 30% 60% auto;
+    background: ${props => props.theme === "dark" ? "#222831" : "rgb(221, 221, 221, 0.3)"};
+    // border: 1px solid ${props => props.theme === "dark" ? "#DDDDDD" : "#222831"};
+    align-items: center;
     padding: 10px 7%;
-    top: 0;
-    z-index: 999;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.37);
+    border-radius: 25px;
     @media only screen and (max-width: 960px) {
         grid-template-columns: 100%;
     }
 `
 
 export const GridContainer = styled.div`
-    background: ${props => props.theme === "dark" ? "#222831" : "#DDDDDD"};
-    border: 1px solid ${props => props.theme === "dark" ? "#DDDDDD" : "#222831"};
+    // background: ${props => props.theme === "dark" ? "#222831" : "#DDDDDD"};
     padding: 20px;
     text-align: center;
 `
@@ -60,6 +63,10 @@ background: ${props => props.theme === "dark" ? "rgb(221, 221, 221, 0.7)" : "rgb
             color: whitesmoke;
         }
     }
+`
+
+export const SearchButton = styled(Button)`
+    padding: 15px 30px;
 `
 
 export const SortFilterTitle = styled.h5`

@@ -60,7 +60,7 @@ export const Card = styled.div`
 `
 
 export const Button = styled.button`
-    background: ${props => props.theme === "light" ? "white" : "#131414"};
+    background: ${props => props.theme === "light" ? "white" : "#14171c"};
     color: #F05454;
     font-size: 1em;
     padding: 0.25em 1.5em;
@@ -69,7 +69,7 @@ export const Button = styled.button`
     transition: 0.3s;
     &:hover{
         background: #F05454;
-        color: ${props => props.theme === "light" ? "white" : "#131414"};
+        color: ${props => props.theme === "light" ? "white" : "#14171c"};
     }
 `
 
