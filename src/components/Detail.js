@@ -48,7 +48,7 @@ function Detail() {
         </p>
         <ul>
           {
-            movieCrewData?.filter(item => crewList.includes(item.job.toLowerCase())).map(item => <li> <strong>{item.job}</strong>: {item.name}</li>)
+            movieCrewData?.filter(item => crewList.includes(item.job.toLowerCase())).map(item => <li> <strong>{item.job}</strong>: {item.name}</li>).slice(0,3)
           }
         </ul>
       </div>

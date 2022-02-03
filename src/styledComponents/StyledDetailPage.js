@@ -26,6 +26,7 @@ export const DetailGrid = styled.div`
     & > img {
         width: 100%;
         max-width: 300px;
+        border-radius: 10px;
         @media screen and (max-width: 900px) {
             margin: auto;
         }
