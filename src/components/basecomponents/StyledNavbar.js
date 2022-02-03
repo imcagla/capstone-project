@@ -65,7 +65,7 @@ function StyledNavbar() {
             onClick={() => dispatch(changeTheme(theme))}
         >
             {
-                theme ? <DarkIcon /> : <LightIcon />
+                theme === "light" ? <DarkIcon /> : <LightIcon />
             }
         </ThemeChangerButton>
     </NavbarContent>;
