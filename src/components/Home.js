@@ -16,7 +16,7 @@ import { useLocation } from 'react-router-dom';
 function Home() {
   const dispatch = useDispatch()
   const location = useLocation()
-  const { theme, trend } = useSelector((state) => state)
+  const { theme, trend, search } = useSelector((state) => state)
 
   
 
@@ -27,7 +27,7 @@ function Home() {
   return (<MainContainer>
     <Search />
     {
-      location?.pathname==="/search" ? <SearchPagination /> :
+      location?.pathname==="/search" && search !== "" ? <SearchPagination /> :
         <>
           <h4>Discover</h4>
           <Container theme={theme}>
