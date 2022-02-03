@@ -52,7 +52,7 @@ function SortFilter() {
         <GridContainer theme={theme}>
            <SortFilterTitle>Sort by:</SortFilterTitle>
           <div>
-            <StyledSelect theme={theme} onChange={(e) => dispatch(getSortVal(e.target.options[e.target.selectedIndex].value))}>
+            <StyledSelect theme={theme} onClick={(e) => dispatch(getSortVal(e.target.options[e.target.selectedIndex].value))}>
               <option value="original_title.asc">Movie Title (from A to Z)</option>
               <option value="original_title.desc">Movie Title (from Z to A)</option>
               <option value="popularity.desc">Most Populars</option>

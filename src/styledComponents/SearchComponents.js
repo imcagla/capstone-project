@@ -17,4 +17,5 @@ export const Input = styled.input`
 
 export const PaginationContainer = styled.div`
     text-align:center;
+    margin-top: 50px;
 `

@@ -7,7 +7,7 @@ import StyledNavbar from "./components/basecomponents/StyledNavbar";
 function App() {
   const theme = useSelector((state) => state.theme)
 
-  document.getElementById("root").style.backgroundColor = theme ==="light" ? "white":"#131414"
+  document.getElementById("root").style.backgroundColor = theme ==="light" ? "white":"#14171c"
   document.getElementById("root").style.color = theme ==="light" ? "black":"white"
   return (
     <>

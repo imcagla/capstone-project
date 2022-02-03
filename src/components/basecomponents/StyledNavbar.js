@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { HiMenu } from "react-icons/hi"
 import { FaTimes } from "react-icons/fa"
+import {BsMoonStars} from "react-icons/bs"
 import { routes } from "../../routes"
 import { userLogout } from "../../reduxStore/user"
 import { changeTheme } from "../../reduxStore/themeChanger"
@@ -19,14 +20,15 @@ function StyledNavbar() {
     const [clicked, setClicked] = useState(false)
     const { theme, user } = useSelector(state => state)
 
+
     return <NavbarContent theme={theme}>
         <NavbarTitle theme={theme} >
-            <StyledLink onClick={() => setClicked(false)} theme={theme} to="/">Movies</StyledLink>
+            <StyledLink onClick={() => setClicked(false)} theme={theme} to="/"> <BsMoonStars/> CineMoon</StyledLink>
         </NavbarTitle>
 
         <NavMenuIcon theme={theme} onClick={() => setClicked(!clicked)}>{clicked ? <FaTimes /> : <HiMenu />}</NavMenuIcon>
         <ul className={clicked ? 'nav-menu active' : 'nav-menu'} >
-            <Dropdown theme={theme} onClick={() => setClicked(!clicked)}>
+            <Dropdown theme={theme} onClick={() => setClicked(false)}>
                 Movies
                 <DropdownList theme={theme} >
                     <li onClick={(e) => dispatch(getSortVal(e.target.name))}>
@@ -41,14 +43,14 @@ function StyledNavbar() {
             </Dropdown>
 
             {
-                routes.filter(item => item.isNav).map((item, index) => <li onClick={() => setClicked(!clicked)} className='nav-links' key={index}><StyledLink theme={theme} to={item?.pathname} >{item.name}</StyledLink></li>)
+                routes.filter(item => item.isNav).map((item, index) => <li onClick={() => setClicked(false)} className='nav-links' key={index}><StyledLink theme={theme} to={item?.pathname} >{item.name}</StyledLink></li>)
             }
             {!user.userLogin ? <li className='nav-links'>
-                <StyledLink onClick={() => setClicked(!clicked)} theme={theme} to="/login" >
+                <StyledLink onClick={() => setClicked(false)} theme={theme} to="/login" >
                     Login
                 </StyledLink>
             </li> : <><li className='nav-links'>
-                <StyledLink onClick={() => setClicked(!clicked)} theme={theme} to="/profile" >
+                <StyledLink onClick={() => setClicked(false)} theme={theme} to="/profile" >
                     <ProfileImg width={"30px"} src={user.avatarUrl} alt="" />
                 </StyledLink>
             </li>

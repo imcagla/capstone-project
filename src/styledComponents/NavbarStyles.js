@@ -80,12 +80,11 @@ export const NavbarContent = styled.nav`
     
 `
 
-export const NavbarTitle = styled.h1`
+export const NavbarTitle = styled.h3`
     color: ${props => props.theme === "dark" ? "#DDDDDD" : "#222831"};
     justify-self: start;
     margin-left: 20px;
     cursor: pointer;
-    
 `
 
 export const NavMenuIcon = styled.div`
