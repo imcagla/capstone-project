@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { DarkIcon, LightIcon } from "./Icons";
+
 
 export const NavbarContent = styled.nav`
     background: ${props => props.theme === "dark" ? "#222831" : "#DDDDDD"};
@@ -108,6 +110,16 @@ export const ThemeChangerButton = styled.button`
     @media only screen and (max-width: 960px) {
         margin-right: auto;
         margin-left: 15px;
+    }
+    &:hover {
+        & > ${DarkIcon} {
+            transform: rotate(360deg);
+            color: white;
+        } 
+        & > ${LightIcon} {
+            transform: rotate(360deg);
+            color: white;
+        }
     }
 `
 
