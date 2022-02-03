@@ -1,14 +1,22 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { CardDescription, Card, CardImg } from '../styledComponents/CardContainer';
-import { StyledTitleLink } from "../styledComponents/Link"
+import { useQuery } from 'react-query';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchGenres } from '../api';
 import SeenFavIcons from './SeenFavIcons';
+import { getGenres } from '../reduxStore/getGenres';
+import { StyledTitleLink } from "../styledComponents/Link"
+import { CardDescription, Card, CardImg } from '../styledComponents/CardContainer';
 
 
 function Cards(props) {
+    const dispatch = useDispatch()
     const { theme, genres } = useSelector((state) => state)
     
+    const genresQuery = useQuery("genres", () => fetchGenres, { retry: false })
 
+    genresQuery?.data?.then((val) =>
+        dispatch(getGenres(val?.data?.genres))
+    )
 
 
     return <>

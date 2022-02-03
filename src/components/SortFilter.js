@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { useQueries, useQuery } from 'react-query';
+import { useQueries } from 'react-query';
 import { useParams } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchGenres, fetchSortFilterMovies } from '../api';
+import { fetchSortFilterMovies } from '../api';
 import Cards from './Cards';
 import { loadMoreMovies, resetLoad } from '../reduxStore/loadMoreMovies';
 import { MainContainer } from '../styledComponents/MainContainer';
@@ -10,7 +10,6 @@ import { Button, Container } from '../styledComponents/CardContainer';
 import { SortFilterGrid, GridContainer, FilterDateContainer, FilterButtons, FilteredButtons, SortFilterMainContainer, SortFilterTitle } from '../styledComponents/SortFilter';
 import { StyledSelect } from '../styledComponents/Dropdown';
 import { Input } from '../styledComponents/SearchComponents';
-import { getGenres } from '../reduxStore/getGenres';
 import { getSortVal, getGenreFilter, removeGenreFilter, getFromDateFilter, getToDateFilter, getSortFilterResult } from '../reduxStore/sortFilterStates';
 import { Alert } from '../styledComponents/Alert';
 
@@ -33,14 +32,6 @@ function SortFilter() {
   )
 
 
-  const genresQuery = useQuery("genres", () => fetchGenres, { retry: false })
-
-  console.log("GENRES:::", genresQuery)
-
-  genresQuery?.data?.then((val) =>
-    dispatch(getGenres(val?.data?.genres))
-  )
-
   useEffect(() => {
     movies[0].refetch()
     dispatch(resetLoad())
@@ -53,6 +44,7 @@ function SortFilter() {
   }, [load, load.length, params.type])
 
   console.log("MOVIES:::", movies)
+  
 
   return <MainContainer>
     <SortFilterMainContainer>
@@ -93,7 +85,7 @@ function SortFilter() {
       </SortFilterGrid>
       <div>
         {
-          genres?.filter(item => sortFilter?.filteringGenres?.includes(item?.id))?.map(item => <FilteredButtons theme={theme}>{item?.name} <span onClick={() => dispatch(removeGenreFilter(item?.id))}> X </span></FilteredButtons>)
+          genres?.filter(item => sortFilter?.filteringGenres?.includes(item?.id))?.map(item => <FilteredButtons key={item.id} theme={theme}>{item?.name} <span onClick={() => dispatch(removeGenreFilter(item?.id))}> X </span></FilteredButtons>)
         }
       </div>
       <div>
