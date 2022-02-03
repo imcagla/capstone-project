@@ -17,7 +17,7 @@ function SortFilter() {
   const dispatch = useDispatch()
   const { load, theme, genres, sortFilter } = useSelector(state => state)
   const params = useParams()
-
+console.log( "PARAMS:::", params)
 
   const movies = useQueries(
     load.map(page => {
@@ -55,10 +55,12 @@ function SortFilter() {
             <StyledSelect theme={theme} onClick={(e) => dispatch(getSortVal(e.target.options[e.target.selectedIndex].value))}>
               <option value="original_title.asc">Movie Title (from A to Z)</option>
               <option value="original_title.desc">Movie Title (from Z to A)</option>
-              <option value="popularity.desc">Most Populars</option>
+              <option value="popularity.desc" selected={params.type === "popularity.desc" && true }>Most Populars</option>
               <option value="popularity.asc">Least Populars</option>
               <option value="release_date.desc">Newest Released</option>
               <option value="release_date.asc">Oldest Released</option>
+              <option value="vote_average.asc">Lowest Rate</option>
+              <option value="vote_average.desc" selected={params.type === "vote_average.desc" && true }>Highest Rate</option>
             </StyledSelect>
           </div>
         </GridContainer>
