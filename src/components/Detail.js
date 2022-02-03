@@ -75,7 +75,7 @@ function Detail() {
             movieCastData?.map(item => <CastCard> <CardImg width={"100"} height={"150"} src={item.profile_path === null ? `https://tigres.com.tr/wp-content/uploads/2016/11/orionthemes-placeholder-image-1.png` : `https://image.tmdb.org/t/p/w200${item?.profile_path}`} alt="" />
               <CastCardDescription>
                 <div>{item.name}</div>
-                <div>{item.character}</div>
+                <div className='char-name'>{item.character}</div>
               </CastCardDescription>
             </CastCard>)
           }

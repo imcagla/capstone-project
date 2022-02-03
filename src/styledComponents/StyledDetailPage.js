@@ -6,6 +6,7 @@ export const DetailGrid = styled.div`
     grid-template-columns: 30% 70%;
     text-align: start;
     & > .detail-description {
+        margin-left: 20px;
         margin-top: 50px;
         & > p {
             margin-top: 50px;
@@ -75,4 +76,7 @@ export const CastCard = styled.div`
 export const CastCardDescription = styled.div`
    max-width: 100px;
    font-size: 12px;
+   & > .char-name {
+       color: gray;
+   }
 `
