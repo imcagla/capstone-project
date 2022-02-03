@@ -111,15 +111,13 @@ export const ThemeChangerButton = styled.button`
         margin-right: auto;
         margin-left: 15px;
     }
-    &:hover {
-        & > ${DarkIcon} {
-            transform: rotate(360deg);
-            color: white;
-        } 
-        & > ${LightIcon} {
-            transform: rotate(360deg);
-            color: white;
-        }
+    &:hover ${DarkIcon}  {
+        transform: rotate(360deg);
+        color: white;
+    }
+    &:hover ${LightIcon}  {
+        transform: rotate(360deg);
+        color: white;
     }
 `
 

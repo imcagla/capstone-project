@@ -42,18 +42,12 @@ export const WatchedIcon = styled(ImBookmark)`
 
 export const LightIcon = styled(BsSunFill)`
     transition: transform 3s ease-out;
-    // &:hover {
-    //     transform: rotate(360deg);
-    //     color: white;
-    // }
+   
 `
 
 export const DarkIcon = styled(MdDarkMode)`
     transition: transform 2s ease-out;
-    // &:hover {
-    //     transform: rotate(360deg);
-    //     color: white;
-    // }  
+   
 `
 
 export const LogOutIcon = styled(FiLogOut)`
