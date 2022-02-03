@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQueries } from 'react-query';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSingleMovie } from '../api';
@@ -30,6 +30,11 @@ function Profile() {
   )
 
   const data = movies?.map(item => item?.data).map(item => ({ ...item, genres: [item?.genres?.map(item => item.name)].toString() }))
+
+  useEffect(() => {
+    dispatch(getSortVal("closest_release_date"))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const columns = [
     {
@@ -88,7 +93,7 @@ function Profile() {
         <TableDropdownContainer>
           Filter By:
         <StyledSelect theme={theme} onChange={(e) => dispatch(getSortVal(e.target.options[e.target.selectedIndex].value))}>
-          <option value="closest_release_date">Closest release date</option>
+          <option selected value="closest_release_date">Closest release date</option>
           <option value="favorites">Favorites</option>
           <option value="seen">Seenlist</option>
         </StyledSelect>
