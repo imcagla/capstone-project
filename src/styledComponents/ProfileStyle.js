@@ -1,13 +1,5 @@
 import styled from "styled-components";
-import Table from "rc-table";
 
-
-export const StyledTable = styled(Table)`
-    background-color: ${props => props.theme ==="dark" ? "rgb(48, 71, 94, 0.2)": "rgb(221, 221, 221, 0.5)"};
-    border-radius: 25px;
-    padding: 20px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.37);
-`
 
 export const ProfileGrid = styled.div`
     display: grid;
@@ -66,10 +58,12 @@ export const ProfileInfo = styled.div`
     
 `
 
+
 export const TableContainer = styled.div`
-    background-color: ${props => props.theme ==="dark" ? "rgb(34, 40, 49, 1)": "rgb(221, 221, 221, 0.5)"};
+    background-color: ${props => props.theme ==="dark" ? "rgb(34, 40, 49, 0.2)": "rgb(221, 221, 221, 0.2)"};
     border-radius: 25px;
     padding: 30px;
+    overflow-x: auto;
     @media only screen and (max-width: 960px) {
         margin-top: 30px;
     }
@@ -80,4 +74,36 @@ export const TableDropdownContainer = styled.div`
     width: 50%;
     text-align: start;
 
+`
+
+
+export const TableStyled = styled.table`
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    color: ${props => props.theme === "light" ? "#30475E" : "#DDDDDD"};
+    font-size: 13px;
+
+    & > tr {
+        transition-duration: .5s;
+        &:hover {
+                background-color: rgb(255, 244, 125) !important;
+                color: #30475E;
+            }
+        &:nth-child(even) {
+            background-color: ${props => props.theme === "dark" ? "#30475E" : "#DDDDDD"};
+        }
+        & > td {
+            border: 1px solid ${props => props.theme === "dark" ? "#222831" : "#D0DDDD"};
+            text-align: left;
+            padding: 8px;
+            
+        }
+        & > th {
+            border: 1px solid ${props => props.theme === "dark" ? "#222831" : "#D0DDDD"};
+            background-color: ${props => props.theme === "dark" ? "#222831" : "#F6A9A9"};
+            text-align: left;
+            padding: 8px;
+        }
+    }
 `

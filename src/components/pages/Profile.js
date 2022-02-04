@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useQueries } from 'react-query';
 import { useDispatch, useSelector } from 'react-redux';
+import Table from '../Table';
 import { fetchSingleMovie } from '../../api';
-import { TwitterIcon, InstagramIcon } from '../../styledComponents/Icons';
-import { StyledTable, ProfileGrid, ProfileInfo, ProfileInfoGrid, TableContainer, TableDropdownContainer } from '../../styledComponents/ProfileStyle';
-import { MainContainer } from "../../styledComponents/BaseStyleComponents"
-import { ProfileImg } from '../../styledComponents/NavbarStyles';
-import SeenFavIcons from '../SeenFavIcons';
-import { StyledSelect } from "../../styledComponents/Dropdown"
 import { getSortVal } from '../../reduxStore/sortFilterStates';
+import { StyledSelect } from "../../styledComponents/Dropdown"
+import { ProfileImg } from '../../styledComponents/NavbarStyles';
+import { TwitterIcon, InstagramIcon } from '../../styledComponents/Icons';
+import { MainContainer } from "../../styledComponents/BaseStyleComponents"
+import { ProfileGrid, ProfileInfo, ProfileInfoGrid, TableContainer, TableDropdownContainer } from '../../styledComponents/ProfileStyle';
 
 
 function Profile() {
@@ -33,37 +33,8 @@ function Profile() {
 
   useEffect(() => {
     dispatch(getSortVal("closest_release_date"))
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  const columns = [
-    {
-      title: 'Film ID',
-      dataIndex: 'id',
-      key: 'id',
-      width: 150,
-    },
-    {
-      title: 'Film Title',
-      dataIndex: 'title',
-      key: 'title',
-      width: 150,
-    },
-    {
-      title: 'Film Genre',
-      dataIndex: 'genres',
-      key: 'genres',
-      width: 200,
-    },
-    {
-      title: 'Icon Actions',
-      dataIndex: '',
-      key: 'operations',
-      render: (movie) => (
-        <SeenFavIcons loc={"table"} movieId={movie.id} />
-      )
-    },
-  ];
 
 
   return <MainContainer>
@@ -92,23 +63,21 @@ function Profile() {
       <TableContainer theme={theme}>
         <TableDropdownContainer>
           Filter By:
-        <StyledSelect theme={theme} onChange={(e) => dispatch(getSortVal(e.target.options[e.target.selectedIndex].value))}>
-          <option selected value="closest_release_date">Closest release date</option>
-          <option value="favorites">Favorites</option>
-          <option value="seen">Seenlist</option>
-        </StyledSelect>
+          <StyledSelect theme={theme} onChange={(e) => dispatch(getSortVal(e.target.options[e.target.selectedIndex].value))}>
+            <option selected value="closest_release_date">Closest release date</option>
+            <option value="favorites">Favorites</option>
+            <option value="seen">Seenlist</option>
+          </StyledSelect>
         </TableDropdownContainer>
-        <StyledTable
-          theme={theme} 
-          columns={columns}
-          data={
-            sortFilter.sortingValue === "closest_release_date" ?
-              data?.sort((prev, curr) => curr?.release_date > prev?.release_date) :
-              sortFilter.sortingValue === "favorites" ?
-                data?.filter(item => user.favoritesList.favoritesFilms?.includes(item?.id)) :
-                data?.filter(item => user.seenList.seenFilms?.includes(item?.id))
-          }
-        />
+        
+        <Table data={
+          sortFilter.sortingValue === "closest_release_date" ?
+            data?.sort((prev, curr) => curr?.release_date > prev?.release_date) :
+            sortFilter.sortingValue === "favorites" ?
+              data?.filter(item => user.favoritesList.favoritesFilms?.includes(item?.id)) :
+              data?.filter(item => user.seenList.seenFilms?.includes(item?.id))
+        } />
+      
       </TableContainer>
     </ProfileGrid>
   </MainContainer>;
