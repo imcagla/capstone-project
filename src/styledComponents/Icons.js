@@ -1,15 +1,16 @@
 import styled from "styled-components"
-import { FaHeart, FaLinkedinIn } from "react-icons/fa"
-import { ImBookmark } from "react-icons/im"
-import { BsSunFill, BsTwitter, BsInstagram } from "react-icons/bs"
-import { MdDarkMode } from "react-icons/md"
 import { FiLogOut } from "react-icons/fi"
-import { BsGithub } from "react-icons/bs"
-import { HiMail } from "react-icons/hi"
-import { HiMenu } from "react-icons/hi"
-import { FaTimes } from "react-icons/fa"
-import { BsMoonStars } from "react-icons/bs"
+import { ImBookmark } from "react-icons/im"
+import { MdDarkMode } from "react-icons/md"
+import { HiMail, HiMenu } from "react-icons/hi"
+import { FaHeart, FaLinkedinIn, FaTimes } from "react-icons/fa"
+import { BsMoonStars, BsSearch, BsGithub, BsSunFill, BsTwitter, BsInstagram } from "react-icons/bs"
 
+export const SearchIcon = styled(BsSearch)`
+    padding: 5px;
+    font-size: 25px;
+    cursor: pointer;
+`
 
 export const MoonLogo = styled(BsMoonStars)`
     font-size: 40px;

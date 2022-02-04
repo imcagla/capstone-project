@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { routes } from "../../routes"
+import SearchDropdown from '../SearchDropdown';
 import { userLogout } from "../../reduxStore/user"
 import { changeTheme } from "../../reduxStore/themeChanger"
 import { getSortVal } from "../../reduxStore/sortFilterStates"
@@ -9,7 +10,6 @@ import { StyledLink } from '../../styledComponents/Link';
 import { Dropdown, DropdownList } from "../../styledComponents/Dropdown"
 import { DarkIcon, LightIcon, LogOutIcon, MenuCloseIcon, MenuOpenIcon, MoonLogo } from '../../styledComponents/Icons';
 import { NavbarContent, NavbarTitle, NavMenuIcon, ThemeChangerButton, ProfileImg } from '../../styledComponents/NavbarStyles';
-
 
 function StyledNavbar() {
     const navigate = useNavigate()
@@ -76,6 +76,7 @@ function StyledNavbar() {
                         }} />
                     </li></>
             }
+            <li> <SearchDropdown clicked={setClicked} /> </li>
         </ul>
         <ThemeChangerButton theme={theme}
             onClick={() => dispatch(changeTheme(theme))}

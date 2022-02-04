@@ -27,6 +27,7 @@ export const DropdownList = styled.ul`
     padding: 5px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    
     &>li {
         color: ${props => props.theme === "dark" ? "#DDDDDD" : "whitesmoke"};
         padding: 7px;
@@ -36,7 +37,37 @@ export const DropdownList = styled.ul`
             border-radius: 5px;
         }
     }
-    
+`
+
+export const DatalistDropdown = styled.div`
+    display: ${props => props.active ? "inline-block" : "none"};
+    align-items: center;
+    vertical-align:middle;
+
+`
+
+export const DatalistDropdownList = styled.ul`
+    height:  ${props => props.height ? "200px" : "0"};
+    overflow-y: auto;
+    list-style: none;
+    position: absolute;
+    z-index: 999;
+    top: 90%;
+    left: 0%;
+    text-align: left;
+    background-color: ${props => props.theme === "dark" ? "#30475E" : "whitesmoke"};
+    width: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    &>li {
+        color: ${props => props.theme === "dark" ? "#DDDDDD" : "whitesmoke"};
+        padding: 7px;
+        &:hover {
+            background-color: ${props => props.theme === "dark" ? "#222831" : "white"};
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    }
 `
 
 
@@ -47,6 +78,7 @@ export const Dropdown = styled.div`
     margin-top:18px;
     color: ${props => props.theme === "dark" ? "white" : "black"};
     width: 100%;
+    
     &:hover {
         color: ${props => props.theme === "dark" ? "white" : "black"};
         background-color: ${props => props.theme === "dark" ? "#30475E" : "whitesmoke"};
