@@ -22,6 +22,7 @@ export const NavbarContent = styled.nav`
         grid-gap: 10px;
         list-style: none;
         text-align: center;
+        align-items:center;
         width: 70vw;
         justify-content: end;
         margin-right: 1.5rem;

@@ -5,14 +5,13 @@ import { fetchMovies } from '../api';
 import { searchHandler } from '../reduxStore/searchHandle';
 import { SearchIcon } from '../styledComponents/Icons';
 import { StyledLink } from '../styledComponents/Link';
-import { Input } from '../styledComponents/SearchStyle';
+import { Input, Form } from '../styledComponents/SearchStyle';
 import { Dropdown, DatalistDropdownList, DatalistDropdown } from '../styledComponents/Dropdown';
 
 
 function SearchDropdown(props) {
     const dispatch = useDispatch()
     const { search, theme } = useSelector(state => state)
-    const [isActive, setIsActive] = useState(false)
     const debouncedSearchTerm = useDebounce(search, 500);
 
     function useDebounce(value, delay) {
@@ -36,23 +35,23 @@ function SearchDropdown(props) {
 
     return <>
         <Dropdown theme={theme}>
-            <SearchIcon className="search-icon"
-                onClick={() => {
-                    setIsActive(!isActive)
-                    dispatch(searchHandler(""))
-                }}
-            />
-            <DatalistDropdown theme={theme} active={isActive}>
-                <Input type="text" placeholder='search' value={search} onChange={(e) => {
-                    dispatch(searchHandler(e.target.value))
-                }} />
+
+            <DatalistDropdown theme={theme}>
+                <Form>
+                    <SearchIcon theme={theme} className="search-icon"
+                        onClick={() => {
+                            dispatch(searchHandler(""))
+                        }}
+                    />
+                    <Input type="text" value={search} onChange={(e) => {
+                        dispatch(searchHandler(e.target.value))
+                    }} /></Form>
                 <DatalistDropdownList theme={theme} height={!!search}>
                     {
                         searchResults?.data?.data?.results?.map(item => <li>
                             <StyledLink theme={theme}
                                 to={`/movies/${item.id}`}
                                 onClick={() => {
-                                    setIsActive(false)
                                     props.setClicked(false)
                                 }}
                             >

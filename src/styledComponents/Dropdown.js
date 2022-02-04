@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {Form} from "./SearchStyle"
 
 
 export const StyledSelect = styled.select`
@@ -40,14 +41,16 @@ export const DropdownList = styled.ul`
 `
 
 export const DatalistDropdown = styled.div`
-    display: ${props => props.active ? "inline-block" : "none"};
     align-items: center;
     vertical-align:middle;
-
+    &:hover ${Form} {
+        width: 200px;
+        cursor: pointer;
+    }
 `
 
 export const DatalistDropdownList = styled.ul`
-    height:  ${props => props.height ? "200px" : "0"};
+    height: ${props => props.height ? "200px" : "0"};
     overflow-y: auto;
     list-style: none;
     position: absolute;

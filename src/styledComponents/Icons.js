@@ -6,10 +6,18 @@ import { HiMail, HiMenu } from "react-icons/hi"
 import { FaHeart, FaLinkedinIn, FaTimes } from "react-icons/fa"
 import { BsMoonStars, BsSearch, BsGithub, BsSunFill, BsTwitter, BsInstagram } from "react-icons/bs"
 
+
 export const SearchIcon = styled(BsSearch)`
+    box-sizing: border-box;
     padding: 5px;
-    font-size: 25px;
-    cursor: pointer;
+    position: absolute;
+    top: 10%;
+    right: 0;
+    border-radius: 50%;
+    color:black;
+    text-align: center;
+    font-size: 35px;
+    transition: all 1s;
 `
 
 export const MoonLogo = styled(BsMoonStars)`
