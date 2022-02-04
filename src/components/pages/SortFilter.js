@@ -27,6 +27,7 @@ console.log( "PARAMS:::", params)
         select: state => state?.data,
         enabled: false,
         keepPreviousData: true,
+        cacheTime: 0,
       }
     })
   )

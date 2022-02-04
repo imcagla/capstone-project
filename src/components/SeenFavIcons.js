@@ -7,6 +7,7 @@ function SeenFavIcons(props) {
     const dispatch = useDispatch()
     const {user} = useSelector(state => state)
     const {movieId, loc} = props
+  
 
   return <div>
       {

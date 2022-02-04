@@ -15,16 +15,16 @@ function Detail() {
   const { theme } = useSelector(state => state)
 
   const reviewsQuery = useQuery(["reviews", movieId], () => fetchReviews(movieId), { retry: false, select: state => state?.data })
-  console.log("REVIEWS:::", reviewsQuery)
+
   const similarMoviesQuery = useQuery(["similarmovies", movieId], () => fetchSimilarMovies(movieId), { retry: false, select: state => state?.data })
   const movieQuery = useQuery(["movie", movieId], () => fetchSingleMovie(movieId), { retry: false, select: state => state?.data })
-  console.log("movieQuery:::", movieQuery)
+
   const movieCreditsQuery = useQuery(["moviecredits", movieId], () => fetchSingleMovieCredits(movieId), { retry: false, select: state => state?.data })
-  console.log("movieCast:::", movieCreditsQuery)
+  
   const movieData = movieQuery?.data
   const similarMoviesData = similarMoviesQuery?.data
   const reviewsData = reviewsQuery?.data
-  console.log("Reviews:::", reviewsData)
+  
   const movieCastData = movieCreditsQuery?.data?.cast
   const movieCrewData = movieCreditsQuery?.data?.crew
   const crewList = ["director", "producer"]

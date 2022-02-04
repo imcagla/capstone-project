@@ -12,7 +12,7 @@ export const SearchIcon = styled(BsSearch)`
     padding: 5px;
     position: absolute;
     top: 10%;
-    right: 0;
+    right: 10%;
     border-radius: 50%;
     color:black;
     text-align: center;

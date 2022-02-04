@@ -35,5 +35,9 @@ export const Form = styled.form`
         width: 200px;
         cursor: pointer;
     }
-    
+    @media only screen and (max-width: 960px) {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,0%);
+    }
 `

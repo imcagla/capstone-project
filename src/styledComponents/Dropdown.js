@@ -71,6 +71,10 @@ export const DatalistDropdownList = styled.ul`
             border-radius: 5px;
         }
     }
+    &:hover ${Form} {
+        width: 200px;
+        cursor: pointer;
+    }
 `
 
 

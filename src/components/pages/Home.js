@@ -16,7 +16,6 @@ function Home() {
   const location = useLocation()
   const { theme, trend, search } = useSelector((state) => state)
 
-  
 
   const discoverData = useQuery('discover movies', fetchDiscoverMovies, { retry: false })
   const trendingData = useQuery(['trending movies', trend], () => fetchTrendingMovies(trend), { retry: false })
@@ -25,22 +24,22 @@ function Home() {
   return (<MainContainer>
     <Search />
     {
-      location?.pathname==="/search" && search !== "" ? <SearchPagination /> :
+      location?.pathname === "/search" && search !== "" ? <SearchPagination /> :
         <>
           <h4>Discover</h4>
           <Container theme={theme}>
-          <Cards height={"230"} width={"150"} data={discoverData?.data?.data?.results} />
+            <Cards height={"230"} width={"150"} data={discoverData?.data?.data?.results} />
           </Container>
           <ButtonGroupContainer>
             <h4>Trending</h4>
             <ButtonGroupRow trend={trend} theme={theme}>
-              <Button 
+              <Button
                 onClick={() => dispatch(changeTrendingPeriod("week"))}
                 className={`btn-week`}
               >
                 Week
               </Button>
-              <Button 
+              <Button
                 onClick={() => dispatch(changeTrendingPeriod("day"))}
                 className={`btn-day`}
               >
@@ -49,7 +48,7 @@ function Home() {
             </ButtonGroupRow>
           </ButtonGroupContainer>
           <Container theme={theme}>
-          <Cards  height={"230"} width={"150"} data={trendingData?.data?.data?.results} />
+            <Cards height={"230"} width={"150"} data={trendingData?.data?.data?.results} />
           </Container>
         </>
     }

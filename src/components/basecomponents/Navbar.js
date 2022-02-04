@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { routes } from "../../routes"
 import SearchDropdown from '../SearchDropdown';
@@ -12,11 +12,13 @@ import { DarkIcon, LightIcon, LogOutIcon, MenuCloseIcon, MenuOpenIcon, MoonLogo 
 import { NavbarContent, NavbarTitle, NavMenuIcon, ThemeChangerButton, ProfileImg } from '../../styledComponents/NavbarStyles';
 
 function StyledNavbar() {
+    const location = useLocation()
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [clicked, setClicked] = useState(false)
     const { theme, user } = useSelector(state => state)
 
+    console.log("PATHNAME",location.pathname)
 
     return <NavbarContent theme={theme}>
         <NavbarTitle theme={theme} >
@@ -76,7 +78,10 @@ function StyledNavbar() {
                         }} />
                     </li></>
             }
-            <li> <SearchDropdown clicked={setClicked} /> </li>
+            {
+                location.pathname !== "/" && location.pathname !== "/search" && <li> <SearchDropdown clicked={setClicked} /> </li>
+            }
+            
         </ul>
         <ThemeChangerButton theme={theme}
             onClick={() => dispatch(changeTheme(theme))}
