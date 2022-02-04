@@ -1,15 +1,14 @@
 import React from 'react';
-import { useSelector, useDispatch } from "react-redux"
 import { useQuery } from 'react-query'
+import { useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux"
 import { fetchDiscoverMovies, fetchTrendingMovies } from '../../api'
-import { changeTrendingPeriod } from "../../reduxStore/trendingPeriod"
+import Cards from '../Cards';
 import Search from "../Search"
 import SearchPagination from '../SearchPagination';
-import Cards from '../Cards';
-import { Container, MainContainer } from '../../styledComponents/BaseStyleComponents';
+import { changeTrendingPeriod } from "../../reduxStore/trendingPeriod"
 import { ButtonGroupContainer, ButtonGroupRow } from '../../styledComponents/HomeStyle';
-import { useLocation } from 'react-router-dom';
-import { Button } from '../../styledComponents/BaseStyleComponents';
+import { Container, MainContainer, Button } from '../../styledComponents/BaseStyleComponents';
 
 
 function Home() {

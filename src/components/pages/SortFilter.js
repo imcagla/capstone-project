@@ -5,11 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchSortFilterMovies } from '../../api';
 import Cards from '../Cards';
 import { loadMoreMovies, resetLoad } from '../../reduxStore/loadMoreMovies';
+import { getSortVal, getGenreFilter, removeGenreFilter, getFromDateFilter, getToDateFilter, getSortFilterResult } from '../../reduxStore/sortFilterStates';
+import { Input } from '../../styledComponents/SearchStyle';
+import { StyledSelect } from '../../styledComponents/Dropdown';
 import { Container, MainContainer, Alert, Button } from '../../styledComponents/BaseStyleComponents';
 import { SortFilterGrid, GridContainer, FilterDateContainer, FilterButtons, SearchButton, FilteredButtons, SortFilterMainContainer, SortFilterTitle } from '../../styledComponents/SortFilterStyle';
-import { StyledSelect } from '../../styledComponents/Dropdown';
-import { Input } from '../../styledComponents/SearchStyle';
-import { getSortVal, getGenreFilter, removeGenreFilter, getFromDateFilter, getToDateFilter, getSortFilterResult } from '../../reduxStore/sortFilterStates';
 
 
 

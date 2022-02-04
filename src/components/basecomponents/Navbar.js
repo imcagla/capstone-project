@@ -5,9 +5,9 @@ import { routes } from "../../routes"
 import { userLogout } from "../../reduxStore/user"
 import { changeTheme } from "../../reduxStore/themeChanger"
 import { getSortVal } from "../../reduxStore/sortFilterStates"
-import { DarkIcon, LightIcon, LogOutIcon, MenuCloseIcon, MenuOpenIcon, MoonLogo } from '../../styledComponents/Icons';
 import { StyledLink } from '../../styledComponents/Link';
 import { Dropdown, DropdownList } from "../../styledComponents/Dropdown"
+import { DarkIcon, LightIcon, LogOutIcon, MenuCloseIcon, MenuOpenIcon, MoonLogo } from '../../styledComponents/Icons';
 import { NavbarContent, NavbarTitle, NavMenuIcon, ThemeChangerButton, ProfileImg } from '../../styledComponents/NavbarStyles';
 
 

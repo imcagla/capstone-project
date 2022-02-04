@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { validateUser } from '../../reduxStore/user';
-import { Button } from '../../styledComponents/BaseStyleComponents';
 import { Input } from '../../styledComponents/SearchStyle';
+import { Button, MainContainer } from '../../styledComponents/BaseStyleComponents';
 import { InputContainer, LoginContainer, LoginMainContainer } from '../../styledComponents/LoginStyle';
-import { MainContainer } from '../../styledComponents/BaseStyleComponents';
 
 
 function Login() {

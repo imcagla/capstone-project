@@ -2,7 +2,7 @@ import {routes} from "./routes"
 import {Routes, Route} from "react-router-dom"
 import {useSelector} from "react-redux"
 import Footer from "./components/basecomponents/Footer";
-import StyledNavbar from "./components/basecomponents/StyledNavbar";
+import Navbar from "./components/basecomponents/Navbar";
 
 function App() {
   const theme = useSelector((state) => state.theme)
@@ -11,7 +11,7 @@ function App() {
   document.getElementById("root").style.color = theme ==="light" ? "black":"white"
   return (
     <>
-    <StyledNavbar/>
+    <Navbar/>
       <Routes>
         {
           routes.map((item, index) => <Route key={index} path={item?.pathname} element={<item.element />} />)

@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
 import ReactPaginate from 'react-paginate'
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchMovies } from '../api';
 import Cards from './Cards';
-import { Alert } from '../styledComponents/BaseStyleComponents';
-import { MainContainer } from '../styledComponents/BaseStyleComponents';
+import { fetchMovies } from '../api';
 import { paginationHandler } from '../reduxStore/paginationContext';
 import { PaginationContainer } from '../styledComponents/SearchStyle';
+import { Alert, MainContainer } from '../styledComponents/BaseStyleComponents';
 
 
 function SearchPagination() {
