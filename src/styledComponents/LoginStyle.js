@@ -39,3 +39,14 @@ export const InputContainer = styled.form`
     height: 60%;
     width: 80%;
 `
+
+
+export const ValidationMessage = styled.div`
+    position: absolute;
+    top: 20%;
+    background-color: rgb(255, 146, 146);
+    padding: 7px 15px;
+    border-radius: 15px;
+    color: white;
+    font-size: 14px;
+`
