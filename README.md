@@ -1,3 +1,26 @@
+# UP School Capstone Project - CineMoon
+This project is the capstone project given at UP School Front-end Development Program, created by Imran Cagla Eyuboglu. <a href="https://developers.themoviedb.org/4/getting-started/authorization">The Movie Database API</a> is used. The Movie Database API provides a large database about Movies. People can find any kind of movie they look for in this page, by filtering, sorting and searching. First thing to do is LOGIN!  
+  
+  Login informations:
+  - username: "username"
+  - password: "password"
+
+  
+After login, profile page is activated. Do not hesitate to use  🤍, 🏷️ icon actions, and create your own collection includes your favorites and seen movies in your profile. There will be counter in the profile to calculate totals. Have fun! 	😋
+
+### Technologies:
+- React
+- React Router
+- Redux
+- Redux-Persist
+- Styled components
+- React-icons
+
+[Live Web Site 🎬](https://trusting-saha-09b8de.netlify.app)
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
